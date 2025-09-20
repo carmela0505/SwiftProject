@@ -1,0 +1,439 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6E6ED5442E76217B00C8669D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6E6ED5432E76217B00C8669D /* Lottie */; };
+		6E7F48512E77481D00E56346 /* bonbon.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E7F48502E77481D00E56346 /* bonbon.json */; };
+		6E7F48572E77488C00E56346 /* reward.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E7F48562E77488C00E56346 /* reward.json */; };
+		6E7F48592E77489F00E56346 /* trophy.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E7F48582E77489F00E56346 /* trophy.json */; };
+		6E7F485B2E7748B300E56346 /* yesbear.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E7F485A2E7748B300E56346 /* yesbear.json */; };
+		6E7F485D2E7748C600E56346 /* nobear.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E7F485C2E7748C600E56346 /* nobear.json */; };
+		6E7F48652E775B7600E56346 /* dancingbear.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E7F48642E775B7600E56346 /* dancingbear.json */; };
+		6ED8474B2E7ADDA500A608F9 /* mascottedog.json in Resources */ = {isa = PBXBuildFile; fileRef = 6ED8474A2E7ADDA500A608F9 /* mascottedog.json */; };
+		6ED8474D2E7AE5A200A608F9 /* mascotteduck.json in Resources */ = {isa = PBXBuildFile; fileRef = 6ED8474C2E7AE5A200A608F9 /* mascotteduck.json */; };
+		6ED8474F2E7AE6CA00A608F9 /* mascotracoon.json in Resources */ = {isa = PBXBuildFile; fileRef = 6ED8474E2E7AE6CA00A608F9 /* mascotracoon.json */; };
+		6ED847512E7B5D8200A608F9 /* mascotdonkey.json in Resources */ = {isa = PBXBuildFile; fileRef = 6ED847502E7B5D8200A608F9 /* mascotdonkey.json */; };
+		6EFB9A422E7D47A2001D51DA /* violence_autres_enfants.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB9A412E7D47A2001D51DA /* violence_autres_enfants.json */; };
+		6EFB9A442E7D47AA001D51DA /* violence_domestique_enfants.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB9A432E7D47AA001D51DA /* violence_domestique_enfants.json */; };
+		6EFB9A462E7D47B1001D51DA /* violence_ecole_questions.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB9A452E7D47B1001D51DA /* violence_ecole_questions.json */; };
+		6EFB9A482E7D47B5001D51DA /* violence_reseaux_sociaux_enfants.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB9A472E7D47B5001D51DA /* violence_reseaux_sociaux_enfants.json */; };
+		6EFB9AC32E7D99DA001D51DA /* challenges.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB9AC22E7D99DA001D51DA /* challenges.json */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6E7F48482E770BCF00E56346 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		6E6ED52A2E75BFD600C8669D /* SWIFTAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWIFTAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E7F48502E77481D00E56346 /* bonbon.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bonbon.json; sourceTree = "<group>"; };
+		6E7F48562E77488C00E56346 /* reward.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = reward.json; sourceTree = "<group>"; };
+		6E7F48582E77489F00E56346 /* trophy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = trophy.json; sourceTree = "<group>"; };
+		6E7F485A2E7748B300E56346 /* yesbear.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = yesbear.json; sourceTree = "<group>"; };
+		6E7F485C2E7748C600E56346 /* nobear.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = nobear.json; sourceTree = "<group>"; };
+		6E7F48642E775B7600E56346 /* dancingbear.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dancingbear.json; sourceTree = "<group>"; };
+		6ED8474A2E7ADDA500A608F9 /* mascottedog.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mascottedog.json; sourceTree = "<group>"; };
+		6ED8474C2E7AE5A200A608F9 /* mascotteduck.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mascotteduck.json; sourceTree = "<group>"; };
+		6ED8474E2E7AE6CA00A608F9 /* mascotracoon.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mascotracoon.json; sourceTree = "<group>"; };
+		6ED847502E7B5D8200A608F9 /* mascotdonkey.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mascotdonkey.json; sourceTree = "<group>"; };
+		6EFB9A412E7D47A2001D51DA /* violence_autres_enfants.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = violence_autres_enfants.json; sourceTree = "<group>"; };
+		6EFB9A432E7D47AA001D51DA /* violence_domestique_enfants.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = violence_domestique_enfants.json; sourceTree = "<group>"; };
+		6EFB9A452E7D47B1001D51DA /* violence_ecole_questions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = violence_ecole_questions.json; sourceTree = "<group>"; };
+		6EFB9A472E7D47B5001D51DA /* violence_reseaux_sociaux_enfants.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = violence_reseaux_sociaux_enfants.json; sourceTree = "<group>"; };
+		6EFB9AC22E7D99DA001D51DA /* challenges.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = challenges.json; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		6E6ED52C2E75BFD600C8669D /* SWIFTAPP */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = SWIFTAPP;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6E6ED5272E75BFD600C8669D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E6ED5442E76217B00C8669D /* Lottie in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6E6ED5212E75BFD600C8669D = {
+			isa = PBXGroup;
+			children = (
+				6E7F485C2E7748C600E56346 /* nobear.json */,
+				6E7F485A2E7748B300E56346 /* yesbear.json */,
+				6E7F48582E77489F00E56346 /* trophy.json */,
+				6E7F48562E77488C00E56346 /* reward.json */,
+				6ED8474A2E7ADDA500A608F9 /* mascottedog.json */,
+				6ED8474C2E7AE5A200A608F9 /* mascotteduck.json */,
+				6E7F48502E77481D00E56346 /* bonbon.json */,
+				6E7F48642E775B7600E56346 /* dancingbear.json */,
+				6EFB9AC22E7D99DA001D51DA /* challenges.json */,
+				6ED8474E2E7AE6CA00A608F9 /* mascotracoon.json */,
+				6ED847502E7B5D8200A608F9 /* mascotdonkey.json */,
+				6EFB9A472E7D47B5001D51DA /* violence_reseaux_sociaux_enfants.json */,
+				6EFB9A452E7D47B1001D51DA /* violence_ecole_questions.json */,
+				6EFB9A432E7D47AA001D51DA /* violence_domestique_enfants.json */,
+				6EFB9A412E7D47A2001D51DA /* violence_autres_enfants.json */,
+				6E6ED52C2E75BFD600C8669D /* SWIFTAPP */,
+				6E6ED5472E76228500C8669D /* Frameworks */,
+				6E6ED52B2E75BFD600C8669D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6E6ED52B2E75BFD600C8669D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6E6ED52A2E75BFD600C8669D /* SWIFTAPP.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6E6ED5472E76228500C8669D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6E6ED5292E75BFD600C8669D /* SWIFTAPP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E6ED5352E75BFD700C8669D /* Build configuration list for PBXNativeTarget "SWIFTAPP" */;
+			buildPhases = (
+				6E6ED5262E75BFD600C8669D /* Sources */,
+				6E6ED5272E75BFD600C8669D /* Frameworks */,
+				6E6ED5282E75BFD600C8669D /* Resources */,
+				6E7F48482E770BCF00E56346 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				6E6ED52C2E75BFD600C8669D /* SWIFTAPP */,
+			);
+			name = SWIFTAPP;
+			packageProductDependencies = (
+				6E6ED5432E76217B00C8669D /* Lottie */,
+			);
+			productName = TESTING;
+			productReference = 6E6ED52A2E75BFD600C8669D /* SWIFTAPP.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6E6ED5222E75BFD600C8669D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					6E6ED5292E75BFD600C8669D = {
+						CreatedOnToolsVersion = 16.4;
+					};
+				};
+			};
+			buildConfigurationList = 6E6ED5252E75BFD600C8669D /* Build configuration list for PBXProject "SWIFTAPP" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6E6ED5212E75BFD600C8669D;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				6E6ED5422E76217B00C8669D /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 6E6ED52B2E75BFD600C8669D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6E6ED5292E75BFD600C8669D /* SWIFTAPP */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6E6ED5282E75BFD600C8669D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E7F48512E77481D00E56346 /* bonbon.json in Resources */,
+				6E7F48592E77489F00E56346 /* trophy.json in Resources */,
+				6EFB9A462E7D47B1001D51DA /* violence_ecole_questions.json in Resources */,
+				6ED8474B2E7ADDA500A608F9 /* mascottedog.json in Resources */,
+				6E7F485D2E7748C600E56346 /* nobear.json in Resources */,
+				6E7F48572E77488C00E56346 /* reward.json in Resources */,
+				6ED847512E7B5D8200A608F9 /* mascotdonkey.json in Resources */,
+				6ED8474D2E7AE5A200A608F9 /* mascotteduck.json in Resources */,
+				6E7F48652E775B7600E56346 /* dancingbear.json in Resources */,
+				6EFB9A442E7D47AA001D51DA /* violence_domestique_enfants.json in Resources */,
+				6ED8474F2E7AE6CA00A608F9 /* mascotracoon.json in Resources */,
+				6EFB9A482E7D47B5001D51DA /* violence_reseaux_sociaux_enfants.json in Resources */,
+				6EFB9AC32E7D99DA001D51DA /* challenges.json in Resources */,
+				6EFB9A422E7D47A2001D51DA /* violence_autres_enfants.json in Resources */,
+				6E7F485B2E7748B300E56346 /* yesbear.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6E6ED5262E75BFD600C8669D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		6E6ED5332E75BFD700C8669D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = C6PCR7YQ82;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6E6ED5342E75BFD700C8669D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = C6PCR7YQ82;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6E6ED5362E75BFD700C8669D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C6PCR7YQ82;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fr.curbano.TESTING;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6E6ED5372E75BFD700C8669D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C6PCR7YQ82;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fr.curbano.TESTING;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6E6ED5252E75BFD600C8669D /* Build configuration list for PBXProject "SWIFTAPP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E6ED5332E75BFD700C8669D /* Debug */,
+				6E6ED5342E75BFD700C8669D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E6ED5352E75BFD700C8669D /* Build configuration list for PBXNativeTarget "SWIFTAPP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E6ED5362E75BFD700C8669D /* Debug */,
+				6E6ED5372E75BFD700C8669D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6E6ED5422E76217B00C8669D /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6E6ED5432E76217B00C8669D /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6E6ED5422E76217B00C8669D /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 6E6ED5222E75BFD600C8669D /* Project object */;
+}

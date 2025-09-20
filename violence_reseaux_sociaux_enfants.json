@@ -1,0 +1,12 @@
+[
+  {"question": "Quel est l’effet fréquent de la violence sur les réseaux sociaux chez les enfants ?", "options": ["Anxiété", "Joie", "Confiance", "Popularité"], "answer": "Anxiété"},
+  {"question": "Le cyberharcèlement peut provoquer ?", "options": ["Stress", "Bonheur", "Fierté", "Succès"], "answer": "Stress"},
+  {"question": "Les enfants victimes en ligne développent souvent ?", "options": ["Retrait", "Joie", "Amour", "Curiosité"], "answer": "Retrait"},
+  {"question": "La violence sur Internet peut causer ?", "options": ["Dépression", "Succès", "Confiance", "Joie"], "answer": "Dépression"},
+  {"question": "Un signe fréquent de cyberharcèlement est ?", "options": ["Peur", "Popularité", "Curiosité", "Joie"], "answer": "Peur"},
+  {"question": "Les enfants victimes peuvent ressentir ?", "options": ["Tristesse", "Fierté", "Joie", "Confiance"], "answer": "Tristesse"},
+  {"question": "La violence en ligne peut entraîner ?", "options": ["Traumatisme", "Bonheur", "Succès", "Calme"], "answer": "Traumatisme"},
+  {"question": "Les enfants harcelés en ligne développent souvent ?", "options": ["Colère", "Joie", "Amour", "Confiance"], "answer": "Colère"},
+  {"question": "Quel effet sur le sommeil peut survenir à cause du cyberharcèlement ?", "options": ["Insomnie", "Sommeil profond", "Joie", "Succès"], "answer": "Insomnie"},
+  {"question": "La violence sur les réseaux sociaux peut provoquer des troubles ?", "options": ["Émotionnels", "Physiques", "Sociaux", "Tous"], "answer": "Tous"}
+]

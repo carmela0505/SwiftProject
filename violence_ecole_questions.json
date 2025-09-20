@@ -1,0 +1,12 @@
+[
+  {"question": "Quel est l’effet fréquent de la violence à l’école ?", "options": ["Anxiété", "Joie", "Confiance", "Popularité"], "answer": "Anxiété"},
+  {"question": "La violence scolaire peut provoquer ?", "options": ["Isolement", "Succès", "Amour", "Fierté"], "answer": "Isolement"},
+  {"question": "Quel comportement apparaît souvent chez les victimes ?", "options": ["Retrait", "Joie", "Amitié", "Curiosité"], "answer": "Retrait"},
+  {"question": "Les enfants harcelés peuvent ressentir ?", "options": ["Peur", "Joie", "Fierté", "Confiance"], "answer": "Peur"},
+  {"question": "La violence scolaire entraîne souvent ?", "options": ["Stress", "Popularité", "Curiosité", "Joie"], "answer": "Stress"},
+  {"question": "Les témoins de violence peuvent développer ?", "options": ["Anxiété", "Joie", "Succès", "Confiance"], "answer": "Anxiété"},
+  {"question": "Quel effet sur le comportement peut survenir ?", "options": ["Agressivité", "Sérénité", "Joie", "Amour"], "answer": "Agressivité"},
+  {"question": "La violence à l’école peut provoquer des troubles ?", "options": ["Émotionnels", "Physiques", "Sociaux", "Tous"], "answer": "Tous"},
+  {"question": "Un signe fréquent de violence scolaire est ?", "options": ["Isolement", "Popularité", "Curiosité", "Bonheur"], "answer": "Isolement"},
+  {"question": "La violence à l’école peut affecter ?", "options": ["Apprentissage", "Joie", "Succès", "Confiance"], "answer": "Apprentissage"}
+]

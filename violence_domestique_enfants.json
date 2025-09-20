@@ -1,0 +1,12 @@
+[
+  {"question": "Quel est l’effet fréquent de la violence domestique sur les enfants ?", "options": ["Anxiété", "Joie", "Confiance", "Popularité"], "answer": "Anxiété"},
+  {"question": "Les enfants maltraités à la maison peuvent développer ?", "options": ["Retrait", "Succès", "Joie", "Amour"], "answer": "Retrait"},
+  {"question": "La violence domestique peut provoquer ?", "options": ["Dépression", "Fierté", "Joie", "Confiance"], "answer": "Dépression"},
+  {"question": "Un signe fréquent de maltraitance est ?", "options": ["Peur", "Curiosité", "Joie", "Popularité"], "answer": "Peur"},
+  {"question": "La violence à la maison peut affecter ?", "options": ["Comportement", "Bonheur", "Confiance", "Joie"], "answer": "Comportement"},
+  {"question": "Les enfants victimes peuvent ressentir ?", "options": ["Tristesse", "Fierté", "Joie", "Curiosité"], "answer": "Tristesse"},
+  {"question": "La maltraitance peut entraîner ?", "options": ["Traumatisme", "Bonheur", "Succès", "Confiance"], "answer": "Traumatisme"},
+  {"question": "Les enfants maltraités à la maison développent souvent ?", "options": ["Colère", "Calme", "Joie", "Énergie"], "answer": "Colère"},
+  {"question": "Quel effet sur le sommeil peut survenir ?", "options": ["Insomnie", "Sommeil profond", "Joie", "Confiance"], "answer": "Insomnie"},
+  {"question": "La violence domestique peut provoquer des troubles ?", "options": ["Émotionnels", "Sociaux", "Physiques", "Tous"], "answer": "Tous"}
+]

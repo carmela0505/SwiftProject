@@ -1,0 +1,12 @@
+[
+  {"question": "Quel est l’effet fréquent de la violence dans les lieux publics sur les enfants ?", "options": ["Peur", "Joie", "Confiance", "Popularité"], "answer": "Peur"},
+  {"question": "Les enfants exposés à la violence publique peuvent développer ?", "options": ["Stress", "Bonheur", "Succès", "Fierté"], "answer": "Stress"},
+  {"question": "Un comportement fréquent des enfants victimes est ?", "options": ["Retrait", "Joie", "Curiosité", "Amour"], "answer": "Retrait"},
+  {"question": "La violence dans les lieux publics peut provoquer ?", "options": ["Anxiété", "Joie", "Confiance", "Succès"], "answer": "Anxiété"},
+  {"question": "Quel effet sur le sommeil peut survenir ?", "options": ["Insomnie", "Sommeil profond", "Joie", "Confiance"], "answer": "Insomnie"},
+  {"question": "Les enfants témoins de violence publique peuvent ressentir ?", "options": ["Tristesse", "Fierté", "Joie", "Calme"], "answer": "Tristesse"},
+  {"question": "La violence dans les lieux publics peut entraîner ?", "options": ["Traumatisme", "Bonheur", "Succès", "Confiance"], "answer": "Traumatisme"},
+  {"question": "Les enfants exposés peuvent développer ?", "options": ["Colère", "Joie", "Amour", "Curiosité"], "answer": "Colère"},
+  {"question": "Un signe fréquent de violence publique est ?", "options": ["Isolement", "Popularité", "Curiosité", "Joie"], "answer": "Isolement"},
+  {"question": "La violence dans les lieux publics peut affecter ?", "options": ["Comportement", "Succès", "Joie", "Confiance"], "answer": "Comportement"}
+]
