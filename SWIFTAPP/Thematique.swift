@@ -194,9 +194,9 @@ struct RecompensesView: View {
 
 
 
-#Preview("Detail") {
-    ThemeDetailView(theme: themes.first!)
-}
+//#Preview("Detail") {
+//    ThemeDetailView(theme: themes.first!)
+//}
 
 #Preview("Grid") {
     NavigationStack { ThemesGridView() }

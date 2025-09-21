@@ -6,7 +6,7 @@
 //
 import SwiftUI
 
-// MARK: - Bindings
+//Bindings
 extension Binding where Value == String {
     func nameCased() -> Binding<String> {
         Binding(
@@ -29,7 +29,7 @@ extension Binding where Value == String {
     }
 }
 
-// MARK: - Reusable styles
+
 struct InputFieldModifier: ViewModifier {
     var bg: Color
     func body(content: Content) -> some View {
@@ -63,7 +63,7 @@ extension View {
     }
 }
 
-// MARK: - Form
+// Form
 struct ProfilParentFormView: View {
     // Champs
     @State private var nom = ""

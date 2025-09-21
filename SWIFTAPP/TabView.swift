@@ -14,6 +14,8 @@ struct ThemesTabContainer: View {
     
     var body: some View {
         TabView(selection: $selected) {
+            
+            
             // PROFIL
             NavigationStack {
                 ProfileEnfant(prenomEnfant: "Léa")
@@ -22,7 +24,7 @@ struct ThemesTabContainer: View {
             }
             .tabItem { Label("Profil", systemImage: "person.crop.circle") }
             .tag(TabTag.profil)
-
+            
             // QUIZ (Themes)
             NavigationStack {
                 ThemesGridView()                 // 👈 inside a NavigationStack
@@ -30,27 +32,41 @@ struct ThemesTabContainer: View {
             }
             .tabItem { Label("Quiz", systemImage: "questionmark.circle") }
             .tag(TabTag.quiz)
-
+            
             // CHALLENGES
             NavigationStack { MyChallengeView()
                     .navigationTitle("Challenges")
                     .navigationBarTitleDisplayMode( .inline)
             }
-                .tabItem { Label("Challenges", systemImage: "flag.checkered") }
-                .tag(TabTag.challenges)
-
+            .tabItem { Label("Challenges", systemImage: "flag.checkered") }
+            .tag(TabTag.challenges)
+            
             // RÉCOMPENSES
             NavigationStack {RewardView() }
                 .tabItem { Label("Récompenses", systemImage: "gift.fill") }
                 .tag(TabTag.recompenses)
             // RÉSULTATS (MyResultView avec Tab bar)
-          NavigationStack {MyResultView(bonbons: resultsBonbons)
-                               .navigationTitle("Résultats")
-                               .navigationBarTitleDisplayMode(.inline)
-                       }
-                       .tabItem { Label("Résultats", systemImage: "checkmark.seal.fill") }
-                       .tag(TabTag.resultats)
+            NavigationStack {MyResultView(bonbons: resultsBonbons)
+                    .navigationTitle("Résultats")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+            .tabItem { Label("Résultats", systemImage: "checkmark.seal.fill") }
+            .tag(TabTag.resultats)
         }
+            // ✅ Draw a rounded-rectangle “frame” around the system Tab Bar
+                    .overlay(alignment: .bottom) {
+                        RoundedRectangle(cornerRadius: 24, style: .continuous)
+                            .stroke(Color.black.opacity(0.12), lineWidth: 1.5)   // the visible outline
+                            .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: 6)
+                            .frame(height: 64)                                   // height of the frame
+                            .padding(.horizontal, 10)                            // inset from screen edges
+                            .padding(.bottom, 2)                                 // lift it slightly
+                            .allowsHitTesting(false)
+                            .ignoresSafeArea(edges: .bottom)
+                            .offset(y: 10)
+                        
+                    }
+                    
     }
 }
 
