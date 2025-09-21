@@ -23,6 +23,7 @@
 		6EFB9A462E7D47B1001D51DA /* violence_ecole_questions.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB9A452E7D47B1001D51DA /* violence_ecole_questions.json */; };
 		6EFB9A482E7D47B5001D51DA /* violence_reseaux_sociaux_enfants.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB9A472E7D47B5001D51DA /* violence_reseaux_sociaux_enfants.json */; };
 		6EFB9AC32E7D99DA001D51DA /* challenges.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB9AC22E7D99DA001D51DA /* challenges.json */; };
+		6EFB9AE52E7EAEBA001D51DA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB9AE42E7EAE9C001D51DA /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +56,7 @@
 		6EFB9A452E7D47B1001D51DA /* violence_ecole_questions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = violence_ecole_questions.json; sourceTree = "<group>"; };
 		6EFB9A472E7D47B5001D51DA /* violence_reseaux_sociaux_enfants.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = violence_reseaux_sociaux_enfants.json; sourceTree = "<group>"; };
 		6EFB9AC22E7D99DA001D51DA /* challenges.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = challenges.json; sourceTree = "<group>"; };
+		6EFB9AE42E7EAE9C001D51DA /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				6E7F485C2E7748C600E56346 /* nobear.json */,
+				6EFB9AE42E7EAE9C001D51DA /* .gitignore */,
 				6E7F485A2E7748B300E56346 /* yesbear.json */,
 				6E7F48582E77489F00E56346 /* trophy.json */,
 				6E7F48562E77488C00E56346 /* reward.json */,
@@ -189,6 +192,7 @@
 				6E7F48592E77489F00E56346 /* trophy.json in Resources */,
 				6EFB9A462E7D47B1001D51DA /* violence_ecole_questions.json in Resources */,
 				6ED8474B2E7ADDA500A608F9 /* mascottedog.json in Resources */,
+				6EFB9AE52E7EAEBA001D51DA /* .gitignore in Resources */,
 				6E7F485D2E7748C600E56346 /* nobear.json in Resources */,
 				6E7F48572E77488C00E56346 /* reward.json in Resources */,
 				6ED847512E7B5D8200A608F9 /* mascotdonkey.json in Resources */,

@@ -6,11 +6,12 @@
 //
 import SwiftUI
 
-private enum TabTag: Int { case profil = 0, quiz = 1, challenges = 2, recompenses = 3 }
+private enum TabTag: Int { case profil, quiz , challenges, recompenses, resultats}
 
 struct ThemesTabContainer: View {
     @State private var selected: TabTag = .quiz   // start on Themes
-
+    @State private var resultsBonbons: [String] = Array(repeating: "gray", count: 5)
+    
     var body: some View {
         TabView(selection: $selected) {
             // PROFIL
@@ -31,14 +32,24 @@ struct ThemesTabContainer: View {
             .tag(TabTag.quiz)
 
             // CHALLENGES
-            NavigationStack { ChallengesView() }
+            NavigationStack { MyChallengeView()
+                    .navigationTitle("Challenges")
+                    .navigationBarTitleDisplayMode( .inline)
+            }
                 .tabItem { Label("Challenges", systemImage: "flag.checkered") }
                 .tag(TabTag.challenges)
 
             // RÉCOMPENSES
-            NavigationStack { RecompensesView() }
+            NavigationStack {RewardView() }
                 .tabItem { Label("Récompenses", systemImage: "gift.fill") }
                 .tag(TabTag.recompenses)
+            // RÉSULTATS (MyResultView avec Tab bar)
+          NavigationStack {MyResultView(bonbons: resultsBonbons)
+                               .navigationTitle("Résultats")
+                               .navigationBarTitleDisplayMode(.inline)
+                       }
+                       .tabItem { Label("Résultats", systemImage: "checkmark.seal.fill") }
+                       .tag(TabTag.resultats)
         }
     }
 }

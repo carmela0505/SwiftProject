@@ -1,17 +1,6 @@
-
-//
-//  Map.swift
-//  TESTING
-//
-//  Created by apprenant130 on 18/09/2025.
-//
-
 import SwiftUI
 
-// Couleur principale du parcours / des anneaux
-private let nodePrimary = Color(red: 0.05, green: 0.16, blue: 0.44) // bleu foncé
-
-// MARK: - Modèle
+// MARK: - Model
 struct Level: Identifiable, Hashable {
     let id: Int
     let title: String
@@ -24,67 +13,96 @@ func makeLevels(for theme: Theme) -> [Level] {
         Level(
             id: i,
             title: "Niveau \(i)",
-            isLocked: i > 2,              // 1 & 2 déverrouillés pour l’exemple
-            progress: i == 1 ? 1.0 : 0.0  // 1er niveau complété pour l’exemple
+            isLocked: i > 1,   // only level 1 unlocked initially
+            progress: 0.0
         )
     }
 }
 
-// MARK: - Noeud (bulle de niveau)
+// MARK: - Quiz config per theme
+private struct QuizAppearance {
+    let file: String
+    let background: LinearGradient
+    let accent: Color
+}
+
+private func quizConfig(for theme: Theme) -> QuizAppearance {
+    switch theme.id {
+    case .ecole:
+        return .init(
+            file: "violence_ecole_questions",
+            background: LinearGradient(colors: [.blue, .cyan], startPoint: .topLeading, endPoint: .bottomTrailing),
+            accent: .blue
+        )
+    case .maison:
+        return .init(
+            file: "violence_domestique_enfants",
+            background: LinearGradient(colors: [.orange, .yellow], startPoint: .topLeading, endPoint: .bottomTrailing),
+            accent: .orange
+        )
+    case .net:
+        return .init(
+            file: "violence_reseaux_sociaux_enfants",
+            background: LinearGradient(colors: [.green, .teal], startPoint: .topLeading, endPoint: .bottomTrailing),
+            accent: .green
+        )
+    case .differents:
+        return .init(
+            file: "violence_autres_enfants",
+            background: LinearGradient(colors: [.purple, .indigo], startPoint: .topLeading, endPoint: .bottomTrailing),
+            accent: .purple
+        )
+    }
+}
+
+// MARK: - Node bubble
 struct LevelNode: View {
     let level: Level
-    let theme: Theme
+    let tint: Color
 
     var body: some View {
         ZStack {
-            // anneau de fond
             Circle()
-                .stroke(nodePrimary.opacity(0.25), lineWidth: 10)
+                .stroke(tint.opacity(0.25), lineWidth: 10)
                 .frame(width: 72, height: 72)
 
-            // anneau de progression
             Circle()
                 .trim(from: 0, to: min(max(level.progress, 0), 1))
-                .stroke(nodePrimary, style: StrokeStyle(lineWidth: 10, lineCap: .round))
+                .stroke(tint, style: StrokeStyle(lineWidth: 10, lineCap: .round))
                 .rotationEffect(.degrees(-90))
                 .frame(width: 72, height: 72)
                 .opacity(level.progress > 0 ? 1 : 0.25)
 
-            // contenu central
             if level.isLocked {
                 Image(systemName: "lock.fill")
                     .font(.title3.bold())
-                    .foregroundStyle(nodePrimary)
+                    .foregroundStyle(tint)
             } else if level.progress >= 1 {
                 Image(systemName: "checkmark")
                     .font(.title3.bold())
-                    .foregroundStyle(nodePrimary)
+                    .foregroundStyle(tint)
             } else {
                 Text("\(level.id)")
                     .font(.title3.bold())
-                    .foregroundStyle(nodePrimary)
+                    .foregroundStyle(tint)
             }
         }
         .padding(6)
         .background(.white.opacity(0.10), in: Circle())
-        .overlay(Circle().strokeBorder(nodePrimary.opacity(0.25), lineWidth: 1))
-        .shadow(color: nodePrimary.opacity(0.25), radius: 4, x: 0, y: 2)
+        .overlay(Circle().strokeBorder(tint.opacity(0.25), lineWidth: 1))
+        .shadow(color: tint.opacity(0.25), radius: 4, x: 0, y: 2)
         .opacity(level.isLocked ? 0.7 : 1.0)
         .accessibilityLabel("\(level.title) \(level.isLocked ? "verrouillé" : "")")
     }
 }
 
-// MARK: - Chemin serpent (S-curve) lissé
+// MARK: - Smooth snake path
 struct SnakePath: Shape {
     let points: [CGPoint]
-
     func path(in rect: CGRect) -> Path {
         var path = Path()
         guard points.count > 1 else { return path }
-
         path.move(to: points[0])
-
-        // Courbes douces entre chaque point (contrôles à mi-hauteur)
         for i in 1..<points.count {
             let prev = points[i - 1]
             let cur  = points[i]
@@ -99,55 +117,51 @@ struct SnakePath: Shape {
     }
 }
 
-// MARK: - Carte “serpent” (dessine le chemin + place les nœuds)
+// MARK: - Snake map (draw path + place nodes) — tap opens quiz
 struct SnakeMap: View {
-    let theme: Theme
-    let levels: [Level]
+    let tint: Color
+    @Binding var levels: [Level]
+    @Binding var activeLevel: Level?
 
-    // Tweaks visuels
-    var sideInset: CGFloat = 90     // marge gauche/droite (augmente → plus centré)
-    var spacingY: CGFloat  = 130    // espacement vertical entre nœuds
-    var topPadding: CGFloat = 40    // décalage depuis le haut
+    var sideInset: CGFloat = 90
+    var spacingY: CGFloat  = 130
+    var topPadding: CGFloat = 40
 
     var body: some View {
         GeometryReader { geo in
             let leftX  = sideInset
             let rightX = max(sideInset, geo.size.width - sideInset)
-
-            // Points alternés gauche/droite
             let points: [CGPoint] = levels.enumerated().map { idx, _ in
                 CGPoint(x: idx.isMultiple(of: 2) ? leftX : rightX,
                         y: topPadding + CGFloat(idx) * spacingY)
             }
 
             ZStack(alignment: .topLeading) {
-                // Chemin accentué (épais + ombre + liseré clair)
                 SnakePath(points: points)
                     .stroke(
-                        LinearGradient(colors: [nodePrimary, nodePrimary.opacity(0.8)],
+                        LinearGradient(colors: [tint, tint.opacity(0.85)],
                                        startPoint: .top, endPoint: .bottom),
                         style: StrokeStyle(lineWidth: 12, lineCap: .round)
                     )
-                    .shadow(color: nodePrimary.opacity(0.5), radius: 8, x: 0, y: 3)
+                    .shadow(color: tint.opacity(0.55), radius: 10, x: 0, y: 2)
                     .overlay(
                         SnakePath(points: points)
-                            .stroke(.white.opacity(0.22),
+                            .stroke(.white.opacity(0.25),
                                     style: StrokeStyle(lineWidth: 3, lineCap: .round))
                     )
 
-                // Nœuds positionnés sur le chemin
                 ForEach(levels.indices, id: \.self) { idx in
                     let level = levels[idx]
                     let pt = points[idx]
 
                     Group {
                         if level.isLocked {
-                            LevelNode(level: level, theme: theme)
+                            LevelNode(level: level, tint: tint)
                         } else {
-                            NavigationLink {
-                                LevelDetailView(theme: theme, level: level)
+                            Button {
+                                activeLevel = level
                             } label: {
-                                LevelNode(level: level, theme: theme)
+                                LevelNode(level: level, tint: tint)
                             }
                             .buttonStyle(.plain)
                         }
@@ -155,21 +169,20 @@ struct SnakeMap: View {
                     .position(pt)
                 }
             }
-            // Hauteur suffisante pour contenir tous les points
             .frame(
                 maxWidth: .infinity,
                 maxHeight: max(points.last?.y ?? 0 + 160, geo.size.height)
             )
         }
-        // Hauteur minimum utile en l’absence de scroll (ex: preview)
         .frame(height: topPadding + spacingY * CGFloat(max(levels.count - 1, 0)) + 220)
     }
 }
 
-// MARK: - Écran de carte (fond + header + serpent)
+// MARK: - Screen hosting the snake map + quiz sheet
 struct ThemeMapView: View {
     let theme: Theme
     @State private var levels: [Level]
+    @State private var activeLevel: Level? = nil
 
     init(theme: Theme) {
         self.theme = theme
@@ -177,23 +190,18 @@ struct ThemeMapView: View {
     }
 
     var body: some View {
-        ZStack {
-            // fond
-            Image("mapblue")
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea()
+        let cfg = quizConfig(for: theme)
 
-            // voile coloré pour le contraste
-            theme.gradient
-                .opacity(0.25)
-                .ignoresSafeArea()
+        ZStack {
+            Image("mapblue").resizable().scaledToFill().ignoresSafeArea()
+            theme.gradient.opacity(0.25).ignoresSafeArea()
 
             ScrollView {
                 VStack(spacing: 12) {
                     header
-                    // 👉 Remplace l'ancien “map” par la version serpent :
-                    SnakeMap(theme: theme, levels: levels,
+                    SnakeMap(tint: cfg.accent,
+                             levels: $levels,
+                             activeLevel: $activeLevel,
                              sideInset: 90, spacingY: 130, topPadding: 40)
                         .padding(.vertical, 8)
                 }
@@ -202,6 +210,23 @@ struct ThemeMapView: View {
         }
         .navigationTitle(theme.title)
         .navigationBarTitleDisplayMode(.inline)
+        .sheet(item: $activeLevel) { level in
+            // Present the QUIZ only when a level is selected
+            QuizzView(
+                quizFile: cfg.file,
+                onFinish: { passed in
+                    if passed, let idx = levels.firstIndex(where: { $0.id == level.id }) {
+                        levels[idx].progress = 1.0
+                        if idx + 1 < levels.count {
+                            levels[idx + 1].isLocked = false
+                        }
+                    }
+                    activeLevel = nil // dismiss
+                },
+                background: cfg.background,
+                accent: cfg.accent
+            )
+        }
     }
 
     private var header: some View {
@@ -218,30 +243,7 @@ struct ThemeMapView: View {
     }
 }
 
-// MARK: - Détail d’un niveau (inchangé)
-struct LevelDetailView: View {
-    let theme: Theme
-    let level: Level
-
-    var body: some View {
-        ZStack {
-            theme.gradient.ignoresSafeArea()
-            VStack(spacing: 16) {
-                Text(level.title)
-                    .font(.largeTitle.bold())
-                    .foregroundStyle(.white)
-
-                Text("Contenu du niveau pour « \(theme.title) ».\nIci: leçon, quiz, mini-jeu, etc.")
-                    .multilineTextAlignment(.center)
-                    .foregroundStyle(.white.opacity(0.95))
-            }
-            .padding()
-        }
-        .navigationBarTitleDisplayMode(.inline)
-    }
-}
-
-// MARK: - Aperçus
+// MARK: - Preview
 private let previewTheme = Theme(
     id: .ecole,
     title: "À l’école",
@@ -253,25 +255,3 @@ private let previewTheme = Theme(
     NavigationStack { ThemeMapView(theme: previewTheme) }
 }
 
-#Preview("Level Node – Unlocked") {
-    ZStack {
-        previewTheme.gradient.ignoresSafeArea()
-        LevelNode(level: Level(id: 1, title: "Niveau 1", isLocked: false, progress: 0.4), theme: previewTheme)
-    }
-    .frame(height: 140)
-}
-
-#Preview("Level Node – Locked") {
-    ZStack {
-        previewTheme.gradient.ignoresSafeArea()
-        LevelNode(level: Level(id: 2, title: "Niveau 2", isLocked: true, progress: 0.0), theme: previewTheme)
-    }
-    .frame(height: 140)
-}
-
-#Preview("Level Detail") {
-    NavigationStack {
-        LevelDetailView(theme: previewTheme,
-                        level: Level(id: 1, title: "Niveau 1", isLocked: false, progress: 1.0))
-    }
-}

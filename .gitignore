@@ -1,0 +1,14 @@
+//
+//  .gitignore
+//  SWIFTAPP
+//
+//  Created by apprenant130 on 20/09/2025.
+//
+# Xcode
+DerivedData/
+build/
+*.xcuserstate
+*.xcuserdata/
+*.xccheckout
+*.moved-aside
+*.xcscmblueprint
