@@ -14,10 +14,10 @@ struct MyResultView: View {
 
     private var resultMessage: String {
         switch correctAnswers {
-        case 5:      return "BRAVO !"                    // you can keep this mapping if you like
+        case 5:      return "BRAVO!"                    // you can keep this mapping if you like
         case 3...4:  return "TU PEUX LE FAIRE"
         case 1...2:  return "CONTINUE À TRAVAILLER !"
-        default:     return "TU APPRENDS TOUS LES JOURS !"
+        default:     return "ON REPART POUR UN TOUR? JE CROIS EN TOI!"
         }
     }
 

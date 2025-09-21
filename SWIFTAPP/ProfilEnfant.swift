@@ -35,23 +35,7 @@ struct ProfileEnfant: View {
                     .clipShape(RoundedRectangle(cornerRadius: 20))
                     .overlay(RoundedRectangle(cornerRadius: 20).stroke(.white, lineWidth: 4))
                     .shadow(radius: 10)
-
-                Spacer()
-
-              
-                NavigationLink {
-                    BackgroundColorAttribute()
-                } label: {
-                    Text("JOUER")
-                        .font(.system(size: 28, weight: .bold))
-                        .padding(.horizontal, 60)
-                        .padding(.vertical, 20)
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 25))
-                        .shadow(radius: 6)
-                }
-
+Spacer()
                 // Mascot chooser
                 Menu {
                     ForEach(choices, id: \.self) { option in
@@ -70,6 +54,22 @@ struct ProfileEnfant: View {
                     .shadow(radius: 4)
                 }
                 .controlSize(.large)
+
+              
+                NavigationLink {
+                    BackgroundColorAttribute()
+                } label: {
+                    Text("SUIVANT")
+                        .font(.system(size: 20, weight: .bold))
+                        .padding(.horizontal, 30)
+                        .padding(.vertical, 20)
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .shadow(radius: 6)
+                }
+
+                
             }
             .padding()
         }

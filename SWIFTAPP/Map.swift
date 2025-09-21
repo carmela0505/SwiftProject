@@ -1,6 +1,6 @@
 import SwiftUI
 
-// MARK: - Model
+//Model
 struct Level: Identifiable, Hashable {
     let id: Int
     let title: String
@@ -19,7 +19,7 @@ func makeLevels(for theme: Theme) -> [Level] {
     }
 }
 
-// MARK: - Quiz config per theme
+// Quiz config per theme
 private struct QuizAppearance {
     let file: String
     let background: LinearGradient
@@ -38,24 +38,24 @@ private func quizConfig(for theme: Theme) -> QuizAppearance {
         return .init(
             file: "violence_domestique_enfants",
             background: LinearGradient(colors: [.orange, .yellow], startPoint: .topLeading, endPoint: .bottomTrailing),
-            accent: .orange
+            accent: .green
         )
     case .net:
         return .init(
             file: "violence_reseaux_sociaux_enfants",
             background: LinearGradient(colors: [.green, .teal], startPoint: .topLeading, endPoint: .bottomTrailing),
-            accent: .green
+            accent: .purple
         )
     case .differents:
         return .init(
             file: "violence_autres_enfants",
             background: LinearGradient(colors: [.purple, .indigo], startPoint: .topLeading, endPoint: .bottomTrailing),
-            accent: .purple
+            accent: .orange
         )
     }
 }
 
-// MARK: - Node bubble
+//  Node bubble
 struct LevelNode: View {
     let level: Level
     let tint: Color
@@ -96,7 +96,7 @@ struct LevelNode: View {
     }
 }
 
-// MARK: - Smooth snake path
+// Smooth snake path
 struct SnakePath: Shape {
     let points: [CGPoint]
     func path(in rect: CGRect) -> Path {
@@ -117,7 +117,7 @@ struct SnakePath: Shape {
     }
 }
 
-// MARK: - Snake map (draw path + place nodes) — tap opens quiz
+// Snake map (draw path + place nodes) — tap opens quiz
 struct SnakeMap: View {
     let tint: Color
     @Binding var levels: [Level]
@@ -178,7 +178,7 @@ struct SnakeMap: View {
     }
 }
 
-// MARK: - Screen hosting the snake map + quiz sheet
+// Screen hosting the snake map + quiz sheet
 struct ThemeMapView: View {
     let theme: Theme
     @State private var levels: [Level]
@@ -243,7 +243,7 @@ struct ThemeMapView: View {
     }
 }
 
-// MARK: - Preview
+//  Preview
 private let previewTheme = Theme(
     id: .ecole,
     title: "À l’école",

@@ -89,8 +89,8 @@ struct QuizzView: View {
         return q.options.first(where: { $0.selection })
     }
     private var headerText: String {
-        if let sel = selectedAnswer { return sel.isCorrect ? "Bravo !" : "Oh non ! Ne lâche pas !" }
-        return "Quizz"
+        if let sel = selectedAnswer { return sel.isCorrect ? "Bravo !" : "Ne lâche pas!" }
+        return "Quiz"
     }
     private var correctCount: Int { state.bonbon.filter { $0 == .green }.count }
     private var bonbonStrings: [String] {
@@ -119,17 +119,17 @@ struct QuizzView: View {
                         RoundedRectangle(cornerRadius: 16, style: .continuous)
                             .fill(Color.white.opacity(0.92))
                             .shadow(radius: 6)
-                            .frame(height: 110)
+                            .frame(height: 60)
                         
                         Text(headerText)
-                            .font(.system(size: 28, weight: .bold))
+                            .font(.system(size: 35, weight: .bold))
                             .foregroundColor(accent)
                             .multilineTextAlignment(.center)
                             .padding(.horizontal)
                             .animation(.spring(response: 0.35, dampingFraction: 0.85), value: headerText)
                     }
                     .padding(.horizontal)
-                    
+                    Divider()
                     // Gifts + score + bear
                     VStack(spacing: 10) {
                         HStack(spacing: 14) {
@@ -146,6 +146,7 @@ struct QuizzView: View {
                                         : "Non répondu"
                                     )
                             }
+                            
                         }
                         .padding(.horizontal)
                         .padding(.vertical, 8)
@@ -163,12 +164,12 @@ struct QuizzView: View {
                     // Current question
                     if let q = safeQuestion(currentIndex) {
                         Text(q.question)
-                            .font(.system(size: 22, weight: .bold))
+                            .font(.system(size: 30, weight: .bold))
                             .foregroundColor(.white)
                             .multilineTextAlignment(.center)
                             .padding(.horizontal)
-                        
-                        VStack(spacing: 14) {
+                        Spacer()
+                        VStack(spacing: 25) {
                             ForEach(q.options) { option in
                                 optionRow(option)
                             }
@@ -188,7 +189,7 @@ struct QuizzView: View {
                             Button("Valider") {
                                 if let s = selectedText { validate(s) }
                             }
-                            .font(.headline)
+                            .font(.title3)
                             .padding(.horizontal, 28)
                             .padding(.vertical, 12)
                             .background(accent)
@@ -200,7 +201,7 @@ struct QuizzView: View {
                             Button("Suivant") {
                                 autoNextIfPossible()
                             }
-                            .font(.headline)
+                            .font(.title)
                             .padding(.horizontal, 28)
                             .padding(.vertical, 12)
                             .background(Color.white.opacity(0.9))
@@ -240,10 +241,11 @@ struct QuizzView: View {
             MyResultView(bonbons: bonbonStrings)
         }
         // Correction popup (shown AFTER the “no bear” animation on wrong answers)
-        .alert("La bonne réponse", isPresented: $showCorrectionAlert) {
+        .alert("Réponse", isPresented: $showCorrectionAlert) {
             Button("OK") { autoNextIfPossible() }
         } message: {
             Text("La bonne réponse est : \(correctionText)")
+               
         }
     }
  
@@ -251,9 +253,10 @@ struct QuizzView: View {
     private func optionIndicator(for option: Answer) -> some View {
         if let selected = selectedAnswer {
             if option.isCorrect {
-                Image(systemName: "checkmark").foregroundColor(.green)
+                Image(systemName: "checkmark.circle.fill")
+                    .foregroundColor(.green)
             } else if option.id == selected.id {
-                Image(systemName: "xmark").foregroundColor(.red)
+                Image(systemName: "xmark.circle.fill").foregroundColor(.red)
             }
         } else if selectedText == option.text {
             Circle().fill(accent.opacity(0.55)).frame(width: 16, height: 16)

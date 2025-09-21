@@ -1,12 +1,103 @@
 [
-  {"question": "Quel est l’effet fréquent de la violence sur les réseaux sociaux chez les enfants ?", "options": ["Anxiété", "Joie", "Confiance", "Popularité"], "answer": "Anxiété"},
-  {"question": "Le cyberharcèlement peut provoquer ?", "options": ["Stress", "Bonheur", "Fierté", "Succès"], "answer": "Stress"},
-  {"question": "Les enfants victimes en ligne développent souvent ?", "options": ["Retrait", "Joie", "Amour", "Curiosité"], "answer": "Retrait"},
-  {"question": "La violence sur Internet peut causer ?", "options": ["Dépression", "Succès", "Confiance", "Joie"], "answer": "Dépression"},
-  {"question": "Un signe fréquent de cyberharcèlement est ?", "options": ["Peur", "Popularité", "Curiosité", "Joie"], "answer": "Peur"},
-  {"question": "Les enfants victimes peuvent ressentir ?", "options": ["Tristesse", "Fierté", "Joie", "Confiance"], "answer": "Tristesse"},
-  {"question": "La violence en ligne peut entraîner ?", "options": ["Traumatisme", "Bonheur", "Succès", "Calme"], "answer": "Traumatisme"},
-  {"question": "Les enfants harcelés en ligne développent souvent ?", "options": ["Colère", "Joie", "Amour", "Confiance"], "answer": "Colère"},
-  {"question": "Quel effet sur le sommeil peut survenir à cause du cyberharcèlement ?", "options": ["Insomnie", "Sommeil profond", "Joie", "Succès"], "answer": "Insomnie"},
-  {"question": "La violence sur les réseaux sociaux peut provoquer des troubles ?", "options": ["Émotionnels", "Physiques", "Sociaux", "Tous"], "answer": "Tous"}
+    [
+      {
+        "question": "Un inconnu te demande ton nom complet et ton adresse en ligne. Tu fais quoi ?",
+        "options": ["Tu donnes ces infos", "Tu refuses et en parles à un adulte", "Tu les postes sur ton profil"],
+        "answer": "Tu refuses et en parles à un adulte"
+      },
+      {
+        "question": "Un ami te demande ton mot de passe pour t’aider à se connecter à ton compte.",
+        "options": ["Tu le donnes", "Tu le gardes secret et le changes si besoin", "Tu l’écris sur ton profil"],
+        "answer": "Tu le gardes secret et le changes si besoin"
+      },
+      {
+        "question": "Quel est un bon mot de passe ?",
+        "options": ["123456", "Ton prénom + 1", "Une phrase avec lettres, chiffres et signes"],
+        "answer": "Une phrase avec lettres, chiffres et signes"
+      },
+      {
+        "question": "Tu reçois un message méchant sur un réseau social. Que fais-tu ?",
+        "options": ["Répondre en insultant", "Bloquer et signaler, garder des preuves", "Garder le secret"],
+        "answer": "Bloquer et signaler, garder des preuves"
+      },
+      {
+        "question": "Quel numéro en France peut aider pour les cyberviolences ?",
+        "options": ["3018", "118", "119"],
+        "answer": "3018"
+      },
+      {
+        "question": "Une appli veut connaître ta localisation en permanence.",
+        "options": ["Toujours autoriser", "Refuser ou autoriser seulement si nécessaire", "Donner l’adresse de l’école"],
+        "answer": "Refuser ou autoriser seulement si nécessaire"
+      },
+      {
+        "question": "Quel contenu ne doit pas être partagé publiquement ?",
+        "options": ["Un dessin de ton chat", "Ton adresse et ton école", "Une photo d’un paysage"],
+        "answer": "Ton adresse et ton école"
+      },
+      {
+        "question": "Tu veux publier la photo d’un camarade.",
+        "options": ["Toujours ok", "Seulement avec son accord (et celui des parents si besoin)", "Jamais demander"],
+        "answer": "Seulement avec son accord (et celui des parents si besoin)"
+      },
+      {
+        "question": "Un lien promet un cadeau si tu cliques vite.",
+        "options": ["Cliquer sans réfléchir", "Vérifier avec un adulte et ne pas cliquer", "Donner ton mot de passe"],
+        "answer": "Vérifier avec un adulte et ne pas cliquer"
+      },
+      {
+        "question": "Quel comportement montre de la gentillesse en ligne ?",
+        "options": ["Se moquer pour faire rire", "Ignorer quelqu’un qui demande de l’aide", "Encourager et être poli"],
+        "answer": "Encourager et être poli"
+      },
+      {
+        "question": "Tu reçois une demande d’ami d’un inconnu.",
+        "options": ["Accepter pour avoir plus d’amis", "Accepter si la photo est jolie", "Refuser et garder le compte privé"],
+        "answer": "Refuser et garder le compte privé"
+      },
+      {
+        "question": "Un jeu te demande d’acheter sans autorisation.",
+        "options": ["Utiliser la carte de quelqu’un", "Demander à un adulte et respecter la réponse", "Essayer jusqu’à ce que ça marche"],
+        "answer": "Demander à un adulte et respecter la réponse"
+      },
+      {
+        "question": "Âge minimum souvent demandé pour créer un compte sur beaucoup de réseaux sociaux ?",
+        "options": ["13 ans", "7 ans", "Aucun âge"],
+        "answer": "13 ans"
+      },
+      {
+        "question": "Tu vois une info choquante en ligne. Que faire ?",
+        "options": ["La partager sans vérifier", "Vérifier avec un adulte ou une source fiable", "Ajouter un commentaire méchant"],
+        "answer": "Vérifier avec un adulte ou une source fiable"
+      },
+      {
+        "question": "À propos de la webcam, que faire ?",
+        "options": ["Toujours l’allumer", "La couvrir/éteindre quand inutile et demander avant", "La pointer vers la fenêtre"],
+        "answer": "La couvrir/éteindre quand inutile et demander avant"
+      },
+      {
+        "question": "Tu as oublié ton mot de passe.",
+        "options": ["Créer un nouveau mot de passe unique et secret", "Demander à un ami", "Utiliser “motdepasse”"],
+        "answer": "Créer un nouveau mot de passe unique et secret"
+      },
+      {
+        "question": "Sur un Wi-Fi public gratuit, il vaut mieux…",
+        "options": ["Entrer des mots de passe importants", "Éviter de se connecter à des comptes sensibles", "Partager le réseau avec des inconnus"],
+        "answer": "Éviter de se connecter à des comptes sensibles"
+      },
+      {
+        "question": "Quelqu’un te menace en ligne.",
+        "options": ["Se taire", "En parler à un adulte et garder des preuves", "Supprimer tout pour oublier"],
+        "answer": "En parler à un adulte et garder des preuves"
+      },
+      {
+        "question": "Télécharger un fichier envoyé par un inconnu ?",
+        "options": ["Le télécharger", "L’ouvrir si c’est “bizarre”", "Ne pas télécharger et demander conseil"],
+        "answer": "Ne pas télécharger et demander conseil"
+      },
+      {
+        "question": "Si quelque chose te met mal à l’aise en ligne, tu…",
+        "options": ["Continues pour t’habituer", "En parles à un adulte de confiance", "Le caches pour ne pas déranger"],
+        "answer": "En parles à un adulte de confiance"
+      }
 ]

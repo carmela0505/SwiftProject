@@ -1,12 +1,102 @@
 [
-  {"question": "Quel est l’effet fréquent de la violence dans les lieux publics sur les enfants ?", "options": ["Peur", "Joie", "Confiance", "Popularité"], "answer": "Peur"},
-  {"question": "Les enfants exposés à la violence publique peuvent développer ?", "options": ["Stress", "Bonheur", "Succès", "Fierté"], "answer": "Stress"},
-  {"question": "Un comportement fréquent des enfants victimes est ?", "options": ["Retrait", "Joie", "Curiosité", "Amour"], "answer": "Retrait"},
-  {"question": "La violence dans les lieux publics peut provoquer ?", "options": ["Anxiété", "Joie", "Confiance", "Succès"], "answer": "Anxiété"},
-  {"question": "Quel effet sur le sommeil peut survenir ?", "options": ["Insomnie", "Sommeil profond", "Joie", "Confiance"], "answer": "Insomnie"},
-  {"question": "Les enfants témoins de violence publique peuvent ressentir ?", "options": ["Tristesse", "Fierté", "Joie", "Calme"], "answer": "Tristesse"},
-  {"question": "La violence dans les lieux publics peut entraîner ?", "options": ["Traumatisme", "Bonheur", "Succès", "Confiance"], "answer": "Traumatisme"},
-  {"question": "Les enfants exposés peuvent développer ?", "options": ["Colère", "Joie", "Amour", "Curiosité"], "answer": "Colère"},
-  {"question": "Un signe fréquent de violence publique est ?", "options": ["Isolement", "Popularité", "Curiosité", "Joie"], "answer": "Isolement"},
-  {"question": "La violence dans les lieux publics peut affecter ?", "options": ["Comportement", "Succès", "Joie", "Confiance"], "answer": "Comportement"}
+    {
+        "question": "Que signifie « Tous différents, tous amis » ?",
+        "options": ["On choisit seulement ceux qui nous ressemblent", "On respecte et on accepte chacun tel qu’il est", "On se moque des différences pour s’amuser"],
+        "answer": "On respecte et on accepte chacun tel qu’il est"
+      },
+      {
+        "question": "Un camarade parle avec un accent différent. Que fais-tu ?",
+        "options": ["Tu te moques", "Tu l’écoutes et tu es curieux avec gentillesse", "Tu l’ignores"],
+        "answer": "Tu l’écoutes et tu es curieux avec gentillesse"
+      },
+      {
+        "question": "Quel comportement montre l’inclusion ?",
+        "options": ["Inviter un camarade nouveau à jouer", "Dire qu’il ne peut pas jouer", "Rigoler quand il fait une erreur"],
+        "answer": "Inviter un camarade nouveau à jouer"
+      },
+      {
+        "question": "Qu’est-ce qui peut être une différence entre les personnes ?",
+        "options": ["La couleur des yeux", "La langue que l’on parle", "Toutes ces réponses"],
+        "answer": "Toutes ces réponses"
+      },
+      {
+        "question": "Un élève porte un appareil auditif. Comment lui parler ?",
+        "options": ["Lui crier dessus", "Lui parler normalement, en face de lui", "L’ignorer"],
+        "answer": "Lui parler normalement, en face de lui"
+      },
+      {
+        "question": "Tu ne comprends pas une tradition d’un ami.",
+        "options": ["Tu dis que c’est nul", "Tu poses des questions poliment pour apprendre", "Tu te moques"],
+        "answer": "Tu poses des questions poliment pour apprendre"
+      },
+      {
+        "question": "À la récré, un enfant est en fauteuil roulant.",
+        "options": ["Tu proposes un jeu adapté à tous", "Tu cours loin de lui", "Tu bloques l’accès au jeu"],
+        "answer": "Tu proposes un jeu adapté à tous"
+      },
+      {
+        "question": "Tu entends un mot blessant sur l’apparence de quelqu’un.",
+        "options": ["Tu répètes la même chose", "Tu dis que ce n’est pas gentil et tu en parles à un adulte", "Tu rigoles"],
+        "answer": "Tu dis que ce n’est pas gentil et tu en parles à un adulte"
+      },
+      {
+        "question": "Être empathique, c’est…",
+        "options": ["Imaginer comment l’autre se sent", "Penser seulement à soi", "Faire semblant d’écouter"],
+        "answer": "Imaginer comment l’autre se sent"
+      },
+      {
+        "question": "Dans la classe, certains parlent d’autres langues.",
+        "options": ["On interdit de parler autre chose que le français", "On apprend quelques mots et on respecte", "On les ignore"],
+        "answer": "On apprend quelques mots et on respecte"
+      },
+      {
+        "question": "Ton ami a une religion différente.",
+        "options": ["Tu respectes et tu peux poser des questions polies", "Tu te moques", "Tu inventes des rumeurs"],
+        "answer": "Tu respectes et tu peux poser des questions polies"
+      },
+      {
+        "question": "Pour que le jeu d’équipe soit inclusif, on…",
+        "options": ["Choisit toujours les mêmes personnes", "Crée des règles pour que chacun puisse jouer", "Exclut les plus lents"],
+        "answer": "Crée des règles pour que chacun puisse jouer"
+      },
+      {
+        "question": "Un ami mange un plat que tu ne connais pas.",
+        "options": ["Tu dis « beurk »", "Tu respectes et tu peux goûter si tu veux", "Tu le jettes"],
+        "answer": "Tu respectes et tu peux goûter si tu veux"
+      },
+      {
+        "question": "Quel est un bon compliment inclusif ?",
+        "options": ["« J’aime jouer avec toi »", "« Tu n’es pas comme les autres, c’est bizarre »", "« Tu ne devrais pas faire ça »"],
+        "answer": "« J’aime jouer avec toi »"
+      },
+      {
+        "question": "Des couleurs de peau différentes signifient que…",
+        "options": ["On vaut tous la même chose", "Certains valent plus que d’autres", "On ne peut pas être amis"],
+        "answer": "On vaut tous la même chose"
+      },
+      {
+        "question": "Si une blague blesse quelqu’un, on…",
+        "options": ["Dit « c’est pour rire »", "Arrête et on s’excuse", "Continue si tout le monde rit"],
+        "answer": "Arrête et on s’excuse"
+      },
+      {
+        "question": "Un nouvel élève vient d’un autre pays.",
+        "options": ["Tu lui souhaites la bienvenue et tu l’aides", "Tu lui dis de repartir", "Tu l’ignores"],
+        "answer": "Tu lui souhaites la bienvenue et tu l’aides"
+      },
+      {
+        "question": "Quand on n’est pas d’accord, on…",
+        "options": ["Crie plus fort", "Écoute et discute calmement", "Ne parle plus jamais à l’autre"],
+        "answer": "Écoute et discute calmement"
+      },
+      {
+        "question": "Un camarade a du mal à rester assis longtemps.",
+        "options": ["Tu te moques de lui", "Tu l’aides à trouver une solution avec l’adulte", "Tu l’éloignes du groupe"],
+        "answer": "Tu l’aides à trouver une solution avec l’adulte"
+      },
+      {
+        "question": "Le prénom d’un ami est difficile à prononcer.",
+        "options": ["Tu l’écorches exprès", "Tu demandes comment bien le dire", "Tu lui dis de le changer"],
+        "answer": "Tu demandes comment bien le dire"
+      }
 ]
