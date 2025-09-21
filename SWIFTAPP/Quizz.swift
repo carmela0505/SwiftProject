@@ -57,6 +57,7 @@ private func mapToState(_ items: [QuizItem]) -> QuizzState {
 struct QuizzView: View {
     let quizFile: String
     let onFinish: (Bool) -> Void
+    var onResults: (([String]) -> Void)? = nil
     let background: LinearGradient
     let accent: Color
     
@@ -94,11 +95,9 @@ struct QuizzView: View {
     }
     private var correctCount: Int { state.bonbon.filter { $0 == .green }.count }
     private var bonbonStrings: [String] {
-        state.bonbon.map { c in
-            if c == .green { return "green" }
-            if c == .red   { return "red" }
-            return "gray"
+        state.bonbon.map { $0 == .green ? "green" : ($0 == .red ? "red" : "gray")
         }
+        
     }
     
     
@@ -356,10 +355,13 @@ struct QuizzView: View {
     }
     
     private func finish() {
+        // Send the detailed results up (so TabView -> Récompenses can use them)
+            onResults?(bonbonStrings)
+
         // “passed” only if perfect score on the set you loaded
-        let passed = (correctCount == state.questions.count && state.questions.count == 5)
-        passedResult = passed
-        showResults = true
+           let passed = (correctCount == state.questions.count /* && state.questions.count == 5 */)
+           passedResult = passed
+           showResults = true
     }
 }
 

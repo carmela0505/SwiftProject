@@ -154,12 +154,44 @@ struct MyResultView: View {
         }
     }
 }
+// MARK: - MyResultView with tabs
+
+struct MyResultTabView: View {
+    let bonbons: [String]
+    var onReplay: (() -> Void)? = nil
+    var onFinish: (() -> Void)? = nil
+
+    var body: some View {
+        TabView {
+            // Résultats tab
+            NavigationStack {
+                MyResultView(
+                    bonbons: bonbons,
+                    onReplay: onReplay,
+                    onFinish: onFinish
+                )
+                .navigationTitle("")
+                .navigationBarTitleDisplayMode(.inline)
+            }
+            .tabItem { Label("Résultats", systemImage: "checkmark.seal.fill") }
+
+            // Récompenses tab (optional)
+            NavigationStack {
+                RewardView(bonbons: bonbons)
+                    .navigationTitle("Récompenses")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+            .tabItem { Label("Récompenses", systemImage: "gift.fill") }
+        }
+    }
+}
 
 #Preview {
-    MyResultView(
-        bonbons: ["green", "green", "green", "green", "green"],
+    MyResultTabView(
+        bonbons: ["green","green","green","red","green"],
         onReplay: {},
         onFinish: {}
     )
 }
+
 

@@ -10,7 +10,7 @@ private enum TabTag: Int { case profil, quiz , challenges, recompenses, resultat
 
 struct ThemesTabContainer: View {
     @State private var selected: TabTag = .quiz   // start on Themes
-    @State private var resultsBonbons: [String] = Array(repeating: "gray", count: 5)
+    @State private var resultsBonbons: [String] = []
     
 
     func handleResults(_ b: [String]) {
@@ -31,8 +31,8 @@ struct ThemesTabContainer: View {
             
             // QUIZ (Themes)
             NavigationStack {
-                ThemesGridView(onResults:handleResults)                 // inside a
-                    .navigationTitle("Thèmes")
+                ThemesGridView(onResults:handleResults)
+                    .navigationTitle("")
             }
             .tabItem { Label("Quiz", systemImage: "questionmark.circle") }
             .tag(TabTag.quiz)
@@ -52,13 +52,11 @@ struct ThemesTabContainer: View {
                 .tag(TabTag.recompenses)
             // RÉSULTATS (MyResultView avec Tab bar)
             NavigationStack {MyResultView(bonbons: resultsBonbons)
-                    .navigationTitle("Résultats")
-                    .navigationBarTitleDisplayMode(.inline)
             }
             .tabItem { Label("Résultats", systemImage: "checkmark.seal.fill") }
             .tag(TabTag.resultats)
         }
-            // ✅ Draw a rounded-rectangle “frame” around the system Tab Bar
+            //  Draw a rounded-rectangle “frame” around the system Tab Bar
                     .overlay(alignment: .bottom) {
                         RoundedRectangle(cornerRadius: 24, style: .continuous)
                             .stroke(Color.black.opacity(0.12), lineWidth: 1.5)   // the visible outline

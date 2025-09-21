@@ -185,11 +185,11 @@ struct ThemeMapView: View {
     @State private var activeLevel: Level? = nil
     var onResults: (([String]) -> Void)? = nil
 
-    init(theme: Theme) {
-        self.theme = theme
-        _levels = State(initialValue: makeLevels(for: theme))
-    }
-
+    init(theme: Theme, onResults: (([String]) -> Void)? = nil) {   // 👈 accept it here
+           self.theme = theme
+           self.onResults = onResults
+           _levels = State(initialValue: makeLevels(for: theme))
+       }
     var body: some View {
         let cfg = quizConfig(for: theme)
 
@@ -212,6 +212,8 @@ struct ThemeMapView: View {
         .navigationTitle(theme.title)
         .navigationBarTitleDisplayMode(.inline)
         .sheet(item: $activeLevel) { level in
+            let cfg = quizConfig(for: theme)
+            
             // Present the QUIZ only when a level is selected
             QuizzView(
                 quizFile: cfg.file,
@@ -224,6 +226,7 @@ struct ThemeMapView: View {
                     }
                     activeLevel = nil // dismiss
                 },
+                onResults: onResults,
                 background: cfg.background,
                 accent: cfg.accent
             )

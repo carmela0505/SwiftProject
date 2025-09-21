@@ -112,7 +112,7 @@ struct ThemeDetailView: View {
 
 struct ThemesGridView: View {
     
-    var onResults: (([String]) -> Void)?
+    var onResults: (([String]) -> Void)? = nil
     private let columns = [GridItem(.adaptive(minimum: 160), spacing: 16)]
 
     var body: some View {
@@ -142,12 +142,12 @@ struct ThemesGridView: View {
                         .offset(x: 120, y: -60)
                 }
                 .padding(.top, 12)
-
+Divider()
                 // Grid
                 LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(themes) { theme in
                         NavigationLink {
-                            ThemeMapView(theme: theme)     // 👈 go straight to MAP/DETAIL
+                            ThemeMapView(theme:theme,onResults:onResults) 
                         } label: {
                             ThemeCard(theme: theme)
                         }
@@ -157,8 +157,9 @@ struct ThemesGridView: View {
                 .padding(16)
             }
         }
-        .navigationTitle("Thèmes")
+//        .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
+        
     }
 }
 
