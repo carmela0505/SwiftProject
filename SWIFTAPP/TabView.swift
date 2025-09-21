@@ -12,9 +12,13 @@ struct ThemesTabContainer: View {
     @State private var selected: TabTag = .quiz   // start on Themes
     @State private var resultsBonbons: [String] = Array(repeating: "gray", count: 5)
     
+
+    func handleResults(_ b: [String]) {
+            resultsBonbons = b
+            selected = .recompenses
+        }
     var body: some View {
         TabView(selection: $selected) {
-            
             
             // PROFIL
             NavigationStack {
@@ -27,7 +31,7 @@ struct ThemesTabContainer: View {
             
             // QUIZ (Themes)
             NavigationStack {
-                ThemesGridView()                 // 👈 inside a NavigationStack
+                ThemesGridView(onResults:handleResults)                 // inside a
                     .navigationTitle("Thèmes")
             }
             .tabItem { Label("Quiz", systemImage: "questionmark.circle") }
@@ -42,7 +46,8 @@ struct ThemesTabContainer: View {
             .tag(TabTag.challenges)
             
             // RÉCOMPENSES
-            NavigationStack {RewardView() }
+            NavigationStack {RewardView(bonbons: resultsBonbons)
+            }
                 .tabItem { Label("Récompenses", systemImage: "gift.fill") }
                 .tag(TabTag.recompenses)
             // RÉSULTATS (MyResultView avec Tab bar)

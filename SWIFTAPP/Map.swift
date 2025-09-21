@@ -183,6 +183,7 @@ struct ThemeMapView: View {
     let theme: Theme
     @State private var levels: [Level]
     @State private var activeLevel: Level? = nil
+    var onResults: (([String]) -> Void)? = nil
 
     init(theme: Theme) {
         self.theme = theme

@@ -111,6 +111,8 @@ struct ThemeDetailView: View {
 
 
 struct ThemesGridView: View {
+    
+    var onResults: (([String]) -> Void)?
     private let columns = [GridItem(.adaptive(minimum: 160), spacing: 16)]
 
     var body: some View {

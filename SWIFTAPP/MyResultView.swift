@@ -17,7 +17,7 @@ struct MyResultView: View {
         case 5:      return "BRAVO!"                    // you can keep this mapping if you like
         case 3...4:  return "TU PEUX LE FAIRE"
         case 1...2:  return "CONTINUE À TRAVAILLER !"
-        default:     return "ON REPART POUR UN TOUR? JE CROIS EN TOI!"
+        default:     return "ON REPART POUR UN TOUR?"
         }
     }
 
@@ -66,7 +66,7 @@ struct MyResultView: View {
                 // Message animé
                 PulsingText(text: resultMessage, font: .largeTitle.bold(), color: .blue)
 
-                // ✅ Toujours visible : total des bonnes réponses
+                //  Toujours visible : total des bonnes réponses
                 HStack(spacing: 8) {
                     Image(systemName: "checkmark.circle.fill")
                         .foregroundStyle(.blue)
