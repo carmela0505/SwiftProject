@@ -15,9 +15,9 @@ struct MyResultView: View {
     private var resultMessage: String {
         switch correctAnswers {
         case 5:      return "BRAVO!"                    // you can keep this mapping if you like
-        case 3...4:  return "TU PEUX LE FAIRE"
+        case 3...4:  return "TU PEUX LE FAIRE!"
         case 1...2:  return "CONTINUE À TRAVAILLER !"
-        default:     return "ON REPART POUR UN TOUR?"
+        default:     return "ESSAIE ENCORE!"
         }
     }
 
@@ -170,7 +170,7 @@ struct MyResultTabView: View {
                     onReplay: onReplay,
                     onFinish: onFinish
                 )
-                .navigationTitle("")
+//                .navigationTitle("")
                 .navigationBarTitleDisplayMode(.inline)
             }
             .tabItem { Label("Résultats", systemImage: "checkmark.seal.fill") }

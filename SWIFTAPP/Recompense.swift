@@ -6,7 +6,7 @@
 import SwiftUI
 import Lottie
 
-// MARK: - Reward tier
+// Reward tier
 
 private enum RewardTier {
     case none, bronze, silver, gold
@@ -49,7 +49,7 @@ private enum RewardTier {
     }
 }
 
-// MARK: - Gift model & card
+// Gift model & card
 
 private struct Gift: Identifiable, Hashable {
     let id: String
@@ -87,7 +87,7 @@ private struct GiftCard: View {
     }
 }
 
-// MARK: - View
+//  View
 
 struct RewardView: View {
     // Input from results (e.g. MyResultView)
@@ -111,7 +111,7 @@ struct RewardView: View {
         .init(id: "camera", name: "Caméra",          imageName: "camera"),
         .init(id: "book",   name: "Livre surprise",  imageName: "livre"),
         .init(id: "bike",   name: "Vélo",            imageName: "velo1"),
-        .init(id: "puzzle", name: "Puzzle",          imageName: "gift_puzzle")
+        .init(id: "puzzle", name: "Puzzle",          imageName: "puzzle")
     ]
 
     var body: some View {
@@ -121,8 +121,9 @@ struct RewardView: View {
                 .ignoresSafeArea()
 
             VStack(spacing: 18) {
-                Text("Récompenses")
-                    .font(.system(size: 34, weight: .bold, design: .rounded))
+                Spacer()
+//                Text("Récompenses")
+//                    .font(.system(size: 34, weight: .bold, design: .rounded))
 
                 Divider()
 
@@ -134,7 +135,21 @@ struct RewardView: View {
                             .scaledToFit()
                             .frame(height: 90)
                             .allowsHitTesting(false)
-                    } else {
+                            }
+                            
+                    else if rewardTier == .silver {
+                        LottieView(name: "Silver", loopMode: .loop)
+                            .scaledToFit()
+                            .frame(height: 90)
+                            .allowsHitTesting(false)
+                    }
+                    else if rewardTier == .bronze {
+                            LottieView(name: "Bronze", loopMode: .loop)
+                                .scaledToFit()
+                                .frame(height: 90)
+                                .allowsHitTesting(false)
+                        }
+                     else {
                         Image(systemName: rewardTier.symbol)
                             .resizable().scaledToFit()
                             .frame(height: 90)
@@ -205,7 +220,7 @@ struct RewardView: View {
     }
 }
 
-// MARK: - Preview
+
 
 #Preview {
     // Example: all correct -> gold

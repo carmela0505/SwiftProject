@@ -123,7 +123,7 @@ struct ThemesGridView: View {
                 // Header card (your teddy banner)
                 ZStack {
                     Rectangle()
-                        .fill(Color.blue.opacity(0.50))
+                        .fill(Color.purple.opacity(0.80))
                         .frame(width: 300, height: 150)
                         .overlay(
                             RoundedRectangle(cornerRadius: 20)

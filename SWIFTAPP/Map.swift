@@ -209,7 +209,7 @@ struct ThemeMapView: View {
                 .padding(.vertical, 16)
             }
         }
-        .navigationTitle(theme.title)
+//        .navigationTitle(theme.title)
         .navigationBarTitleDisplayMode(.inline)
         .sheet(item: $activeLevel) { level in
             let cfg = quizConfig(for: theme)

@@ -20,12 +20,12 @@ struct BackgroundColorAttribute: View {
             VStack(spacing: 20) {
                 Text("KIDS VOICE")
                     .font(.system(size: 46, weight: .bold, design: .rounded))
-                    .foregroundColor(.pink)
-
+   Divider()                 .foregroundColor(.pink)
+Spacer()
                 
                 LottieView(name: "dancingbear", contentMode: .scaleAspectFit)
                     .frame(width: 400, height: 400)
-
+Spacer()
                 NavigationLink {
                     ThemesTabContainer()
                 } label: {
@@ -45,7 +45,7 @@ struct BackgroundColorAttribute: View {
             }
             .padding()
         }
-        .navigationTitle("")
+//        .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)  // hide default back
 

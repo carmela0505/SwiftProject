@@ -1,7 +1,7 @@
 import SwiftUI
 import Foundation
 import Lottie
-
+import AVFoundation
 
 struct QuizItem: Codable, Identifiable {
     let id = UUID()
@@ -55,13 +55,13 @@ private func mapToState(_ items: [QuizItem]) -> QuizzState {
 
 //View
 struct QuizzView: View {
+    @State private var speaker = AVSpeechSynthesizer()
+    @AppStorage("ttsEnabled") private var ttsEnabled = true  // let user toggle if you like
     let quizFile: String
     let onFinish: (Bool) -> Void
     var onResults: (([String]) -> Void)? = nil
     let background: LinearGradient
     let accent: Color
-    
-    
     
     // UI state
     @State private var state = QuizzState()
@@ -97,21 +97,18 @@ struct QuizzView: View {
     private var bonbonStrings: [String] {
         state.bonbon.map { $0 == .green ? "green" : ($0 == .red ? "red" : "gray")
         }
-        
     }
-    
     
     var body: some View {
         ZStack {
-            background.ignoresSafeArea()  // themed gradient background
-            
+            background.ignoresSafeArea()  // themed gradient
             if state.questions.isEmpty {
                 Text("Chargement…")
                     .font(.title2.bold())
                     .foregroundStyle(.white)
                     .onAppear(perform: setup)
             } else {
-                VStack(spacing: 20) {
+                VStack(spacing: 25) {
                     
                     // Header
                     ZStack {
@@ -128,7 +125,7 @@ struct QuizzView: View {
                             .animation(.spring(response: 0.35, dampingFraction: 0.85), value: headerText)
                     }
                     .padding(.horizontal)
-                    Divider()
+//
                     // Gifts + score + bear
                     VStack(spacing: 10) {
                         HStack(spacing: 14) {
