@@ -37,19 +37,19 @@ private func quizConfig(for theme: Theme) -> QuizAppearance {
     case .maison:
         return .init(
             file: "violence_domestique_enfants",
-            background: LinearGradient(colors: [.orange, .yellow], startPoint: .topLeading, endPoint: .bottomTrailing),
+            background: LinearGradient(colors: [.green, .teal], startPoint: .topLeading, endPoint: .bottomTrailing),
             accent: .green
         )
     case .net:
         return .init(
             file: "violence_reseaux_sociaux_enfants",
-            background: LinearGradient(colors: [.green, .teal], startPoint: .topLeading, endPoint: .bottomTrailing),
+            background: LinearGradient(colors: [.purple, .indigo], startPoint: .topLeading, endPoint: .bottomTrailing),
             accent: .purple
         )
     case .differents:
         return .init(
             file: "violence_autres_enfants",
-            background: LinearGradient(colors: [.purple, .indigo], startPoint: .topLeading, endPoint: .bottomTrailing),
+            background: LinearGradient(colors: [.orange, .yellow], startPoint: .topLeading, endPoint: .bottomTrailing),
             accent: .orange
         )
     }

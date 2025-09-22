@@ -109,14 +109,14 @@ struct RewardView: View {
     private let gifts: [Gift] = [
         .init(id: "teddy",  name: "Ourson",          imageName: "teddy"),
         .init(id: "camera", name: "Caméra",          imageName: "camera"),
-        .init(id: "book",   name: "Livre surprise",  imageName: "gift_book"),
-        .init(id: "bike",   name: "Vélo",            imageName: "gift_velo"),
+        .init(id: "book",   name: "Livre surprise",  imageName: "livre"),
+        .init(id: "bike",   name: "Vélo",            imageName: "velo1"),
         .init(id: "puzzle", name: "Puzzle",          imageName: "gift_puzzle")
     ]
 
     var body: some View {
         ZStack {
-            LinearGradient(colors: [.white, .blue.opacity(0.08)],
+            LinearGradient(colors: [.orange.opacity(0.80)],
                            startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
 
@@ -131,7 +131,8 @@ struct RewardView: View {
                     if rewardTier == .gold {
                         // Lottie trophy for perfect score (loops)
                         LottieView(name: "trophy", loopMode: .loop)
-                            .frame(height: 100)
+                            .scaledToFit()
+                            .frame(height: 90)
                             .allowsHitTesting(false)
                     } else {
                         Image(systemName: rewardTier.symbol)

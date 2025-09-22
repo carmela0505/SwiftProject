@@ -8,8 +8,8 @@ import SwiftUI
 
 struct ProfileEnfant: View {
     let prenomEnfant: String
-   @State private var mascotName: String = "mascottedog"
-    private let choices = ["mascottedog", "mascotracoon", "mascotteduck", "mascotdonkey"]
+   @State private var mascotName: String = "shiba"
+    private let choices = ["raccoon","donkey","cat","shiba"]
 
     var body: some View {
         ZStack {

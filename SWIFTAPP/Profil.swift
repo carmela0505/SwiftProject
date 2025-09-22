@@ -98,9 +98,9 @@ struct ProfilParentFormView: View {
         isValidName(nom) && isValidName(prenom) && isValidName(prenomEnfant) && isValidEmail(email)
     }
 
-    private var backgroundColor: Color { Color.orange.opacity(0.8) }
+    private var backgroundColor: Color { Color.orange.opacity(0.80) }
 
-    // MARK: Small field views (keeps the big body simple)
+    // Small field views (keeps the big body simple)
     private var nomField: some View {
         TextField("", text: $nom.nameCased(),
                   prompt: Text("Nom").foregroundColor(.black.opacity(0.6)))

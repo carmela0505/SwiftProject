@@ -117,17 +117,17 @@ struct ThemesGridView: View {
 
     var body: some View {
         ZStack {
-            Color.orange.opacity(0.15).ignoresSafeArea()
+            Color.orange.opacity(0.80).ignoresSafeArea()
 
             ScrollView {
                 // Header card (your teddy banner)
                 ZStack {
                     Rectangle()
-                        .fill(Color.orange.opacity(0.8))
+                        .fill(Color.blue.opacity(0.50))
                         .frame(width: 300, height: 150)
                         .overlay(
                             RoundedRectangle(cornerRadius: 20)
-                                .stroke(Color.orange, lineWidth: 5)
+                                .stroke(Color.orange.opacity(0.30), lineWidth: 10)
                         )
                         .cornerRadius(20)
 

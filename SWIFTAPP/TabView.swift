@@ -5,12 +5,12 @@
 //  Created by apprenant130 on 18/09/2025.
 //
 import SwiftUI
-
 private enum TabTag: Int { case profil, quiz , challenges, recompenses, resultats}
 
 struct ThemesTabContainer: View {
     @State private var selected: TabTag = .quiz   // start on Themes
     @State private var resultsBonbons: [String] = []
+    @AppStorage("prenomEnfant") private var prenomEnfant: String = "Léa"
     
 
     func handleResults(_ b: [String]) {
@@ -22,7 +22,7 @@ struct ThemesTabContainer: View {
             
             // PROFIL
             NavigationStack {
-                ProfileEnfant(prenomEnfant: "Léa")
+                ProfileEnfant(prenomEnfant: prenomEnfant)
                     .navigationTitle("Profil")
                     .navigationBarTitleDisplayMode(.inline)
             }
@@ -67,9 +67,7 @@ struct ThemesTabContainer: View {
                             .allowsHitTesting(false)
                             .ignoresSafeArea(edges: .bottom)
                             .offset(y: 10)
-                        
                     }
-                    
     }
 }
 

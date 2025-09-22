@@ -22,6 +22,7 @@ struct BackgroundColorAttribute: View {
                     .font(.system(size: 46, weight: .bold, design: .rounded))
                     .foregroundColor(.pink)
 
+                
                 LottieView(name: "dancingbear", contentMode: .scaleAspectFit)
                     .frame(width: 400, height: 400)
 
@@ -38,9 +39,9 @@ struct BackgroundColorAttribute: View {
                         .shadow(radius: 6)
                 }
 
-                Image(systemName: "teddybear.fill")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
+//                Image(systemName: "teddybear.fill")
+//                    .imageScale(.large)
+//                    .foregroundStyle(.tint)
             }
             .padding()
         }

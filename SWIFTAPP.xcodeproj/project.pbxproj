@@ -14,16 +14,21 @@
 		6E7F485B2E7748B300E56346 /* yesbear.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E7F485A2E7748B300E56346 /* yesbear.json */; };
 		6E7F485D2E7748C600E56346 /* nobear.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E7F485C2E7748C600E56346 /* nobear.json */; };
 		6E7F48652E775B7600E56346 /* dancingbear.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E7F48642E775B7600E56346 /* dancingbear.json */; };
-		6ED8474B2E7ADDA500A608F9 /* mascottedog.json in Resources */ = {isa = PBXBuildFile; fileRef = 6ED8474A2E7ADDA500A608F9 /* mascottedog.json */; };
-		6ED8474D2E7AE5A200A608F9 /* mascotteduck.json in Resources */ = {isa = PBXBuildFile; fileRef = 6ED8474C2E7AE5A200A608F9 /* mascotteduck.json */; };
-		6ED8474F2E7AE6CA00A608F9 /* mascotracoon.json in Resources */ = {isa = PBXBuildFile; fileRef = 6ED8474E2E7AE6CA00A608F9 /* mascotracoon.json */; };
-		6ED847512E7B5D8200A608F9 /* mascotdonkey.json in Resources */ = {isa = PBXBuildFile; fileRef = 6ED847502E7B5D8200A608F9 /* mascotdonkey.json */; };
+		6ED8474B2E7ADDA500A608F9 /* dog.json in Resources */ = {isa = PBXBuildFile; fileRef = 6ED8474A2E7ADDA500A608F9 /* dog.json */; };
+		6ED8474D2E7AE5A200A608F9 /* duck.json in Resources */ = {isa = PBXBuildFile; fileRef = 6ED8474C2E7AE5A200A608F9 /* duck.json */; };
+		6ED8474F2E7AE6CA00A608F9 /* raccoon.json in Resources */ = {isa = PBXBuildFile; fileRef = 6ED8474E2E7AE6CA00A608F9 /* raccoon.json */; };
+		6ED847512E7B5D8200A608F9 /* donkey.json in Resources */ = {isa = PBXBuildFile; fileRef = 6ED847502E7B5D8200A608F9 /* donkey.json */; };
 		6EFB9A422E7D47A2001D51DA /* violence_autres_enfants.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB9A412E7D47A2001D51DA /* violence_autres_enfants.json */; };
 		6EFB9A442E7D47AA001D51DA /* violence_domestique_enfants.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB9A432E7D47AA001D51DA /* violence_domestique_enfants.json */; };
 		6EFB9A462E7D47B1001D51DA /* violence_ecole_questions.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB9A452E7D47B1001D51DA /* violence_ecole_questions.json */; };
 		6EFB9A482E7D47B5001D51DA /* violence_reseaux_sociaux_enfants.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB9A472E7D47B5001D51DA /* violence_reseaux_sociaux_enfants.json */; };
 		6EFB9AC32E7D99DA001D51DA /* challenges.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB9AC22E7D99DA001D51DA /* challenges.json */; };
 		6EFB9AE52E7EAEBA001D51DA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB9AE42E7EAE9C001D51DA /* .gitignore */; };
+		6EFB9B272E813937001D51DA /* trophyanim.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB9B262E813937001D51DA /* trophyanim.json */; };
+		6EFB9B292E813FEF001D51DA /* Bronze.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB9B282E813FEF001D51DA /* Bronze.json */; };
+		6EFB9B2D2E814012001D51DA /* Silver.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB9B2C2E814012001D51DA /* Silver.json */; };
+		6EFB9B4F2E81580C001D51DA /* shiba.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB9B4E2E81580C001D51DA /* shiba.json */; };
+		6EFB9B512E81586B001D51DA /* cat.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EFB9B502E81586B001D51DA /* cat.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,16 +52,21 @@
 		6E7F485A2E7748B300E56346 /* yesbear.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = yesbear.json; sourceTree = "<group>"; };
 		6E7F485C2E7748C600E56346 /* nobear.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = nobear.json; sourceTree = "<group>"; };
 		6E7F48642E775B7600E56346 /* dancingbear.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dancingbear.json; sourceTree = "<group>"; };
-		6ED8474A2E7ADDA500A608F9 /* mascottedog.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mascottedog.json; sourceTree = "<group>"; };
-		6ED8474C2E7AE5A200A608F9 /* mascotteduck.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mascotteduck.json; sourceTree = "<group>"; };
-		6ED8474E2E7AE6CA00A608F9 /* mascotracoon.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mascotracoon.json; sourceTree = "<group>"; };
-		6ED847502E7B5D8200A608F9 /* mascotdonkey.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mascotdonkey.json; sourceTree = "<group>"; };
+		6ED8474A2E7ADDA500A608F9 /* dog.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dog.json; sourceTree = "<group>"; };
+		6ED8474C2E7AE5A200A608F9 /* duck.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = duck.json; sourceTree = "<group>"; };
+		6ED8474E2E7AE6CA00A608F9 /* raccoon.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = raccoon.json; sourceTree = "<group>"; };
+		6ED847502E7B5D8200A608F9 /* donkey.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = donkey.json; sourceTree = "<group>"; };
 		6EFB9A412E7D47A2001D51DA /* violence_autres_enfants.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = violence_autres_enfants.json; sourceTree = "<group>"; };
 		6EFB9A432E7D47AA001D51DA /* violence_domestique_enfants.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = violence_domestique_enfants.json; sourceTree = "<group>"; };
 		6EFB9A452E7D47B1001D51DA /* violence_ecole_questions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = violence_ecole_questions.json; sourceTree = "<group>"; };
 		6EFB9A472E7D47B5001D51DA /* violence_reseaux_sociaux_enfants.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = violence_reseaux_sociaux_enfants.json; sourceTree = "<group>"; };
 		6EFB9AC22E7D99DA001D51DA /* challenges.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = challenges.json; sourceTree = "<group>"; };
 		6EFB9AE42E7EAE9C001D51DA /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		6EFB9B262E813937001D51DA /* trophyanim.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = trophyanim.json; sourceTree = "<group>"; };
+		6EFB9B282E813FEF001D51DA /* Bronze.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Bronze.json; sourceTree = "<group>"; };
+		6EFB9B2C2E814012001D51DA /* Silver.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Silver.json; sourceTree = "<group>"; };
+		6EFB9B4E2E81580C001D51DA /* shiba.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = shiba.json; sourceTree = "<group>"; };
+		6EFB9B502E81586B001D51DA /* cat.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cat.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -87,13 +97,18 @@
 				6E7F485A2E7748B300E56346 /* yesbear.json */,
 				6E7F48582E77489F00E56346 /* trophy.json */,
 				6E7F48562E77488C00E56346 /* reward.json */,
-				6ED8474A2E7ADDA500A608F9 /* mascottedog.json */,
-				6ED8474C2E7AE5A200A608F9 /* mascotteduck.json */,
+				6ED8474A2E7ADDA500A608F9 /* dog.json */,
+				6ED8474C2E7AE5A200A608F9 /* duck.json */,
 				6E7F48502E77481D00E56346 /* bonbon.json */,
+				6EFB9B262E813937001D51DA /* trophyanim.json */,
 				6E7F48642E775B7600E56346 /* dancingbear.json */,
 				6EFB9AC22E7D99DA001D51DA /* challenges.json */,
-				6ED8474E2E7AE6CA00A608F9 /* mascotracoon.json */,
-				6ED847502E7B5D8200A608F9 /* mascotdonkey.json */,
+				6EFB9B4E2E81580C001D51DA /* shiba.json */,
+				6EFB9B282E813FEF001D51DA /* Bronze.json */,
+				6ED8474E2E7AE6CA00A608F9 /* raccoon.json */,
+				6EFB9B502E81586B001D51DA /* cat.json */,
+				6ED847502E7B5D8200A608F9 /* donkey.json */,
+				6EFB9B2C2E814012001D51DA /* Silver.json */,
 				6EFB9A472E7D47B5001D51DA /* violence_reseaux_sociaux_enfants.json */,
 				6EFB9A452E7D47B1001D51DA /* violence_ecole_questions.json */,
 				6EFB9A432E7D47AA001D51DA /* violence_domestique_enfants.json */,
@@ -190,18 +205,23 @@
 			files = (
 				6E7F48512E77481D00E56346 /* bonbon.json in Resources */,
 				6E7F48592E77489F00E56346 /* trophy.json in Resources */,
+				6EFB9B272E813937001D51DA /* trophyanim.json in Resources */,
 				6EFB9A462E7D47B1001D51DA /* violence_ecole_questions.json in Resources */,
-				6ED8474B2E7ADDA500A608F9 /* mascottedog.json in Resources */,
+				6ED8474B2E7ADDA500A608F9 /* dog.json in Resources */,
 				6EFB9AE52E7EAEBA001D51DA /* .gitignore in Resources */,
 				6E7F485D2E7748C600E56346 /* nobear.json in Resources */,
+				6EFB9B4F2E81580C001D51DA /* shiba.json in Resources */,
+				6EFB9B2D2E814012001D51DA /* Silver.json in Resources */,
+				6EFB9B292E813FEF001D51DA /* Bronze.json in Resources */,
 				6E7F48572E77488C00E56346 /* reward.json in Resources */,
-				6ED847512E7B5D8200A608F9 /* mascotdonkey.json in Resources */,
-				6ED8474D2E7AE5A200A608F9 /* mascotteduck.json in Resources */,
+				6ED847512E7B5D8200A608F9 /* donkey.json in Resources */,
+				6ED8474D2E7AE5A200A608F9 /* duck.json in Resources */,
 				6E7F48652E775B7600E56346 /* dancingbear.json in Resources */,
 				6EFB9A442E7D47AA001D51DA /* violence_domestique_enfants.json in Resources */,
-				6ED8474F2E7AE6CA00A608F9 /* mascotracoon.json in Resources */,
+				6ED8474F2E7AE6CA00A608F9 /* raccoon.json in Resources */,
 				6EFB9A482E7D47B5001D51DA /* violence_reseaux_sociaux_enfants.json in Resources */,
 				6EFB9AC32E7D99DA001D51DA /* challenges.json in Resources */,
+				6EFB9B512E81586B001D51DA /* cat.json in Resources */,
 				6EFB9A422E7D47A2001D51DA /* violence_autres_enfants.json in Resources */,
 				6E7F485B2E7748B300E56346 /* yesbear.json in Resources */,
 			);

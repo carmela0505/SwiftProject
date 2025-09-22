@@ -112,15 +112,15 @@ struct MyResultView: View {
 
                 // Actions
                 HStack(spacing: 14) {
-                    Button("Rejouer") {
-                        if let onReplay { onReplay() } else { dismiss() }
-                    }
-                    .font(.headline)
-                    .padding(.horizontal, 24)
-                    .padding(.vertical, 12)
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+//                    Button("Rejouer") {
+//                        if let onReplay { onReplay() } else { dismiss() }
+//                    }
+//                    .font(.headline)
+//                    .padding(.horizontal, 24)
+//                    .padding(.vertical, 12)
+//                    .background(Color.blue)
+//                    .foregroundColor(.white)
+//                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
 
                     Button("Terminer") {
                         if let onFinish { onFinish() } else { dismiss() }
@@ -138,7 +138,7 @@ struct MyResultView: View {
         }
     }
 
-    // MARK: - Helpers
+    //  Helpers
     private func color(for status: String) -> Color {
         switch status {
         case "green": return .green
@@ -154,7 +154,7 @@ struct MyResultView: View {
         }
     }
 }
-// MARK: - MyResultView with tabs
+//- MyResultView with tabs
 
 struct MyResultTabView: View {
     let bonbons: [String]
