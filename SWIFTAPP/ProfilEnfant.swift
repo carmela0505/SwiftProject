@@ -7,35 +7,36 @@
 import SwiftUI
 
 struct ProfileEnfant: View {
-    let prenomEnfant: String
-   @State private var mascotName: String = "shiba"
+    @AppStorage("prenomEnfant") private var prenomEnfant: String = ""
+    @State private var mascotName: String = "shiba"
     private let choices = ["raccoon","donkey","cat","shiba"]
-
+    
     var body: some View {
         ZStack {
             Image("yellow")
                 .resizable()
-                .scaledToFill()
-                .ignoresSafeArea()
-
+//                .scaledToFill()
+                .ignoresSafeArea(edges: .top)
+//                .frame(height: 770)
+            
             VStack(spacing: 20) {
                 Text("PROFIL ENFANT")
                     .font(.system(size: 46, weight: .bold, design: .rounded))
                     .foregroundColor(.white)
-
+                
                 Divider()
                 Spacer()
-
+                
                 Text("Bienvenue \(prenomEnfant)")
                     .font(.system(size: 35, weight: .bold, design: .rounded))
                     .foregroundColor(.blue)
-
-                LottieView(name: mascotName, contentMode: .scaleAspectFill)
-                    .frame(width: 300, height: 300)
+                
+                LottieView(name: mascotName, contentMode: .scaleAspectFit)
+                    .frame(width: 300, height: 290)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
                     .overlay(RoundedRectangle(cornerRadius: 20).stroke(.white, lineWidth: 4))
                     .shadow(radius: 10)
-Spacer()
+                Spacer()
                 // Mascot chooser
                 Menu {
                     ForEach(choices, id: \.self) { option in
@@ -54,8 +55,8 @@ Spacer()
                     .shadow(radius: 4)
                 }
                 .controlSize(.large)
-
-              
+                
+                
                 NavigationLink {
                     BackgroundColorAttribute()
                 } label: {
@@ -68,7 +69,7 @@ Spacer()
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                         .shadow(radius: 6)
                 }
-
+                
                 
             }
             .padding()
@@ -78,5 +79,5 @@ Spacer()
 }
 
 #Preview {
-    NavigationStack { ProfileEnfant(prenomEnfant: "Léa") }
+    NavigationStack { ProfileEnfant() }
 }

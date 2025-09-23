@@ -1,103 +1,153 @@
 [
-  
   {
-      "question": "Si un élève se moque de toi tous les jours, c’est…",
-      "options": ["du harcèlement", "une blague", "normal"],
-      "answer": "du harcèlement"
-    },
-    {
-      "question": "Que fais-tu si quelqu’un te pousse dans la cour ?",
-      "options": ["Le pousser plus fort", "T’éloigner et prévenir un adulte", "Rester silencieux"],
-      "answer": "T’éloigner et prévenir un adulte"
-    },
-    {
-      "question": "Qui peux-tu prévenir quand quelque chose te fait peur à l’école ?",
-      "options": ["Un adulte de confiance (enseignant, CPE, parent)", "Personne", "Seulement tes amis"],
-      "answer": "Un adulte de confiance (enseignant, CPE, parent)"
-    },
-    {
-      "question": "Tu vois une bagarre. Que fais-tu ?",
-      "options": ["Filmer et partager", "Essayer de séparer tout seul", "Appeler un adulte et rester en sécurité"],
-      "answer": "Appeler un adulte et rester en sécurité"
-    },
-    {
-      "question": "On t’insulte dans un groupe de classe en ligne. Que fais-tu ?",
-      "options": ["Répondre en insultant", "Bloquer/Signaler et garder des preuves", "Quitter l’école"],
-      "answer": "Bloquer/Signaler et garder des preuves"
-    },
-    {
-      "question": "Un camarade est insulté. Que peux-tu faire ?",
-      "options": ["Rire avec les autres", "Lui dire que ce n’est pas drôle et proposer d’aller voir un adulte", "Ignorer"],
-      "answer": "Lui dire que ce n’est pas drôle et proposer d’aller voir un adulte"
-    },
-    {
-      "question": "Quel est un signe de harcèlement ?",
-      "options": ["Une taquinerie unique", "Des actes répétés qui font mal", "Un jeu entre amis"],
-      "answer": "Des actes répétés qui font mal"
-    },
-    {
-      "question": "Partager une photo gênante d’un camarade sans son accord, c’est…",
-      "options": ["Normal", "Pour rire", "Interdit et blessant"],
-      "answer": "Interdit et blessant"
-    },
-    {
-      "question": "Si tu as peur sur le chemin de l’école, que peux-tu faire ?",
-      "options": ["Changer d’itinéraire et marcher avec un adulte/ami", "Ne plus aller à l’école", "Te battre"],
-      "answer": "Changer d’itinéraire et marcher avec un adulte/ami"
-    },
-    {
-      "question": "Quelqu’un te dit “c’est un secret, ne dis rien”, mais c’est méchant. Tu…",
-      "options": ["Gardes le secret", "Parles à un adulte de confiance", "L’écris sur internet"],
-      "answer": "Parles à un adulte de confiance"
-    },
-    {
-      "question": "Que veut dire « consentement » ?",
-      "options": ["Dire clairement oui", "Se taire", "Obéir"],
-      "answer": "Dire clairement oui"
-    },
-    {
-      "question": "On lance des rumeurs sur toi. Que fais-tu ?",
-      "options": ["Répondre avec une autre rumeur", "Demander la suppression, garder des captures et en parler à un adulte", "Quitter le groupe en silence"],
-      "answer": "Demander la suppression, garder des captures et en parler à un adulte"
-    },
-    {
-      "question": "Les violences peuvent être…",
-      "options": ["Seulement physiques", "Physiques, verbales, en ligne, exclusion", "Toujours visibles"],
-      "answer": "Physiques, verbales, en ligne, exclusion"
-    },
-    {
-      "question": "Quelqu’un demande ton mot de passe.",
-      "options": ["Accepter", "Refuser et en parler à un adulte", "Le donner puis le changer"],
-      "answer": "Refuser et en parler à un adulte"
-    },
-    {
-      "question": "Jouer à frapper « pour rire » si l’autre n’aime pas…",
-      "options": ["C’est un jeu", "C’est violent, on arrête", "On filme"],
-      "answer": "C’est violent, on arrête"
-    },
-    {
-      "question": "Un adulte à l’école te parle mal ou te touche sans ton accord. Tu…",
-      "options": ["N’oses rien dire", "En parles vite à un autre adulte de confiance", "Penses que c’est normal"],
-      "answer": "En parles vite à un autre adulte de confiance"
-    },
-    {
-      "question": "Tu vois une insulte écrite sur un casier.",
-      "options": ["Ajouter un mot", "Prendre une photo et prévenir un adulte", "Rire"],
-      "answer": "Prendre une photo et prévenir un adulte"
-    },
-    {
-      "question": "Être différent (accent, lunettes, peau, religion) veut dire qu’on peut se moquer ?",
-      "options": ["Oui", "Non, le respect est pour tous", "Seulement en privé"],
-      "answer": "Non, le respect est pour tous"
-    },
-    {
-      "question": "Quand tu es très en colère, la meilleure chose est…",
-      "options": ["Compter jusqu’à 10 et respirer", "Crier", "Frapper"],
-      "answer": "Compter jusqu’à 10 et respirer"
-    },
-    {
-      "question": "Ton ami dit « n’en parle à personne », mais il est en danger. Tu…",
-      "options": ["Gardes le secret", "Cherches de l’aide auprès d’un adulte", "Fais semblant de rien"],
-      "answer": "Cherches de l’aide auprès d’un adulte"
-    }
+    "question": "Si un élève se moque de toi tous les jours, c’est…",
+    "options": ["Du harcèlement", "Une blague", "Normal"],
+    "answer": "Du harcèlement"
+  },
+  {
+    "question": "Que fais-tu si quelqu’un te pousse dans la cour ?",
+    "options": ["Le pousser plus fort", "T’éloigner et prévenir un adulte", "Rester silencieux"],
+    "answer": "T’éloigner et prévenir un adulte"
+  },
+  {
+    "question": "Qui peux-tu prévenir quand quelque chose te fait peur à l’école ?",
+    "options": ["Un adulte de confiance", "Personne", "Seulement tes amis"],
+    "answer": "Un adulte de confiance"
+  },
+  {
+    "question": "Tu vois une bagarre. Que fais-tu ?",
+    "options": ["Filmer et partager", "Essayer de séparer tout seul", "Appeler un adulte et rester en sécurité"],
+    "answer": "Appeler un adulte et rester en sécurité"
+  },
+  {
+    "question": "On t’insulte dans un groupe de classe en ligne. Que fais-tu ?",
+    "options": ["Répondre en insultant", "Bloquer/Signaler et garder des preuves", "Quitter l’école"],
+    "answer": "Bloquer/Signaler et garder des preuves"
+  },
+  {
+    "question": "Un camarade est insulté. Que peux-tu faire ?",
+    "options": ["Rire avec les autres", "Lui dire que ce n’est pas drôle", "Ignorer"],
+    "answer": "Lui dire que ce n’est pas drôle"
+  },
+  {
+    "question": "Quel est un signe de harcèlement ?",
+    "options": ["Une taquinerie unique", "Des actes répétés qui font mal", "Un jeu entre amis"],
+    "answer": "Des actes répétés qui font mal"
+  },
+  {
+    "question": "Partager une photo gênante d’un camarade sans son accord, c’est…",
+    "options": ["Normal", "Pour rire", "Interdit et blessant"],
+    "answer": "Interdit et blessant"
+  },
+  {
+    "question": "Si tu as peur sur le chemin de l’école, que peux-tu faire ?",
+    "options": ["Changer d’itinéraire", "Ne plus aller à l’école", "Te battre"],
+    "answer": "Changer d’itinéraire"
+  },
+  {
+    "question": "Quelqu’un te dit « c’est un secret, ne dis rien », mais c’est méchant. Tu…",
+    "options": ["Gardes le secret", "Parles à un adulte de confiance", "L’écris sur internet"],
+    "answer": "Parles à un adulte de confiance"
+  },
+  {
+    "question": "Que veut dire « consentement » ?",
+    "options": ["Dire clairement oui", "Se taire", "Obéir"],
+    "answer": "Dire clairement oui"
+  },
+  {
+    "question": "On lance des rumeurs sur toi. Que fais-tu ?",
+    "options": ["Répondre avec une autre rumeur", "Demander la suppression et en parler à un adulte", "Quitter le groupe en silence"],
+    "answer": "Demander la suppression et en parler à un adulte"
+  },
+  {
+    "question": "Les violences peuvent être…",
+    "options": ["Seulement physiques", "Physiques, verbales, en ligne", "Toujours visibles"],
+    "answer": "Physiques, verbales, en ligne"
+  },
+  {
+    "question": "Quelqu’un demande ton mot de passe.",
+    "options": ["Accepter", "Refuser et en parler à un adulte", "Le donner puis le changer"],
+    "answer": "Refuser et en parler à un adulte"
+  },
+  {
+    "question": "Jouer à frapper « pour rire » si l’autre n’aime pas…",
+    "options": ["C’est un jeu", "C’est violent, on arrête", "On filme"],
+    "answer": "C’est violent, on arrête"
+  },
+  {
+    "question": "Un adulte à l’école te parle mal ou te touche sans ton accord. Tu…",
+    "options": ["N’oses rien dire", "En parles vite à un autre adulte", "Penses que c’est normal"],
+    "answer": "En parles vite à un autre adulte"
+  },
+  {
+    "question": "Tu vois une insulte écrite sur un casier.",
+    "options": ["Ajouter un mot", "Prendre une photo et prévenir un adulte", "Rire"],
+    "answer": "Prendre une photo et prévenir un adulte"
+  },
+  {
+    "question": "Être différent (peau, religion) veut dire qu’on peut se moquer ?",
+    "options": ["Oui", "Non, le respect est pour tous", "Seulement en privé"],
+    "answer": "Non, le respect est pour tous"
+  },
+  {
+    "question": "Quand tu es très en colère, la meilleure chose est…",
+    "options": ["Compter jusqu’à 10 et respirer", "Crier", "Frapper"],
+    "answer": "Compter jusqu’à 10 et respirer"
+  },
+  {
+    "question": "Ton ami dit « n’en parle à personne », mais il est en danger. Tu…",
+    "options": ["Gardes le secret", "Cherches de l’aide auprès d’un adulte", "Fais semblant de rien"],
+    "answer": "Cherches de l’aide auprès d’un adulte"
+  },
+  {
+    "question": "Si quelqu’un rit de tes vêtements tous les jours, c’est…",
+    "options": ["Du harcèlement", "Un compliment", "Une opinion gentille"],
+    "answer": "Du harcèlement"
+  },
+  {
+    "question": "Que dois-tu faire si un camarade se sent exclu du jeu ?",
+    "options": ["L’inviter à jouer", "Rire de lui", "L’ignorer"],
+    "answer": "L’inviter à jouer"
+  },
+  {
+    "question": "Quand un élève te demande de garder un secret qui te met mal à l’aise, tu…",
+    "options": ["Parles à un adulte", "Gardes le secret", "Promets de ne rien dire"],
+    "answer": "Parles à un adulte"
+  },
+  {
+    "question": "Un copain envoie un message méchant dans un groupe. Que fais-tu ?",
+    "options": ["Signaler et prévenir un adulte", "Répondre encore plus méchamment", "Partager le message"],
+    "answer": "Signaler et prévenir un adulte"
+  },
+  {
+    "question": "Si tu vois un camarade pleurer parce qu’on s’est moqué de lui, tu…",
+    "options": ["Le consoles et préviens un adulte", "Filmes la scène", "Te joins aux moqueries"],
+    "answer": "Le consoles et préviens un adulte"
+  },
+  {
+    "question": "Que signifie respecter les autres ?",
+    "options": ["Écouter et ne pas blesser", "Toujours avoir raison", "Se moquer pour rigoler"],
+    "answer": "Écouter et ne pas blesser"
+  },
+  {
+    "question": "Si tu es témoin de harcèlement, tu es…",
+    "options": ["Un spectateur qui peut aider", "Pas concerné", "Obligé de te taire"],
+    "answer": "Un spectateur qui peut aider"
+  },
+  {
+    "question": "Quel geste est respectueux quand un camarade parle ?",
+    "options": ["L’écouter en silence", "Se moquer", "Lui tourner le dos"],
+    "answer": "L’écouter en silence"
+  },
+  {
+    "question": "Quelqu’un invente des rumeurs sur toi. Que peux-tu faire ?",
+    "options": ["Parler à un adulte de confiance", "Inventer une rumeur aussi", "Ne plus venir à l’école"],
+    "answer": "Parler à un adulte de confiance"
+  },
+  {
+    "question": "Un camarade te demande ton mot de passe pour ton jeu préféré. Tu…",
+    "options": ["Refuses et en parles à un adulte", "Le donnes pour faire plaisir", "Le changes après"],
+    "answer": "Refuses et en parles à un adulte"
+  }
 ]
+

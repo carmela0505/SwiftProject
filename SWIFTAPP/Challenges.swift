@@ -2,95 +2,107 @@ import SwiftUI
 
 // MARK: - Models
 
-struct ChallengeItem: Identifiable, Decodable {
+struct NewChallengeItem: Identifiable, Decodable {
     let id: Int
     let description: String
 }
 
-struct ChallengeStatus: Identifiable {
+struct NewChallengeStatus: Identifiable {
     let id: Int
-    let challenge: ChallengeItem
+    let challenge: NewChallengeItem
     var isDone: Bool = false
     var isSkipped: Bool = false
 }
 
-class CompletedWeeksData: ObservableObject {
-    @Published var completedWeeks: [CompletedWeek] = []
+class NewCompletedWeeksData: ObservableObject {
+    @Published var completedWeeks: [NewCompletedWeek] = []
 }
 
-struct CompletedWeek: Identifiable {
+struct NewCompletedWeek: Identifiable {
     let id = UUID()
     let weekNumber: Int
-    var challenges: [ChallengeStatus]
+    var challenges: [NewChallengeStatus]
 }
 
 // MARK: - Main View
 
-struct MyChallengeView: View {
+struct NewChallengeView: View {
     @State private var rotation: Double = 0
-    @State private var showChallenge: ChallengeItem? = nil
-    @State private var challenges: [ChallengeItem] = []
-
-    @State private var weekChallenges: [ChallengeStatus] = []
+    @State private var showChallenge: NewChallengeItem? = nil
+    @State private var challenges: [NewChallengeItem] = []
+    
+    @State private var weekChallenges: [NewChallengeStatus] = []
     @State private var currentWeekNumber: Int = 1
-
-    @StateObject private var completedData = CompletedWeeksData()
+    
+    @StateObject private var completedData = NewCompletedWeeksData()
     @State private var navigateToResult = false
-
+    
+    // 4 slices cho bánh xe
     let sliceColors: [Color] = [
         Color(.sRGB, red: 0.90, green: 0.33, blue: 0.49, opacity: 1),
         Color(.sRGB, red: 0.95, green: 0.60, blue: 0.30, opacity: 1),
         Color(.sRGB, red: 0.55, green: 0.80, blue: 0.30, opacity: 1),
-        Color(.sRGB, red: 0.35, green: 0.65, blue: 0.85, opacity: 1),
-        Color(.sRGB, red: 0.80, green: 0.40, blue: 0.70, opacity: 1),
-        Color(.sRGB, red: 0.90, green: 0.75, blue: 0.25, opacity: 1),
-        Color(.sRGB, red: 0.50, green: 0.60, blue: 0.90, opacity: 1)
+        Color(.sRGB, red: 0.35, green: 0.65, blue: 0.85, opacity: 1)
     ]
-
-    // MARK: - Computed Properties
-
+    
+    
+    
     var hasUnhandledChallenge: Bool {
         guard let first = weekChallenges.first else { return false }
         return !first.isDone && !first.isSkipped
     }
-
+    
     var canSpin: Bool {
         weekChallenges.count < 7 && !hasUnhandledChallenge
     }
-
+    
     var isWeekCompleted: Bool {
         weekChallenges.count == 7 && weekChallenges.allSatisfy { $0.isDone || $0.isSkipped }
     }
-
-    // MARK: - Body
-
+    
     var body: some View {
         NavigationStack {
             ZStack {
+                // Background color
                 Color(.sRGB, red: 1.0, green: 0.69, blue: 0.20, opacity: 1)
-                    .ignoresSafeArea()
-
-                VStack(spacing: 20) {
-                    // Wheel
+                    .ignoresSafeArea(edges:.top)
+                
+                VStack(spacing: 15) { // reduce spacing for compact layout
+                    
+                    // Wheel + Pointer
                     ZStack {
-                        ForEach(0..<7) { index in
-                            let startAngle = Angle(degrees: Double(index) * (360 / 7))
-                            let endAngle = Angle(degrees: Double(index + 1) * (360 / 7))
-                            PieSlice(startAngle: startAngle, endAngle: endAngle)
+                        // 4-slice wheel
+                        ForEach(0..<4) { index in
+                            let startAngle = Angle(degrees: Double(index) * 360 / 4)
+                            let endAngle = Angle(degrees: Double(index + 1) * 360 / 4)
+                            NewPieSlice(startAngle: startAngle, endAngle: endAngle)
                                 .fill(sliceColors[index])
                                 .frame(width: 300, height: 300)
-                        }
+                        } .rotationEffect(.degrees(rotation))
+                            .animation(.easeOut(duration: 2), value: rotation)
+                        
+                        // Pointer on top
+                        NewPointerShape()
+                            .fill(Color.white)
+                            .frame(width: 40, height: 80)
+                            .offset(y: -150)  // pointer sits on top of wheel
+                            .shadow(radius: 2)
                     }
-                    .rotationEffect(.degrees(rotation))
-                    .animation(.easeOut(duration: 2), value: rotation)
-
-                    PointerShape()
-                        .fill(Color.white)
-                        .frame(width: 40, height: 80)
-                        .offset(y: -350)
-                        .shadow(radius: 2)
-
-                    // Spin button
+                    
+                    
+                    // Challenge text immediately below the wheel
+                    if let challenge = showChallenge {
+                        Text(challenge.description)
+                            .font(.title3)
+                            .multilineTextAlignment(.center)
+                            .lineLimit(2)
+                            .truncationMode(.tail)
+                            .frame(width: 250)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .padding(.top, 5)
+                    }
+                    
+                    // Spin Button
                     if weekChallenges.count < 7 {
                         Button(action: spinWheel) {
                             Text("Tourner !")
@@ -102,17 +114,10 @@ struct MyChallengeView: View {
                                 .shadow(radius: 5)
                         }
                         .disabled(!canSpin)
+                        .padding(.top, 5)
                     }
-
-                    // Current challenge
-                    if let challenge = showChallenge {
-                        Text(challenge.description)
-                            .font(.title3)
-                            .multilineTextAlignment(.center)
-                            .padding(.horizontal, 20)
-                    }
-
-                    // Weekly stack
+                    
+                    // Weekly challenge cards
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 15) {
                             ForEach(weekChallenges.indices, id: \.self) { index in
@@ -124,11 +129,9 @@ struct MyChallengeView: View {
                                         .background(Color.blue)
                                         .cornerRadius(10)
                                         .multilineTextAlignment(.center)
-
+                                    
                                     HStack {
-                                        Button(action: {
-                                            markChallengeDone(index: index)
-                                        }) {
+                                        Button(action: { markChallengeDone(index: index) }) {
                                             Text("Terminé")
                                                 .font(.caption)
                                                 .foregroundColor(.white)
@@ -137,10 +140,8 @@ struct MyChallengeView: View {
                                                 .cornerRadius(5)
                                         }
                                         .disabled(weekChallenges[index].isDone || weekChallenges[index].isSkipped)
-
-                                        Button(action: {
-                                            markChallengeSkipped(index: index)
-                                        }) {
+                                        
+                                        Button(action: { markChallengeSkipped(index: index) }) {
                                             Text("Passer")
                                                 .font(.caption)
                                                 .foregroundColor(.white)
@@ -155,12 +156,13 @@ struct MyChallengeView: View {
                         }
                         .padding(.horizontal, 10)
                     }
-
-                    // Weekly result & New Challenge buttons
+                    .padding(.top, 5)
+                    
+                    // Week result & New Challenge buttons
                     if isWeekCompleted {
                         VStack(spacing: 10) {
                             NavigationLink(
-                                destination: WeekChallengeResult(doneCount: weekChallenges.filter { $0.isDone }.count),
+                                destination: NewWeekChallengeResult(doneCount: weekChallenges.filter { $0.isDone }.count),
                                 isActive: $navigateToResult
                             ) {
                                 Text("Cliquez ici pour voir le résultat")
@@ -170,7 +172,7 @@ struct MyChallengeView: View {
                                     .background(Color.blue)
                                     .cornerRadius(10)
                             }
-
+                            
                             Button(action: startNewWeek) {
                                 Text("New Challenge")
                                     .font(.headline)
@@ -180,10 +182,11 @@ struct MyChallengeView: View {
                                     .cornerRadius(10)
                             }
                         }
+                        .padding(.top, 5)
                     }
-
+                    
                     // Completed challenges navigation
-                    NavigationLink(destination: CompletedChallengesView(completedData: completedData)) {
+                    NavigationLink(destination: NewCompletedChallengesView(completedData: completedData)) {
                         Text("Voir toutes mes missions")
                             .font(.subheadline)
                             .foregroundColor(.white)
@@ -191,86 +194,88 @@ struct MyChallengeView: View {
                             .background(Color.orange)
                             .cornerRadius(10)
                     }
+                    .padding(.top, 5)
+                    
+                    Spacer() // pushes content up, leaves room for TabView below
                 }
-                .padding(.vertical)
+                .padding(.top, 20) // add a bit of padding at top
             }
             .onAppear { loadChallenges() }
         }
     }
-
-    // MARK: - Load Challenges
-
+    
+    
+    //Load Challenges
     func loadChallenges() {
         guard let url = Bundle.main.url(forResource: "challenges", withExtension: "json") else { return }
         do {
             let data = try Data(contentsOf: url)
-            let decoded = try JSONDecoder().decode([ChallengeItem].self, from: data)
+            let decoded = try JSONDecoder().decode([NewChallengeItem].self, from: data)
             self.challenges = decoded
         } catch {
             print("Error loading JSON: \(error)")
         }
     }
-
-    // MARK: - Spin Wheel
-
+    
+    // Spin Wheel
     func spinWheel() {
         guard !challenges.isEmpty else { return }
+        
+        // 1. Chọn slice trước
+        let randomIndex = Int.random(in: 0..<4)  // 0,1,2,3
+        
+        // 2. Chọn những task còn khả dụng có id % 4 == randomIndex
         let available = challenges.filter { c in
-            !weekChallenges.contains(where: { $0.challenge.id == c.id })
+            !weekChallenges.contains(where: { $0.challenge.id == c.id }) && c.id % 4 == randomIndex
         }
+        
         guard !available.isEmpty else { return }
-
+        
+        // 3. Chọn random trong các task phù hợp với slice
         let selected = available.randomElement()!
-        let randomIndex = Int.random(in: 0..<7)
+        
+        // 4. Tính rotation
         let fullRotations = Double.random(in: 3...6)
-        let extraRotation = Double(randomIndex) * (360/7)
+        let extraRotation = Double(randomIndex) * (360/4)
         let totalRotation = fullRotations*360 + extraRotation
-
+        
         withAnimation(.easeOut(duration: 2)) {
             rotation += totalRotation
         }
-
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             showChallenge = selected
-            weekChallenges.insert(ChallengeStatus(id: selected.id, challenge: selected), at: 0)
+            weekChallenges.insert(NewChallengeStatus(id: selected.id, challenge: selected), at: 0)
         }
     }
-
-    // MARK: - Mark Challenge
-
+    
+    
+    // Mark Challenge
     func markChallengeDone(index: Int) {
         guard !weekChallenges[index].isDone && !weekChallenges[index].isSkipped else { return }
         weekChallenges[index].isDone = true
         weekChallenges[index].isSkipped = false
         updateCompletedWeeks()
     }
-
+    
     func markChallengeSkipped(index: Int) {
         guard !weekChallenges[index].isDone && !weekChallenges[index].isSkipped else { return }
         weekChallenges[index].isDone = false
         weekChallenges[index].isSkipped = true
         updateCompletedWeeks()
     }
-
-    // MARK: - Update Completed Weeks
-
+    
+    //  Update Completed Weeks
     func updateCompletedWeeks() {
         if let idx = completedData.completedWeeks.firstIndex(where: { $0.weekNumber == currentWeekNumber }) {
             completedData.completedWeeks[idx].challenges = weekChallenges.filter { $0.isDone }
         } else {
-            let newWeek = CompletedWeek(weekNumber: currentWeekNumber, challenges: weekChallenges.filter { $0.isDone })
+            let newWeek = NewCompletedWeek(weekNumber: currentWeekNumber, challenges: weekChallenges.filter { $0.isDone })
             completedData.completedWeeks.append(newWeek)
         }
     }
-
-    // MARK: - Show Week Result
-
-    func showWeekResult() {
-        navigateToResult = true
-    }
-
-    // MARK: - Start New Week
-
+    
+    //  Start New Week
     func startNewWeek() {
         weekChallenges.removeAll()
         showChallenge = nil
@@ -279,12 +284,53 @@ struct MyChallengeView: View {
     }
 }
 
-// MARK: - Week Challenge Result
+// Pie Slice & Pointer
+struct NewPieSlice: Shape {
+    let startAngle: Angle
+    let endAngle: Angle
+    
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let center = CGPoint(x: rect.midX, y: rect.midY)
+        path.move(to: center)
+        path.addArc(center: center,
+                    radius: rect.width/2,
+                    startAngle: startAngle - Angle(degrees: 90),
+                    endAngle: endAngle - Angle(degrees: 90),
+                    clockwise: false)
+        path.closeSubpath()
+        return path
+    }
+}
 
-struct WeekChallengeResult: View {
+struct NewPointerShape: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let width = rect.width
+        let height = rect.height
+        
+        let stemWidth = width * 0.2
+        let stemHeight = height * 0.6
+        path.addRect(CGRect(x: rect.midX - stemWidth/2,
+                            y: rect.minY,
+                            width: stemWidth,
+                            height: stemHeight))
+        
+        path.move(to: CGPoint(x: rect.midX - width*0.4, y: stemHeight))
+        path.addLine(to: CGPoint(x: rect.midX + width*0.4, y: stemHeight))
+        path.addLine(to: CGPoint(x: rect.midX, y: height))
+        path.closeSubpath()
+        
+        return path
+    }
+}
+
+//Week Challenge Result
+
+struct NewWeekChallengeResult: View {
     let doneCount: Int
     @Environment(\.dismiss) var dismiss
-
+    
     var resultMessage: String {
         switch doneCount {
         case 0: return "Dommage, tu n’as fait aucune mission cette semaine."
@@ -295,14 +341,14 @@ struct WeekChallengeResult: View {
         default: return "Je te souhaite une bonne journée!"
         }
     }
-
+    
     var body: some View {
         VStack(spacing: 30) {
             Text(resultMessage)
                 .font(.largeTitle)
                 .bold()
                 .multilineTextAlignment(.center)
-
+            
             Button(action: { dismiss() }) {
                 Text("Fermer")
                     .foregroundColor(.white)
@@ -316,29 +362,26 @@ struct WeekChallengeResult: View {
     }
 }
 
-// MARK: - Completed Challenges View
+//Completed Challenges View
 
-struct CompletedChallengesView: View {
-    @ObservedObject var completedData: CompletedWeeksData
-
+struct NewCompletedChallengesView: View {
+    @ObservedObject var completedData: NewCompletedWeeksData
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 ForEach(completedData.completedWeeks) { week in
                     VStack(alignment: .leading, spacing: 5) {
-                        // Week header
                         Text("Week \(week.weekNumber):")
                             .font(.title2)
                             .bold()
                             .padding(.bottom, 5)
                         
-                        // If no challenges were completed
                         if week.challenges.isEmpty {
                             Text("Quel dommage, vous n'avez accompli aucune mission cette semaine.")
                                 .italic()
                                 .foregroundColor(.gray)
                         } else {
-                            // List of completed challenges
                             ForEach(Array(week.challenges.enumerated()), id: \.offset) { index, item in
                                 HStack {
                                     Text("\(index + 1).").bold()
@@ -356,53 +399,10 @@ struct CompletedChallengesView: View {
     }
 }
 
-// MARK: - Pie Slice & Pointer
+//
 
-struct PieSlice: Shape {
-    let startAngle: Angle
-    let endAngle: Angle
-
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        let center = CGPoint(x: rect.midX, y: rect.midY)
-        path.move(to: center)
-        path.addArc(center: center,
-                    radius: rect.width/2,
-                    startAngle: startAngle - Angle(degrees: 90),
-                    endAngle: endAngle - Angle(degrees: 90),
-                    clockwise: false)
-        path.closeSubpath()
-        return path
-    }
-}
-
-struct PointerShape: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        let width = rect.width
-        let height = rect.height
-
-        let stemWidth = width * 0.2
-        let stemHeight = height * 0.6
-        path.addRect(CGRect(x: rect.midX - stemWidth/2,
-                            y: rect.minY,
-                            width: stemWidth,
-                            height: stemHeight))
-
-        path.move(to: CGPoint(x: rect.midX - width*0.4, y: stemHeight))
-        path.addLine(to: CGPoint(x: rect.midX + width*0.4, y: stemHeight))
-        path.addLine(to: CGPoint(x: rect.midX, y: height))
-        path.closeSubpath()
-
-        return path
-    }
-}
-
-// MARK: - Preview
-
-struct MyChallengeView_Previews: PreviewProvider {
+struct NewChallengeView_Previews: PreviewProvider {
     static var previews: some View {
-        MyChallengeView()
+        NewChallengeView()
     }
 }
-

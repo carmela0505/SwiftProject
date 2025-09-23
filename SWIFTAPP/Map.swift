@@ -63,7 +63,7 @@ struct LevelNode: View {
     var body: some View {
         ZStack {
             Circle()
-                .stroke(tint.opacity(0.25), lineWidth: 10)
+                .stroke(Color.orange.opacity(0.90), lineWidth: 10)
                 .frame(width: 72, height: 72)
 
             Circle()
@@ -75,16 +75,16 @@ struct LevelNode: View {
 
             if level.isLocked {
                 Image(systemName: "lock.fill")
-                    .font(.title3.bold())
-                    .foregroundStyle(tint)
+                    .font(.largeTitle.bold())
+                    .foregroundStyle(.pink)
             } else if level.progress >= 1 {
                 Image(systemName: "checkmark")
-                    .font(.title3.bold())
+                    .font(.largeTitle.bold())
                     .foregroundStyle(tint)
             } else {
                 Text("\(level.id)")
-                    .font(.title3.bold())
-                    .foregroundStyle(tint)
+                    .font(.largeTitle.bold())
+                    .foregroundStyle(.pink)
             }
         }
         .padding(6)
@@ -240,8 +240,8 @@ struct ThemeMapView: View {
                 .foregroundStyle(.blue)
                 .padding(14)
                 .background(.white.opacity(0.15), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
-            Text(theme.subtitle)
-                .foregroundStyle(.black.opacity(0.95))
+//            Text(theme.subtitle)
+//                .foregroundStyle(.black.opacity(0.95))
         }
         .padding(.bottom, 8)
     }

@@ -117,7 +117,7 @@ struct ThemesGridView: View {
 
     var body: some View {
         ZStack {
-            Color.orange.opacity(0.80).ignoresSafeArea()
+            Color.orange.opacity(0.80).ignoresSafeArea(edges: .top)
 
             ScrollView {
                 // Header card (your teddy banner)

@@ -1,7 +1,8 @@
 import SwiftUI
 import Foundation
 import Lottie
-import AVFoundation
+
+// Models
 
 struct QuizItem: Codable, Identifiable {
     let id = UUID()
@@ -23,23 +24,28 @@ struct QuestionBlock: Identifiable {
 }
 struct QuizzState {
     var questions: [QuestionBlock] = []
-    
     var bonbon: [Color] = []
     var finished: Bool = false
 }
 
-private func loadQuizItems(from fileName: String, exactly count: Int = 5) -> [QuizItem] {
-    guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else { return [] }
+//  Data loading
+
+private func loadQuizItems(from fileName: String, exactly count: Int = 5) -> Result<[QuizItem], Error> {
+    guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else {
+           return .failure(NSError(domain: "Quizz", code: 1, userInfo: [
+               NSLocalizedDescriptionKey: "Fichier \(fileName).json introuvable dans le bundle (Target Membership ? Nom exact ?)"
+           ]))
+       }
     do {
         let data = try Data(contentsOf: url)
         let decoded = try JSONDecoder().decode([QuizItem].self, from: data)
-        if decoded.count >= count { return Array(decoded.shuffled().prefix(count)) }
-        return decoded // fallback if file has < 5 items
-    } catch {
-        print("Failed to load quiz items from \(fileName).json: \(error.localizedDescription)")
-        return []
-    }
-}
+        
+        let items = decoded.count >= count ? Array(decoded.shuffled().prefix(count)) : decoded
+                return .success(items)
+            } catch {
+                return .failure(error)
+            }
+        }
 private func mapToState(_ items: [QuizItem]) -> QuizzState {
     let qs: [QuestionBlock] = items.map { item in
         QuestionBlock(
@@ -52,11 +58,9 @@ private func mapToState(_ items: [QuizItem]) -> QuizzState {
     return QuizzState(questions: qs, bonbon: Array(repeating: .gray, count: qs.count), finished: false)
 }
 
+// View
 
-//View
 struct QuizzView: View {
-    @State private var speaker = AVSpeechSynthesizer()
-    @AppStorage("ttsEnabled") private var ttsEnabled = true  // let user toggle if you like
     let quizFile: String
     let onFinish: (Bool) -> Void
     var onResults: (([String]) -> Void)? = nil
@@ -67,18 +71,26 @@ struct QuizzView: View {
     @State private var state = QuizzState()
     @State private var currentIndex = 0
     @State private var selectedText: String? = nil
+    //load errors
+    @State private var loadError: String? = nil
     
+
     // Lottie bear feedback
     @State private var showBear = false
     @State private var bearIsCorrect = false
     @State private var bearAnchorIndex: Int? = nil
-    //Results
+    
+    // Results
     @State private var showResults = false
-    @State private var passedResult =   false
+    @State private var passedResult = false
     
     // Wrong-answer popup
     @State private var showCorrectionAlert = false
     @State private var correctionText = ""
+    
+    //  Speech
+    @StateObject private var speaker = SpeechManager()
+    @State private var voiceOverEnabled = false  // simple on/off UI
     
     // Computed
     private var answeredCurrent: Bool {
@@ -90,23 +102,38 @@ struct QuizzView: View {
         return q.options.first(where: { $0.selection })
     }
     private var headerText: String {
-        if let sel = selectedAnswer { return sel.isCorrect ? "Bravo !" : "Ne lâche pas!" }
-        return "Quiz"
+        if let sel = selectedAnswer { return sel.isCorrect ? "BRAVO !" : "Ne lâche pas!" }
+        return "QUIZZ"
     }
     private var correctCount: Int { state.bonbon.filter { $0 == .green }.count }
     private var bonbonStrings: [String] {
-        state.bonbon.map { $0 == .green ? "green" : ($0 == .red ? "red" : "gray")
-        }
+        state.bonbon.map { $0 == .green ? "green" : ($0 == .red ? "red" : "gray") }
     }
     
     var body: some View {
         ZStack {
             background.ignoresSafeArea()  // themed gradient
+            
             if state.questions.isEmpty {
-                Text("Chargement…")
-                    .font(.title2.bold())
-                    .foregroundStyle(.white)
-                    .onAppear(perform: setup)
+                if let loadError {
+                    VStack {
+                        Text("Erreur de chargement")
+                            .font(.title2.bold())
+                            .foregroundStyle(.white)
+                        Text(loadError).font(.callout).multilineTextAlignment(.center).foregroundStyle(.white.opacity(0.9))
+                        Button("Réessayer") { setup() }
+                                        .padding(.horizontal, 16).padding(.vertical, 10)
+                                        .background(.white).foregroundColor(.black)
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                }
+                                .padding()
+                                .onAppear(perform: setup)
+                } else {
+                    Text("Chargement…")
+                        .font(.title2.bold())
+                        .foregroundStyle(.white)
+                        .onAppear(perform: setup) // loads questions
+                }
             } else {
                 VStack(spacing: 25) {
                     
@@ -125,7 +152,58 @@ struct QuizzView: View {
                             .animation(.spring(response: 0.35, dampingFraction: 0.85), value: headerText)
                     }
                     .padding(.horizontal)
-//
+                    
+                    // Mute / Replay controls
+                    HStack(spacing: 12) {
+                        ZStack {
+                            
+                                               // ✖️ Close button (new)
+                                               Button {
+                                                   // Signal "cancel": no pass
+                                                   onFinish(false)
+                                               } label: {
+                                                   Image(systemName: "xmark.circle.fill")
+                                                       .font(.title2)
+                                                       .foregroundStyle(.white, .black.opacity(0.35))
+                                                       .padding(6)
+                                                       .background(.ultraThinMaterial, in: Circle())
+                                               }
+                                               .accessibilityLabel("Quitter le quizz")
+                                               .padding(.trailing, 8)
+                                               .padding(.top, -6) // nudges inside the header
+                                           }
+
+        
+                
+                        
+                        Button {
+                            voiceOverEnabled.toggle()
+                            speaker.isMuted = !voiceOverEnabled
+                            if !voiceOverEnabled { speaker.stop() }
+                        } label: {
+                            Image(systemName: voiceOverEnabled ? "speaker.wave.2.fill" : "speaker.slash.fill")
+                                .font(.title3)
+                                .padding(10)
+                                .background(.white.opacity(0.9), in: RoundedRectangle(cornerRadius: 12))
+                        }
+                        .accessibilityLabel(voiceOverEnabled ? "Désactiver la lecture" : "Activer la lecture")
+                        
+                        Button {
+                            if let q = safeQuestion(currentIndex) {
+                                speaker.speakQuestion(q.question, options: q.options.map(\.text))
+                            }
+                        } label: {
+                            Image(systemName: "arrow.clockwise")
+                                .font(.title3)
+                                .padding(10)
+                                .background(.white.opacity(0.9), in: RoundedRectangle(cornerRadius: 12))
+                        }
+                        .accessibilityLabel("Relire la question")
+                        
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                    
                     // Gifts + score + bear
                     VStack(spacing: 10) {
                         HStack(spacing: 14) {
@@ -142,7 +220,6 @@ struct QuizzView: View {
                                         : "Non répondu"
                                     )
                             }
-                            
                         }
                         .padding(.horizontal)
                         .padding(.vertical, 8)
@@ -157,23 +234,35 @@ struct QuizzView: View {
                         }
                     }
                     
-                    // Current question
-                    if let q = safeQuestion(currentIndex) {
-                        Text(q.question)
-                            .font(.system(size: 30, weight: .bold))
-                            .foregroundColor(.white)
-                            .multilineTextAlignment(.center)
-                            .padding(.horizontal)
-                        Spacer()
-                        VStack(spacing: 25) {
-                            ForEach(q.options) { option in
-                                optionRow(option)
+                    // Scrollable content: question + options
+                    Group{
+                        if let q = safeQuestion(currentIndex) {
+                            ScrollView {
+                                VStack(alignment:.center, spacing:22) {
+                                    Text(q.question)
+                                        .font(.system(size: 30, weight: .bold))
+                                        .foregroundColor(.white)
+                                        .multilineTextAlignment(.center)
+                                        .fixedSize(horizontal: false, vertical: true) // ensure full wrapping
+                                    
+                                    VStack(spacing: 18) {
+                                        ForEach(q.options) { option in
+                                            optionRow(option)
+                                        }
+                                    }
+                                    .padding(.top, 6)
+                                }
+                                .padding(.horizontal)
+                                .padding(.vertical,4)
                             }
+                            .scrollIndicators(.automatic)
+                            .safeAreaPadding(.bottom, 0)
                         }
-                        .padding(.horizontal)
                     }
+                    .frame(maxHeight: .infinity)  //allow scrolling to take available space
                     
-                    // Bottom controls
+                    
+                    // Bottom controls (kept fixed)
                     HStack(spacing: 22) {
                         if currentIndex > 0 {
                             CircleButton(icon: "chevron.left", tint: accent) {
@@ -241,10 +330,19 @@ struct QuizzView: View {
             Button("OK") { autoNextIfPossible() }
         } message: {
             Text("La bonne réponse est : \(correctionText)")
-               
         }
+        //  Speak next question when index changes
+        .onChange(of: currentIndex) { _ in
+            speaker.stop()
+            if let q = safeQuestion(currentIndex) {
+                speaker.speakQuestion(q.question, options: q.options.map(\.text))
+            }
+        }
+        .onDisappear { speaker.stop() }
     }
- 
+    
+    //Option UI
+    
     @ViewBuilder
     private func optionIndicator(for option: Answer) -> some View {
         if let selected = selectedAnswer {
@@ -283,13 +381,24 @@ struct QuizzView: View {
         }
     }
     
-    //  Logic
+    // Logic
+    
     private func setup() {
-        let items = loadQuizItems(from: quizFile, exactly: 5) // change or remove `exactly:` if you want all questions
-        state = mapToState(items)
-        currentIndex = 0
-        selectedText = nil
-    }
+        switch loadQuizItems(from: quizFile, exactly: 5) {
+           case .success(let items):
+               state = mapToState(items)
+               currentIndex = 0
+               selectedText = nil
+               DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                   if let q = safeQuestion(0) {
+                       speaker.speakQuestion(q.question, options: q.options.map(\.text))
+                   }
+               }
+           case .failure(let err):
+               loadError = err.localizedDescription
+           }
+       }
+    
     
     private func safeQuestion(_ idx: Int) -> QuestionBlock? {
         guard idx >= 0 && idx < state.questions.count else { return nil }
@@ -324,6 +433,9 @@ struct QuizzView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) {
                 withAnimation(.easeOut) { showBear = false }
                 
+                // Speak result & correction
+                speaker.speakResult(correct: sel.isCorrect, correctText: correctText)
+                
                 if sel.isCorrect {
                     // correct -> auto next immediately
                     autoNextIfPossible()
@@ -353,16 +465,17 @@ struct QuizzView: View {
     
     private func finish() {
         // Send the detailed results up (so TabView -> Récompenses can use them)
-            onResults?(bonbonStrings)
-
+        onResults?(bonbonStrings)
+        
         // “passed” only if perfect score on the set you loaded
-           let passed = (correctCount == state.questions.count /* && state.questions.count == 5 */)
-           passedResult = passed
-           showResults = true
+        let passed = (correctCount == state.questions.count /* && state.questions.count == 5 */)
+        passedResult = passed
+        showResults = true
     }
 }
 
-//  Small round button (kept only for "Prev")
+// Small round button (kept only for "Prev")
+
 struct CircleButton: View {
     var icon: String
     var tint: Color
@@ -378,7 +491,6 @@ struct CircleButton: View {
     }
 }
 
-
 #Preview {
     QuizzView(
         quizFile: "violence_ecole_questions",
@@ -387,3 +499,4 @@ struct CircleButton: View {
         accent: .blue
     )
 }
+

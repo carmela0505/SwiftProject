@@ -14,6 +14,7 @@ struct LottieView: UIViewRepresentable {
     var loopMode: LottieLoopMode = .loop
     var speed: CGFloat = 1.0
     var contentMode: UIView.ContentMode = .scaleAspectFit  // change per usage
+    var size: CGSize?
 
     func makeUIView(context: Context) -> LottieAnimationView {
         let view = LottieAnimationView(animation: LottieAnimation.named(name))

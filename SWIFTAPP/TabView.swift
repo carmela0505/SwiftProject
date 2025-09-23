@@ -10,8 +10,7 @@ private enum TabTag: Int { case profil, quiz , challenges, recompenses, resultat
 struct ThemesTabContainer: View {
     @State private var selected: TabTag = .quiz   // start on Themes
     @State private var resultsBonbons: [String] = []
-    @AppStorage("prenomEnfant") private var prenomEnfant: String = "Léa"
-    
+    @AppStorage("prenomEnfant") private var prenomEnfant: String = "Léa" 
 
     func handleResults(_ b: [String]) {
             resultsBonbons = b
@@ -22,7 +21,7 @@ struct ThemesTabContainer: View {
             
             // PROFIL
             NavigationStack {
-                ProfileEnfant(prenomEnfant: prenomEnfant)
+                ProfileEnfant()
                     .navigationTitle("Profil")
                     .navigationBarTitleDisplayMode(.inline)
             }
@@ -38,9 +37,9 @@ struct ThemesTabContainer: View {
             .tag(TabTag.quiz)
             
             // CHALLENGES
-            NavigationStack { MyChallengeView()
+            NavigationStack { NewChallengeView()
                     .navigationTitle("Challenges")
-                    .navigationBarTitleDisplayMode( .inline)
+                    .navigationBarTitleDisplayMode(.inline)
             }
             .tabItem { Label("Challenges", systemImage: "flag.checkered") }
             .tag(TabTag.challenges)
@@ -59,9 +58,11 @@ struct ThemesTabContainer: View {
             //  Draw a rounded-rectangle “frame” around the system Tab Bar
                     .overlay(alignment: .bottom) {
                         RoundedRectangle(cornerRadius: 24, style: .continuous)
+                            
                             .stroke(Color.black.opacity(0.12), lineWidth: 1.5)   // the visible outline
                             .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: 6)
-                            .frame(height: 64)                                   // height of the frame
+
+                            .frame(height: 54)                                   // height of the frame
                             .padding(.horizontal, 10)                            // inset from screen edges
                             .padding(.bottom, 2)                                 // lift it slightly
                             .allowsHitTesting(false)

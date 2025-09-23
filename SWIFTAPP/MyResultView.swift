@@ -44,9 +44,9 @@ struct MyResultView: View {
             Image("yellow")
                 .resizable()
                 .scaledToFill()
-                .ignoresSafeArea()
+                .ignoresSafeArea(edges: .top)
 
-            // 🎉 Lottie only if all answers are correct (perfect score of any length)
+            // Lottie only if all answers are correct (perfect score of any length)
             if isPerfect {
                 LottieView(name: "bonbon", loopMode: .playOnce)
                     .frame(width: 240, height: 240)
@@ -101,14 +101,14 @@ struct MyResultView: View {
                 Image("bear1")
                     .frame(width: 50, height: 300)
 
-                Text("Est-ce que tu as aimé les questions ?")
-                    .font(.title3)
-                    .foregroundStyle(.blue)
-
-                HStack(spacing: 18) {
-                    Button("\(Image(systemName: "hand.thumbsup.fill"))") { }
-                    Button("\(Image(systemName: "hand.thumbsdown.fill"))") { }
-                }
+//                Text("Est-ce que tu as aimé les questions ?")
+//                    .font(.title3)
+//                    .foregroundStyle(.blue)
+//
+//                HStack(spacing: 18) {
+//                    Button("\(Image(systemName: "hand.thumbsup.fill"))") { }
+//                    Button("\(Image(systemName: "hand.thumbsdown.fill"))") { }
+//                }
 
                 // Actions
                 HStack(spacing: 14) {
@@ -188,7 +188,7 @@ struct MyResultTabView: View {
 
 #Preview {
     MyResultTabView(
-        bonbons: ["green","green","green","red","green"],
+        bonbons: ["green","green","green","green","green"],
         onReplay: {},
         onFinish: {}
     )

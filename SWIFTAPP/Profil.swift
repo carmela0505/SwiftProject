@@ -1,12 +1,6 @@
-//
-//  Profil.swift
-//  TESTING
-//
-//  Created by apprenant130 on 14/09/2025.
-//
 import SwiftUI
 
-//Bindings
+// Binding helpers
 extension Binding where Value == String {
     func nameCased() -> Binding<String> {
         Binding(
@@ -29,7 +23,7 @@ extension Binding where Value == String {
     }
 }
 
-
+// Reusable styling
 struct InputFieldModifier: ViewModifier {
     var bg: Color
     func body(content: Content) -> some View {
@@ -42,20 +36,15 @@ struct InputFieldModifier: ViewModifier {
                     .stroke(Color.gray.opacity(0.35), lineWidth: 1)
             )
             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-            .foregroundColor(.black) // typed text in black
+            .foregroundColor(.black)
     }
 }
-
 extension View {
-    /// Apply the styled text-field background + border
     func inputField(bg: Color = Color.yellow.opacity(0.25)) -> some View {
-        self.modifier(InputFieldModifier(bg: bg))
+        modifier(InputFieldModifier(bg: bg))
     }
-
-    /// Card container style used around groups/sections
     func cardStyle() -> some View {
-        self
-            .padding(14)
+        padding(14)
             .background(Color.white)
             .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
             .shadow(color: .black.opacity(0.06), radius: 8, x: 0, y: 2)
@@ -63,24 +52,46 @@ extension View {
     }
 }
 
-// Form
+// Small error view
+private struct ErrorText: View {
+    let show: Bool
+    let text: String
+    var body: some View {
+        Group {
+            if show {
+                Text(text)
+                    .font(.caption)
+                    .foregroundColor(.red)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
+    }
+}
+
 struct ProfilParentFormView: View {
-    // Champs
+    // Parent fields
     @State private var nom = ""
     @State private var prenom = ""
-    @State private var prenomEnfant = ""
     @State private var email = ""
     @State private var dateNaissance = Date()
-    @State private var relation = "Mère"
+
+    // Active player (single child, read by ProfileEnfant)
+    @AppStorage("prenomEnfant") private var prenomEnfant: String = ""
+
+    // All children (names only) persisted as JSON
+    @AppStorage("prenomsEnfants") private var prenomsEnfantsData: Data = Data()
+    @State private var enfants: [String] = []
+
+    // Add-child dedicated input
+    @State private var newChildName: String = ""
 
     // UI
     @State private var showAlert = false
     @State private var alertMessage = ""
-
     @FocusState private var focus: Champ?
-    enum Champ: Hashable { case nom, prenom, prenomEnfant, email }
+    enum Champ: Hashable { case nom, prenom, email, newChild, activeChild }
 
-    private let relations = ["Mère", "Père", "Tuteur·trice"]
+    private var backgroundColor: Color { Color.orange.opacity(0.80) }
 
     // Validation
     private func isValidName(_ s: String) -> Bool {
@@ -94,13 +105,37 @@ struct ProfilParentFormView: View {
         let regex = #"^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$"#
         return mail.range(of: regex, options: [.regularExpression, .caseInsensitive]) != nil
     }
-    private var formOK: Bool {
-        isValidName(nom) && isValidName(prenom) && isValidName(prenomEnfant) && isValidEmail(email)
+
+    // Age rule: must be ≥ 6 years old
+    private var latestAllowedDOB: Date {
+        Calendar.current.date(byAdding: .year, value: -6, to: Date()) ?? Date()
+    }
+    private var isAgeOK: Bool { dateNaissance <= latestAllowedDOB }
+
+    // Flags (parent)
+    private var showNomError: Bool { !nom.isEmpty && !isValidName(nom) }
+    private var showPrenomError: Bool { !prenom.isEmpty && !isValidName(prenom) }
+    private var showEmailError: Bool { !email.isEmpty && !isValidEmail(email) }
+
+    // Children flags
+    private var hasAtLeastOneChild: Bool { !enfants.isEmpty }
+    private var allChildrenValid: Bool { enfants.allSatisfy { isValidName($0) } }
+    private var showActiveChildError: Bool { !prenomEnfant.isEmpty && !isValidName(prenomEnfant) }
+
+    private var canAddNewChild: Bool {
+        let trimmed = newChildName.trimmingCharacters(in: .whitespacesAndNewlines)
+        return isValidName(trimmed) && !enfants.contains(trimmed)
     }
 
-    private var backgroundColor: Color { Color.orange.opacity(0.80) }
+    private var formOK: Bool {
+        isValidName(nom) &&
+        isValidName(prenom) &&
+        isValidEmail(email) &&
+        isAgeOK &&
+        isValidName(prenomEnfant) // active player must be valid
+    }
 
-    // Small field views (keeps the big body simple)
+    // Fields
     private var nomField: some View {
         TextField("", text: $nom.nameCased(),
                   prompt: Text("Nom").foregroundColor(.black.opacity(0.6)))
@@ -121,16 +156,6 @@ struct ProfilParentFormView: View {
             .inputField()
     }
 
-    private var prenomEnfantField: some View {
-        TextField("", text: $prenomEnfant.nameCased(),
-                  prompt: Text("Prénom de l’enfant").foregroundColor(.black.opacity(0.6)))
-            .textInputAutocapitalization(.words)
-            .autocorrectionDisabled()
-            .focused($focus, equals: .prenomEnfant)
-            .submitLabel(.next)
-            .inputField()
-    }
-
     private var emailField: some View {
         TextField("", text: $email.lowercasedInput(),
                   prompt: Text("Email").foregroundColor(.black.opacity(0.6)))
@@ -144,22 +169,203 @@ struct ProfilParentFormView: View {
 
     private var datePickerField: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Date de naissance").font(.subheadline.weight(.semibold)).foregroundColor(.black)
-            DatePicker("", selection: $dateNaissance, in: ...Date(), displayedComponents: .date)
+            Text("Date de naissance")
+                .font(.subheadline.weight(.semibold))
+                .foregroundColor(.black)
+
+            DatePicker("",
+                       selection: $dateNaissance,
+                       in: ...latestAllowedDOB,
+                       displayedComponents: .date)
                 .labelsHidden()
                 .tint(.black)
+
+            ErrorText(show: !isAgeOK, text: "L’enfant doit avoir au moins 6 ans.")
         }
         .inputField(bg: Color.yellow.opacity(0.18))
     }
 
-    // Tiny helper for errors
-    @ViewBuilder
-    private func errorText(_ show: Bool, _ text: String) -> some View {
-        if show {
-            Text(text)
-                .font(.caption)
-                .foregroundColor(.red)
-                .frame(maxWidth: .infinity, alignment: .leading)
+    // Sections
+    private var identiteSection: some View {
+        Section {
+            VStack(spacing: 12) {
+                nomField
+                ErrorText(show: showNomError, text: "Le nom doit contenir au moins 3 caractères.")
+
+                prenomField
+                ErrorText(show: showPrenomError, text: "Le prénom doit contenir au moins 3 caractères.")
+
+                datePickerField
+            }
+            .cardStyle()
+        } header: {
+            Text("Identité du parent").font(.headline).textCase(nil)
+        }
+    }
+
+    private var activeChildSection: some View {
+        Section {
+            VStack() {
+                // Active player's name (single source of truth for ProfileEnfant)
+//                TextField("", text: $prenomEnfant.nameCased(),
+//                          prompt: Text("Prénom de l’enfant (joueur·euse)")
+//                            .foregroundColor(.black.opacity(0.6)))
+//                    .textInputAutocapitalization(.words)
+//                    .autocorrectionDisabled()
+//                    .focused($focus, equals: .activeChild)
+//                    .submitLabel(.next)
+//                    .inputField()
+//
+//                ErrorText(show: showActiveChildError, text: "Le prénom doit contenir au moins 3 caractères.")
+
+                if hasAtLeastOneChild {
+                    Menu {
+                        ForEach(enfants, id: \.self) { name in
+                            Button("Utiliser « \(name) »") { prenomEnfant = name }
+                        }
+                    } label: {
+//                        Label("Choisir depuis la liste des enfants", systemImage: "person.crop.circle.badge.checkmark")
+                    }
+                }
+            }
+            .cardStyle()
+        } header: {
+//            Text("Enfant joueur").font(.headline).textCase(nil)
+        } footer: {
+//            Text("Ce prénom sera utilisé par l’écran Profil Enfant.")
+        }
+    }
+
+    private var enfantsSection: some View {
+        Section {
+            VStack(spacing: 12) {
+
+                // --- Add child input ---
+                HStack(spacing: 8) {
+                    TextField("Ajouter un prénom", text: $newChildName.nameCased())
+                        .textInputAutocapitalization(.words)
+                        .autocorrectionDisabled()
+                        .focused($focus, equals: .newChild)
+                        .submitLabel(.done)
+                        .inputField()
+
+                    Button {
+                        let trimmed = newChildName.trimmingCharacters(in: .whitespacesAndNewlines)
+                        guard isValidName(trimmed), !enfants.contains(trimmed) else { return }
+                        withAnimation {
+                            enfants.append(trimmed)
+                        }
+                        // If no active player yet, set it to this one
+                        if !isValidName(prenomEnfant) { prenomEnfant = trimmed }
+                        newChildName = ""
+                        saveChildrenToStorage()
+                    } label: {
+                        Image(systemName: "plus.circle.fill")
+                            .imageScale(.large)
+                    }
+                    .disabled(!canAddNewChild)
+                    .tint(.blue)
+                    .accessibilityLabel("Ajouter l’enfant")
+                }
+
+                // --- Children list ---
+                if enfants.isEmpty {
+                    Text("Aucun enfant ajouté pour l’instant.")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                } else {
+                    ForEach(enfants, id: \.self) { name in
+                        HStack {
+                            Text(name)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+
+                            if name != prenomEnfant {
+                                Button {
+                                    prenomEnfant = name
+                                } label: {
+                                    Label("Définir comme joueur", systemImage: "checkmark.circle")
+                                }
+                                .buttonStyle(.borderless)
+                            } else {
+                                Label("Joueur actuel", systemImage: "star.fill")
+                                    .foregroundColor(.orange)
+                            }
+
+                            Button(role: .destructive) {
+                                withAnimation {
+                                    if let idx = enfants.firstIndex(of: name) {
+                                        let removed = enfants.remove(at: idx)
+                                        if removed == prenomEnfant {
+                                            prenomEnfant = enfants.first ?? ""
+                                        }
+                                    }
+                                }
+                                saveChildrenToStorage()
+                            } label: {
+                                Image(systemName: "minus.circle.fill")
+                                    .imageScale(.large)
+                            }
+                            .buttonStyle(.borderless)
+                            .accessibilityLabel("Supprimer l’enfant")
+                        }
+                    }
+                }
+            }
+            .cardStyle()
+        } header: {
+            Text("Enfants (liste + ajout)").font(.headline).textCase(nil)
+        } footer: {
+//            Text("Entrez un prénom (≥3 caractères), puis touchez + pour l’ajouter. Sélectionnez un enfant pour le définir comme joueur.")
+        }
+    }
+
+    private var emailSection: some View {
+        Section {
+            VStack(spacing: 10) {
+                emailField
+                ErrorText(show: showEmailError, text: "Email invalide.")
+            }
+            .cardStyle()
+        } header: {
+            Text("Email").font(.headline).textCase(nil)
+        }
+    }
+
+    private var navSection: some View {
+        Section {
+            NavigationLink {
+                // ProfileEnfant should read @AppStorage("prenomEnfant")
+                ProfileEnfant()
+            } label: {
+                Text("Continuer vers le profil enfant")
+                    .frame(maxWidth: .infinity)
+                    .font(.system(size: 18, weight: .bold, design: .rounded))
+            }
+            .buttonStyle(.borderedProminent)
+            .buttonBorderShape(.roundedRectangle(radius: 14))
+            .tint(.blue)
+            .disabled(!formOK)
+        }
+        .listRowBackground(Color.clear)
+    }
+
+    // Persistence
+    private func saveChildrenToStorage() {
+        do {
+            let data = try JSONEncoder().encode(enfants)
+            prenomsEnfantsData = data
+        } catch {
+            print("Failed to encode children names: \(error)")
+        }
+    }
+    private func loadChildrenFromStorage() {
+        guard !prenomsEnfantsData.isEmpty else { return }
+        do {
+            let decoded = try JSONDecoder().decode([String].self, from: prenomsEnfantsData)
+            enfants = decoded
+        } catch {
+            print("Failed to decode children names: \(error)")
         }
     }
 
@@ -169,99 +375,48 @@ struct ProfilParentFormView: View {
                 backgroundColor.ignoresSafeArea()
 
                 Form {
-                    // Identité du parent
-                    Section {
-                        VStack(spacing: 12) {
-                            nomField
-                            errorText(!nom.isEmpty && !isValidName(nom),
-                                      "Le nom doit contenir au moins 3 caractères.")
-
-                            prenomField
-                            errorText(!prenom.isEmpty && !isValidName(prenom),
-                                      "Le prénom doit contenir au moins 3 caractères.")
-
-                            datePickerField
-
-                            Picker("Relation", selection: $relation) {
-                                ForEach(relations, id: \.self) { Text($0) }
-                            }
-                            .pickerStyle(.segmented)
-                        }
-                        .cardStyle()
-                    } header: {
-                        Text("Identité du parent")
-                            .font(.headline)
-                            .textCase(nil)
-                    }
-
-                    // Enfant
-                    Section {
-                        VStack(spacing: 12) {
-                            prenomEnfantField
-                            errorText(!prenomEnfant.isEmpty && !isValidName(prenomEnfant),
-                                      "Le prénom de l’enfant doit contenir au moins 3 caractères.")
-                        }
-                        .cardStyle()
-                    } header: {
-                        Text("Enfant")
-                            .font(.headline)
-                            .textCase(nil)
-                    }
-
-                    // Email
-                    Section {
-                        VStack(spacing: 12) {
-                            emailField
-                            errorText(!email.isEmpty && !isValidEmail(email),
-                                      "Email invalide.")
-                        }
-                        .cardStyle()
-                    } header: {
-                        Text("Email")
-                            .font(.headline)
-                            .textCase(nil)
-                    }
-
-                    // Navigation
-                    Section {
-                        NavigationLink {
-                            ProfileEnfant(prenomEnfant: prenomEnfant)
-                        } label: {
-                            Text("Continuer vers le profil enfant")
-                                .frame(maxWidth: .infinity)
-                                .font(.system(size: 18, weight: .bold, design: .rounded))
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .buttonBorderShape(.roundedRectangle(radius: 14))
-                        .tint(.blue)
-                        .disabled(!formOK)
-                    } footer: {
-                        Text("Les prénoms doivent commencer par une majuscule et faire au moins 3 caractères.")
-                    }
-                    .listRowBackground(Color.clear)
+                    identiteSection
+                    emailSection
+//                    activeChildSection
+                    enfantsSection
+                    navSection
                 }
                 .scrollContentBackground(.hidden)
             }
             .navigationTitle("Profil parent")
+            .font(.system(size: 18, weight: .medium, design: .rounded))
             .navigationBarTitleDisplayMode(.inline)
             .onSubmit {
                 switch focus {
-                case .nom:          focus = .prenom
-                case .prenom:       focus = .prenomEnfant
-                case .prenomEnfant: focus = .email
-                default:            focus = nil
+                case .nom:    focus = .prenom
+                case .prenom: focus = .email
+                case .email:  focus = .activeChild
+                default:      focus = nil
                 }
             }
-            .toolbar {
-                ToolbarItemGroup(placement: .keyboard) {
-                    Spacer()
-                    Button("Terminé") { focus = nil }
-                }
-            }
+//            .toolbar {
+//                ToolbarItemGroup(placement: .keyboard) {
+//                    Spacer()
+//                    Button("Terminé") { focus = nil }
+//                }
+//            }
             .alert("Information", isPresented: $showAlert) {
                 Button("OK", role: .cancel) { }
             } message: {
                 Text(alertMessage)
+            }
+            .onAppear {
+                loadChildrenFromStorage()
+                // keep active child consistent with list on first load
+                if enfants.isEmpty, isValidName(prenomEnfant) {
+                    enfants = [prenomEnfant]
+                    saveChildrenToStorage()
+                } else if prenomEnfant.isEmpty, let first = enfants.first {
+                    prenomEnfant = first
+                }
+            }
+            .onChange(of: enfants) { _ in
+                saveChildrenToStorage()
             }
         }
     }
@@ -270,3 +425,4 @@ struct ProfilParentFormView: View {
 #Preview {
     NavigationStack { ProfilParentFormView() }
 }
+

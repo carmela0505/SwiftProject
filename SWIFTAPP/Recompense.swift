@@ -7,7 +7,7 @@ import SwiftUI
 import Lottie
 
 // Reward tier
-
+let animation = LottieAnimation.named("animation")
 private enum RewardTier {
     case none, bronze, silver, gold
 
@@ -62,11 +62,11 @@ private struct GiftCard: View {
     let isSelected: Bool
 
     var body: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 10) {
             Image(gift.imageName)               // your asset name
                 .resizable()
                 .scaledToFit()
-                .frame(height: 54)              // keep carousel compact
+                .frame(width: 85, height: 54)              // keep carousel compact
                 .clipped()
 
             Text(gift.name)
@@ -118,25 +118,25 @@ struct RewardView: View {
         ZStack {
             LinearGradient(colors: [.orange.opacity(0.80)],
                            startPoint: .top, endPoint: .bottom)
-                .ignoresSafeArea()
+            .ignoresSafeArea(edges: .top)
 
-            VStack(spacing: 18) {
-                Spacer()
+            VStack(spacing: 20) {
+                
 //                Text("Récompenses")
 //                    .font(.system(size: 34, weight: .bold, design: .rounded))
 
-                Divider()
 
                 // Trophy/Medal card
                 VStack(spacing: 5) {
+                    Spacer()
                     if rewardTier == .gold {
                         // Lottie trophy for perfect score (loops)
                         LottieView(name: "trophy", loopMode: .loop)
-                            .scaledToFit()
-                            .frame(height: 90)
+                            .scaledToFill()
+                            .frame(height: 0)
                             .allowsHitTesting(false)
                             }
-                            
+                    
                     else if rewardTier == .silver {
                         LottieView(name: "Silver", loopMode: .loop)
                             .scaledToFit()
@@ -157,7 +157,7 @@ struct RewardView: View {
                             .shadow(color: .black.opacity(0.12), radius: 6, x: 0, y: 4)
                     }
 
-                    Spacer(minLength: 0)
+                    Spacer(minLength: 5)
 
                     Text(rewardTier.title(correct: correct, total: total))
                         .font(.title2.weight(.semibold))

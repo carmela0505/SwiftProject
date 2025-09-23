@@ -1,102 +1,153 @@
 [
-    {
-        "question": "Si quelqu’un te crie dessus et t’insulte souvent à la maison, c’est…",
-        "options": ["de la violence verbale", "normal quand on est fatigué", "toujours ta faute"],
-        "answer": "de la violence verbale"
-      },
-      {
-        "question": "Que fais-tu si un adulte te frappe ou frappe un membre de ta famille ?",
-        "options": ["Rien, il ne faut pas parler", "Chercher un endroit sûr et prévenir un adulte de confiance", "Répondre en frappant plus fort"],
-        "answer": "Chercher un endroit sûr et prévenir un adulte de confiance"
-      },
-      {
-        "question": "Quel numéro peut-on appeler en France pour un enfant en danger (avec un adulte si possible) ?",
-        "options": ["119 – Allô Enfance en Danger", "118", "112 pour commander une pizza"],
-        "answer": "119 – Allô Enfance en Danger"
-      },
-      {
-        "question": "Tu entends une dispute très violente à la maison. Que fais-tu ?",
-        "options": ["T’éloigner du danger et demander de l’aide", "Filmer et envoyer à tes amis", "Te mettre au milieu pour arrêter"],
-        "answer": "T’éloigner du danger et demander de l’aide"
-      },
-      {
-        "question": "Un adulte te dit: “C’est un secret, ne dis rien, même si ça fait mal.” Tu…",
-        "options": ["Gardes le secret", "En parles à un adulte de confiance", "Écris sur internet"],
-        "answer": "En parles à un adulte de confiance"
-      },
-      {
-        "question": "Si quelqu’un casse exprès des objets pour faire peur, c’est…",
-        "options": ["un jeu", "une bêtise sans importance", "de la violence"],
-        "answer": "de la violence"
-      },
-      {
-        "question": "Qui peut être un adulte de confiance ?",
-        "options": ["Un enseignant, un parent d’ami, un voisin, l’infirmière scolaire", "Seulement tes amis de classe", "Personne"],
-        "answer": "Un enseignant, un parent d’ami, un voisin, l’infirmière scolaire"
-      },
-      {
-        "question": "Si tu as peur de rentrer à la maison, tu peux…",
-        "options": ["Ne rien dire", "En parler à l’école et demander de l’aide", "Fuir seul très loin"],
-        "answer": "En parler à l’école et demander de l’aide"
-      },
-      {
-        "question": "Quel est un signe que quelque chose ne va pas à la maison ?",
-        "options": ["Tu as souvent mal au ventre de stress", "Tu ris tout le temps", "Tu dors très bien chaque nuit"],
-        "answer": "Tu as souvent mal au ventre de stress"
-      },
-      {
-        "question": "Blesser un animal de la famille, c’est…",
-        "options": ["pour rire", "de la violence", "une punition normale"],
-        "answer": "de la violence"
-      },
-      {
-        "question": "Si quelqu’un te fait peur quand il a bu de l’alcool, tu…",
-        "options": ["Reste près de lui pour l’aider seul", "Te mets en sécurité et demandes de l’aide", "Te dis que c’est ta faute"],
-        "answer": "Te mets en sécurité et demandes de l’aide"
-      },
-      {
-        "question": "Quand une personne s’excuse mais recommence souvent, c’est…",
-        "options": ["un accident", "du respect", "toujours de la violence"],
-        "answer": "toujours de la violence"
-      },
-      {
-        "question": "La violence à la maison est…",
-        "options": ["jamais ta faute", "souvent la faute des enfants", "un secret normal"],
-        "answer": "jamais ta faute"
-      },
-      {
-        "question": "Si on te prive de téléphone pour t’isoler de tes amis et t’empêcher de parler, c’est…",
-        "options": ["normal", "du contrôle et ce n’est pas normal", "une punition rigolote"],
-        "answer": "du contrôle et ce n’est pas normal"
-      },
-      {
-        "question": "Tu vois un petit frère ou une petite sœur en danger. Que fais-tu d’abord ?",
-        "options": ["Vous mettre en sécurité et appeler à l’aide", "Crier plus fort", "Ne rien faire"],
-        "answer": "Vous mettre en sécurité et appeler à l’aide"
-      },
-      {
-        "question": "Que peux-tu garder si on te menace par messages ?",
-        "options": ["Des preuves (captures) pour un adulte de confiance", "Rien, tout effacer", "Les envoyer à tout le monde"],
-        "answer": "Des preuves (captures) pour un adulte de confiance"
-      },
-      {
-        "question": "Un adulte te blesse en disant “c’est pour ton bien”.",
-        "options": ["C’est normal", "Ce n’est pas normal, c’est de la violence", "Tu le mérites"],
-        "answer": "Ce n’est pas normal, c’est de la violence"
-      },
-      {
-        "question": "Si tu dois sortir de la maison parce que tu as peur, tu peux…",
-        "options": ["Aller chez un voisin ou un lieu sûr et demander de l’aide", "Aller seul dans un endroit dangereux", "Retourner et te cacher dans la cuisine"],
-        "answer": "Aller chez un voisin ou un lieu sûr et demander de l’aide"
-      },
-      {
-        "question": "À qui parler si tu n’oses pas le dire à la maison ?",
-        "options": ["Au professeur, CPE, infirmière scolaire, psychologue scolaire", "À personne", "Uniquement à un camarade de classe"],
-        "answer": "Au professeur, CPE, infirmière scolaire, psychologue scolaire"
-      },
-      {
-        "question": "Si la situation est très dangereuse et immédiate, que peut faire un adulte avec toi ?",
-        "options": ["Appeler les secours (17/112/119) et se mettre en sécurité", "Attendre que ça passe", "Filmer pour les réseaux"],
-        "answer": "Appeler les secours (17/112/119) et se mettre en sécurité"
-      }
+  {
+    "question": "Si quelqu’un te crie dessus et t’insulte souvent à la maison, c’est…",
+    "options": ["De la violence verbale", "Normal quand on est fatigué", "Toujours ta faute"],
+    "answer": "De la violence verbale"
+  },
+  {
+    "question": "Que fais-tu si un adulte te frappe ou frappe un membre de ta famille ?",
+    "options": ["Rien, il ne faut pas parler", "Chercher un endroit sûr et prévenir un adulte de confiance", "Répondre en frappant plus fort"],
+    "answer": "Chercher un endroit sûr et prévenir un adulte de confiance"
+  },
+  {
+    "question": "Quel numéro peut-on appeler en France pour un enfant en danger ?",
+    "options": ["119 – Allô Enfance en Danger", "118", "112 pour commander une pizza"],
+    "answer": "119 – Allô Enfance en Danger"
+  },
+  {
+    "question": "Tu entends une dispute très violente à la maison. Que fais-tu ?",
+    "options": ["T’éloigner du danger et demander de l’aide", "Filmer et envoyer à tes amis", "Te mettre au milieu pour arrêter"],
+    "answer": "T’éloigner du danger et demander de l’aide"
+  },
+  {
+    "question": "Un adulte te dit: “C’est un secret, ne dis rien, même si ça fait mal.” Tu…",
+    "options": ["Gardes le secret", "En parles à un adulte de confiance", "Écris sur internet"],
+    "answer": "En parles à un adulte de confiance"
+  },
+  {
+    "question": "Si quelqu’un casse exprès des objets pour faire peur, c’est…",
+    "options": ["Un jeu", "Une bêtise sans importance", "De la violence"],
+    "answer": "De la violence"
+  },
+  {
+    "question": "Qui peut être un adulte de confiance ?",
+    "options": ["Un enseignant, un parent d’ami, un voisin, l’infirmière scolaire", "Seulement tes amis de classe", "Personne"],
+    "answer": "Un enseignant, un parent d’ami, un voisin, l’infirmière scolaire"
+  },
+  {
+    "question": "Si tu as peur de rentrer à la maison, tu peux…",
+    "options": ["Ne rien dire", "En parler à l’école et demander de l’aide", "Fuir seul très loin"],
+    "answer": "En parler à l’école et demander de l’aide"
+  },
+  {
+    "question": "Quel est un signe que quelque chose ne va pas à la maison ?",
+    "options": ["Tu as souvent mal au ventre de stress", "Tu ris tout le temps", "Tu dors très bien chaque nuit"],
+    "answer": "Tu as souvent mal au ventre de stress"
+  },
+  {
+    "question": "Blesser un animal de la famille, c’est…",
+    "options": ["Pour rire", "De la violence", "Une punition normale"],
+    "answer": "De la violence"
+  },
+  {
+    "question": "Si quelqu’un te fait peur quand il a bu de l’alcool, tu…",
+    "options": ["Reste près de lui pour l’aider seul", "Te mets en sécurité et demandes de l’aide", "Te dis que c’est ta faute"],
+    "answer": "Te mets en sécurité et demandes de l’aide"
+  },
+  {
+    "question": "Quand une personne s’excuse mais recommence souvent, c’est…",
+    "options": ["Un accident", "Du respect", "Toujours de la violence"],
+    "answer": "Toujours de la violence"
+  },
+  {
+    "question": "La violence à la maison est…",
+    "options": ["Jamais ta faute", "Souvent la faute des enfants", "Un secret normal"],
+    "answer": "Jamais ta faute"
+  },
+  {
+    "question": "Si on te prive de téléphone pour t’isoler de tes amis et t’empêcher de parler, c’est…",
+    "options": ["Normal", "Du contrôle et ce n’est pas normal", "Une punition rigolote"],
+    "answer": "Du contrôle et ce n’est pas normal"
+  },
+  {
+    "question": "Tu vois un petit frère ou une petite sœur en danger. Que fais-tu d’abord ?",
+    "options": ["Vous mettre en sécurité et appeler à l’aide", "Crier plus fort", "Ne rien faire"],
+    "answer": "Vous mettre en sécurité et appeler à l’aide"
+  },
+  {
+    "question": "Que peux-tu garder si on te menace par messages ?",
+    "options": ["Des preuves (captures) pour un adulte de confiance", "Rien, tout effacer", "Les envoyer à tout le monde"],
+    "answer": "Des preuves (captures) pour un adulte de confiance"
+  },
+  {
+    "question": "Un adulte te blesse en disant “c’est pour ton bien”.",
+    "options": ["C’est normal", "Ce n’est pas normal, c’est de la violence", "Tu le mérites"],
+    "answer": "Ce n’est pas normal, c’est de la violence"
+  },
+  {
+    "question": "Si tu dois sortir de la maison parce que tu as peur, tu peux…",
+    "options": ["Aller chez un voisin ou un lieu sûr", "Aller seul dans un endroit dangereux", "Retourner et te cacher dans la cuisine"],
+    "answer": "Aller chez un voisin ou un lieu sûr"
+  },
+  {
+    "question": "À qui parler si tu n’oses pas le dire à la maison ?",
+    "options": ["Au professeur, CPE, infirmière scolaire, psychologue scolaire", "À personne", "Uniquement à un camarade de classe"],
+    "answer": "Au professeur, CPE, infirmière scolaire, psychologue scolaire"
+  },
+  {
+    "question": "Si la situation est très dangereuse et immédiate, que peut faire un adulte avec toi ?",
+    "options": ["Appeler les secours (17/112/119) et se mettre en sécurité", "Attendre que ça passe", "Filmer pour les réseaux"],
+    "answer": "Appeler les secours (17/112/119) et se mettre en sécurité"
+  },
+  {
+    "question": "Si quelqu’un jette des objets pour faire peur à la maison, c’est…",
+    "options": ["Un accident", "De la violence", "Un jeu"],
+    "answer": "De la violence"
+  },
+  {
+    "question": "Quand un adulte dit toujours que tu es nul ou inutile, c’est…",
+    "options": ["De la violence verbale", "Pour rigoler", "Vrai"],
+    "answer": "De la violence verbale"
+  },
+  {
+    "question": "Si tu entends des cris violents entre adultes à la maison, tu peux…",
+    "options": ["Te mettre à l’abri et chercher de l’aide", "Filmer pour les amis", "Ne rien dire"],
+    "answer": "Te mettre à l’abri et chercher de l’aide"
+  },
+  {
+    "question": "Un adulte te prend ton argent ou tes affaires pour te punir. C’est…",
+    "options": ["De la violence et du contrôle", "Une punition normale", "Drôle"],
+    "answer": "De la violence et du contrôle"
+  },
+  {
+    "question": "Qui peux-tu appeler en urgence si quelqu’un est en danger immédiat ?",
+    "options": ["17 ou 112", "119 – Allô Enfance en Danger", "Les deux réponses sont possibles"],
+    "answer": "Les deux réponses sont possibles"
+  },
+  {
+    "question": "Si un enfant a toujours peur de rentrer chez lui, cela peut être…",
+    "options": ["Un signe de violence à la maison", "Une simple timidité", "Une habitude normale"],
+    "answer": "Un signe de violence à la maison"
+  },
+  {
+    "question": "Quand on te prive de repas exprès pour te punir, c’est…",
+    "options": ["De la maltraitance", "Un régime", "Une blague"],
+    "answer": "De la maltraitance"
+  },
+  {
+    "question": "Si tu vois un parent frapper l’autre, tu…",
+    "options": ["T’éloignes et cherches un adulte de confiance", "Interviens seul", "Rires avec eux"],
+    "answer": "T’éloignes et cherches un adulte de confiance"
+  },
+  {
+    "question": "Que peux-tu faire si tu n’arrives pas à parler directement de ce qui se passe ?",
+    "options": ["Écrire un mot à un adulte de confiance", "Ne rien dire", "Garder le secret"],
+    "answer": "Écrire un mot à un adulte de confiance"
+  },
+  {
+    "question": "La violence dans une famille est…",
+    "options": ["Toujours grave et jamais la faute des enfants", "Quelque chose de normal", "Une histoire à garder secrète"],
+    "answer": "Toujours grave et jamais la faute des enfants"
+  }
 ]
+
