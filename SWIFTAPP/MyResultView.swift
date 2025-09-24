@@ -15,8 +15,8 @@ struct MyResultView: View {
     private var resultMessage: String {
         switch correctAnswers {
         case 5:      return "BRAVO!"                    // you can keep this mapping if you like
-        case 3...4:  return "TU PEUX LE FAIRE!"
-        case 1...2:  return "CONTINUE À TRAVAILLER !"
+        case 3...4:  return "CONTINUE!"
+        case 1...2:  return "TU PEUX LE FAIRE! !"
         default:     return "ESSAIE ENCORE!"
         }
     }
@@ -91,7 +91,7 @@ struct MyResultView: View {
                         }
                     }
                 } else {
-                    Text("Aucune réponse, mais voici une étoile d'encouragement !")
+                    Text("Aucune bonne réponse!")
                         .multilineTextAlignment(.center)
                         .foregroundColor(.orange)
                         .font(.headline)
@@ -101,14 +101,6 @@ struct MyResultView: View {
                 Image("bear1")
                     .frame(width: 50, height: 300)
 
-//                Text("Est-ce que tu as aimé les questions ?")
-//                    .font(.title3)
-//                    .foregroundStyle(.blue)
-//
-//                HStack(spacing: 18) {
-//                    Button("\(Image(systemName: "hand.thumbsup.fill"))") { }
-//                    Button("\(Image(systemName: "hand.thumbsdown.fill"))") { }
-//                }
 
                 // Actions
                 HStack(spacing: 14) {
@@ -132,11 +124,13 @@ struct MyResultView: View {
                     .foregroundColor(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                 }
-                .padding(.bottom, 10)
+                .padding(.bottom, 90)
             }
-            .padding(.horizontal)
+            
         }
+        Spacer()
     }
+   
 
     //  Helpers
     private func color(for status: String) -> Color {

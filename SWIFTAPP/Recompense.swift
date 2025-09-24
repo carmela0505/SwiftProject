@@ -44,7 +44,7 @@ private enum RewardTier {
         case .gold:   return "Trophée d’or – \(correct)/\(total) 🎉"
         case .silver: return "Médaille d’argent – \(correct)/\(total) ✨"
         case .bronze: return "Médaille de bronze – \(correct)/\(total) 🌟"
-        case .none:   return correct == 0 ? "On réessaie !" : "Bravo, continue !"
+        case .none:   return correct == 0 ? "On réessaie !" : "Essaie encore!"
         }
     }
 }

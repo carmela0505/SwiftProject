@@ -188,7 +188,7 @@ struct ProfilParentFormView: View {
                 .labelsHidden()
                 .tint(.black)
 
-            ErrorText(show: !isAgeOK, text: "L’enfant doit avoir au moins 6 ans.")
+            ErrorText(show: !isAgeOK, text: " l'enfant doit avoir au moins 6 ans.")
         }
         .inputField(bg: Color.yellow.opacity(0.18))
     }

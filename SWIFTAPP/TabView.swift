@@ -37,7 +37,7 @@ struct ThemesTabContainer: View {
             .tag(TabTag.quiz)
             
             // CHALLENGES
-            NavigationStack { NewChallengeView()
+            NavigationStack { Challenge2View()
                     .navigationTitle("Challenges")
                     .navigationBarTitleDisplayMode(.inline)
             }
