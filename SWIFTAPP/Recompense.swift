@@ -122,18 +122,19 @@ struct RewardView: View {
 
             VStack(spacing: 20) {
                 
-//                Text("Récompenses")
-//                    .font(.system(size: 34, weight: .bold, design: .rounded))
+                Text("Récompenses")
+                    .font(.system(size: 34, weight: .bold, design: .rounded))
+                        .foregroundColor(.white)
 
 
                 // Trophy/Medal card
-                VStack(spacing: 5) {
+                VStack(spacing: 3) {
                     Spacer()
                     if rewardTier == .gold {
                         // Lottie trophy for perfect score (loops)
-                        LottieView(name: "trophy", loopMode: .loop)
+                        LottieView(name: "trophy2", loopMode: .loop)
                             .scaledToFill()
-                            .frame(height: 0)
+                            .frame(width: 300, height: 330)
                             .allowsHitTesting(false)
                             }
                     
@@ -150,31 +151,34 @@ struct RewardView: View {
                                 .allowsHitTesting(false)
                         }
                      else {
-                        Image(systemName: rewardTier.symbol)
-                            .resizable().scaledToFit()
-                            .frame(height: 90)
-                            .foregroundStyle(rewardTier.color)
+                        Image("crybear1")
+                             .resizable()
+                            .scaledToFill()
+                            .frame(width: 350,height: 100)
+                            
                             .shadow(color: .black.opacity(0.12), radius: 6, x: 0, y: 4)
                     }
 
-                    Spacer(minLength: 5)
-
+                    Spacer()
+                    
                     Text(rewardTier.title(correct: correct, total: total))
                         .font(.title2.weight(.semibold))
                         .foregroundStyle(rewardTier.color)
 
                     Text("Bonnes réponses : \(correct)/\(total)")
                         .font(.headline)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(.orange)
                 }
-                .padding(18)
+                .padding(10)
                 .background(.white, in: RoundedRectangle(cornerRadius: 15, style: .continuous))
+                .frame(width: 400, height: 450)
                 .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: 4)
 
                 // Gift carousel
-                VStack(alignment: .center, spacing: 8) {
+                VStack(alignment: .center, spacing:2) {
                     Text("Choisis ton cadeau")
-                        .font(.title2)
+                        .font(.title2.bold())
+                        .foregroundColor(.white)
 
                     if canChooseGift {
                         TabView(selection: $selectedGift) {
@@ -184,7 +188,7 @@ struct RewardView: View {
                                     .padding(.horizontal, 5)
                             }
                         }
-                        .frame(height: 180)                    // adjust height as you like
+                        .frame(width: 100,height: 150)                    // adjust height as you like
                         .tabViewStyle(.page(indexDisplayMode: .automatic))
 
                         Button {
@@ -207,7 +211,7 @@ struct RewardView: View {
                     } else {
                         Text("Obtiens au moins 3 bonnes réponses pour choisir un cadeau.")
                             .font(.subheadline)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(.white)
                             .padding(.vertical, 8)
                     }
                 }

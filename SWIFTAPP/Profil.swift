@@ -139,6 +139,7 @@ struct ProfilParentFormView: View {
     private var nomField: some View {
         TextField("", text: $nom.nameCased(),
                   prompt: Text("Nom").foregroundColor(.black.opacity(0.6)))
+            .textContentType(.oneTimeCode)
             .textInputAutocapitalization(.words)
             .autocorrectionDisabled()
             .focused($focus, equals: .nom)
@@ -149,16 +150,23 @@ struct ProfilParentFormView: View {
     private var prenomField: some View {
         TextField("", text: $prenom.nameCased(),
                   prompt: Text("Prénom").foregroundColor(.black.opacity(0.6)))
+            .textContentType(.oneTimeCode)
             .textInputAutocapitalization(.words)
             .autocorrectionDisabled()
             .focused($focus, equals: .prenom)
             .submitLabel(.next)
-            .inputField()
+            .onSubmit { prenom = prenom.capitalized }
+                    .onChange(of: prenom) { s in
+                        // optional: keep only one initial uppercase, don’t fight each keystroke
+                        if s.count == 1 { prenom = s.uppercased() }
+                    }
+                    .inputField()
     }
 
     private var emailField: some View {
         TextField("", text: $email.lowercasedInput(),
                   prompt: Text("Email").foregroundColor(.black.opacity(0.6)))
+            .textContentType(.emailAddress)
             .keyboardType(.emailAddress)
             .textInputAutocapitalization(.never)
             .autocorrectionDisabled()
@@ -390,7 +398,7 @@ struct ProfilParentFormView: View {
                 switch focus {
                 case .nom:    focus = .prenom
                 case .prenom: focus = .email
-                case .email:  focus = .activeChild
+                case .email:  focus = nil
                 default:      focus = nil
                 }
             }

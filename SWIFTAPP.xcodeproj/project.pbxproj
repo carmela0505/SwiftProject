@@ -14,6 +14,7 @@
 		6E7F485B2E7748B300E56346 /* yesbear.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E7F485A2E7748B300E56346 /* yesbear.json */; };
 		6E7F485D2E7748C600E56346 /* nobear.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E7F485C2E7748C600E56346 /* nobear.json */; };
 		6E7F48652E775B7600E56346 /* dancingbear.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E7F48642E775B7600E56346 /* dancingbear.json */; };
+		6ED03F702E83D74200480F23 /* trophy2.json in Resources */ = {isa = PBXBuildFile; fileRef = 6ED03F6F2E83D74200480F23 /* trophy2.json */; };
 		6ED8474B2E7ADDA500A608F9 /* dog.json in Resources */ = {isa = PBXBuildFile; fileRef = 6ED8474A2E7ADDA500A608F9 /* dog.json */; };
 		6ED8474D2E7AE5A200A608F9 /* duck.json in Resources */ = {isa = PBXBuildFile; fileRef = 6ED8474C2E7AE5A200A608F9 /* duck.json */; };
 		6ED8474F2E7AE6CA00A608F9 /* raccoon.json in Resources */ = {isa = PBXBuildFile; fileRef = 6ED8474E2E7AE6CA00A608F9 /* raccoon.json */; };
@@ -52,6 +53,7 @@
 		6E7F485A2E7748B300E56346 /* yesbear.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = yesbear.json; sourceTree = "<group>"; };
 		6E7F485C2E7748C600E56346 /* nobear.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = nobear.json; sourceTree = "<group>"; };
 		6E7F48642E775B7600E56346 /* dancingbear.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dancingbear.json; sourceTree = "<group>"; };
+		6ED03F6F2E83D74200480F23 /* trophy2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = trophy2.json; sourceTree = "<group>"; };
 		6ED8474A2E7ADDA500A608F9 /* dog.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dog.json; sourceTree = "<group>"; };
 		6ED8474C2E7AE5A200A608F9 /* duck.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = duck.json; sourceTree = "<group>"; };
 		6ED8474E2E7AE6CA00A608F9 /* raccoon.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = raccoon.json; sourceTree = "<group>"; };
@@ -69,9 +71,22 @@
 		6EFB9B502E81586B001D51DA /* cat.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cat.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		6ED03F6E2E83596D00480F23 /* Exceptions for "SWIFTAPP" folder in "SWIFTAPP" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 6E6ED5292E75BFD600C8669D /* SWIFTAPP */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		6E6ED52C2E75BFD600C8669D /* SWIFTAPP */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				6ED03F6E2E83596D00480F23 /* Exceptions for "SWIFTAPP" folder in "SWIFTAPP" target */,
+			);
 			path = SWIFTAPP;
 			sourceTree = "<group>";
 		};
@@ -105,6 +120,7 @@
 				6EFB9AC22E7D99DA001D51DA /* challenges.json */,
 				6EFB9B4E2E81580C001D51DA /* shiba.json */,
 				6EFB9B282E813FEF001D51DA /* Bronze.json */,
+				6ED03F6F2E83D74200480F23 /* trophy2.json */,
 				6ED8474E2E7AE6CA00A608F9 /* raccoon.json */,
 				6EFB9B502E81586B001D51DA /* cat.json */,
 				6ED847502E7B5D8200A608F9 /* donkey.json */,
@@ -208,6 +224,7 @@
 				6EFB9B272E813937001D51DA /* trophyanim.json in Resources */,
 				6EFB9A462E7D47B1001D51DA /* violence_ecole_questions.json in Resources */,
 				6ED8474B2E7ADDA500A608F9 /* dog.json in Resources */,
+				6ED03F702E83D74200480F23 /* trophy2.json in Resources */,
 				6EFB9AE52E7EAEBA001D51DA /* .gitignore in Resources */,
 				6E7F485D2E7748C600E56346 /* nobear.json in Resources */,
 				6EFB9B4F2E81580C001D51DA /* shiba.json in Resources */,
@@ -371,6 +388,8 @@
 				DEVELOPMENT_TEAM = C6PCR7YQ82;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SWIFTAPP/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "l'app a besoin d'acceder au micro pour la voix";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -399,6 +418,8 @@
 				DEVELOPMENT_TEAM = C6PCR7YQ82;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SWIFTAPP/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "l'app a besoin d'acceder au micro pour la voix";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

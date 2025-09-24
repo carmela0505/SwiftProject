@@ -24,17 +24,17 @@ struct ProfileEnfant: View {
                     .font(.system(size: 46, weight: .bold, design: .rounded))
                     .foregroundColor(.white)
                 
-                Divider()
-                Spacer()
+               
+               
                 
                 Text("Bienvenue \(prenomEnfant)")
                     .font(.system(size: 35, weight: .bold, design: .rounded))
                     .foregroundColor(.blue)
                 
                 LottieView(name: mascotName, contentMode: .scaleAspectFit)
-                    .frame(width: 300, height: 290)
+                    .frame(width: 400, height: 450)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
-                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(.white, lineWidth: 4))
+                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(.white, lineWidth: 7))
                     .shadow(radius: 10)
                 Spacer()
                 // Mascot chooser
@@ -43,11 +43,11 @@ struct ProfileEnfant: View {
                         Button(option) { mascotName = option }
                     }
                 } label: {
-                    HStack(spacing: 8) {
-                        Image(systemName: "figure.2.and.child.holdinghands")
+                    HStack {
+                   Image(systemName: "person")
                         Text("Changer de mascotte")
                     }
-                    .font(.system(size: 22, weight: .semibold, design: .rounded))
+                    .font(.system(size: 20, weight: .semibold, design: .rounded))
                     .frame(width: 300, height: 56)
                     .background(Color.blue)
                     .foregroundColor(.white)
@@ -62,8 +62,8 @@ struct ProfileEnfant: View {
                 } label: {
                     Text("SUIVANT")
                         .font(.system(size: 20, weight: .bold))
-                        .padding(.horizontal, 30)
-                        .padding(.vertical, 20)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 12)
                         .background(Color.blue)
                         .foregroundColor(.white)
                         .clipShape(RoundedRectangle(cornerRadius: 20))
