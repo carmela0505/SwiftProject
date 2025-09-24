@@ -181,8 +181,18 @@ struct SnakeMap: View {
 // Screen hosting the snake map + quiz sheet
 struct ThemeMapView: View {
     let theme: Theme
+    
+    
+    // Current child (used to scope progress)
+        @AppStorage("prenomEnfant") private var prenomEnfant: String = ""
+
+    
+    
+    //Local UI State
     @State private var levels: [Level]
     @State private var activeLevel: Level? = nil
+    
+    
     var onResults: (([String]) -> Void)? = nil
 
     init(theme: Theme, onResults: (([String]) -> Void)? = nil) {   // 👈 accept it here

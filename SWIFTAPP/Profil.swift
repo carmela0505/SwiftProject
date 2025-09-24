@@ -70,9 +70,9 @@ private struct ErrorText: View {
 
 struct ProfilParentFormView: View {
     // Parent fields
-    @State private var nom = ""
-    @State private var prenom = ""
-    @State private var email = ""
+    @State private var nom = "Gunther"
+    @State private var prenom = "Lulu"
+    @State private var email = "lg@gmail.com"
     @State private var dateNaissance = Date()
 
     // Active player (single child, read by ProfileEnfant)

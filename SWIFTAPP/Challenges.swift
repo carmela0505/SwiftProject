@@ -47,7 +47,7 @@ struct Challenge2View: View {
                 Image("yellow")
                     .resizable()
                     .scaledToFill()
-                    .ignoresSafeArea()
+                    .ignoresSafeArea(edges:.top)
                 
                 VStack(spacing: 40) {
                     Text("CHALLENGES")

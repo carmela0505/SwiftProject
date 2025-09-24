@@ -112,6 +112,12 @@ struct ThemeDetailView: View {
 
 struct ThemesGridView: View {
     
+    
+    @AppStorage("shouldReplayQuiz") private var shouldReplayQuiz = false
+        @AppStorage("lastQuizFile")     private var lastQuizFile = "violence_ecole_questions"
+
+      
+    
     var onResults: (([String]) -> Void)? = nil
     private let columns = [GridItem(.adaptive(minimum: 160), spacing: 16)]
 
@@ -159,6 +165,7 @@ Divider()
         }
 //        .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
+        
         
     }
 }

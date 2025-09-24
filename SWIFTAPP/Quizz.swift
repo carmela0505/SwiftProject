@@ -319,12 +319,7 @@ struct QuizzView: View {
                 .padding(.vertical)
             }
         }
-        // Results screen
-        .fullScreenCover(isPresented: $showResults, onDismiss: {
-            onFinish(passedResult)
-        }) {
-            MyResultView(bonbons: bonbonStrings)
-        }
+        
         // Correction popup (shown AFTER the “no bear” animation on wrong answers)
         .alert("Réponse", isPresented: $showCorrectionAlert) {
             Button("OK") { autoNextIfPossible() }
@@ -464,13 +459,11 @@ struct QuizzView: View {
     }
     
     private func finish() {
-        // Send the detailed results up (so TabView -> Récompenses can use them)
+        // Send detailed results up (TabView -> Récompenses)
         onResults?(bonbonStrings)
-        
-        // “passed” only if perfect score on the set you loaded
-        let passed = (correctCount == state.questions.count /* && state.questions.count == 5 */)
-        passedResult = passed
-        showResults = true
+
+        // If you still want pass/fail information
+        onFinish(correctCount == state.questions.count)
     }
 }
 

@@ -92,7 +92,16 @@ private struct GiftCard: View {
 struct RewardView: View {
     // Input from results (e.g. MyResultView)
     let bonbons: [String]   // "green" / "red" / "gray"
-
+    
+    // Callbacks for navigation/actions
+       var onRejouer: (() -> Void)? = nil
+       var onContinuer: (() -> Void)? = nil
+    
+    // Persist last score
+       @AppStorage("lastScore") private var lastScore: Int = 0
+       @AppStorage("lastTotal") private var lastTotal: Int = 0
+    
+    
     // Selection state
     @State private var selectedGift: Gift? = nil
     @State private var showConfirm = false
@@ -118,10 +127,11 @@ struct RewardView: View {
         ZStack {
             LinearGradient(colors: [.orange.opacity(0.80)],
                            startPoint: .top, endPoint: .bottom)
-            .ignoresSafeArea(edges: .top)
+            .ignoresSafeArea(edges: .all)
+            .padding(.bottom, 5)
 
             VStack(spacing: 20) {
-                
+
                 Text("Récompenses")
                     .font(.system(size: 34, weight: .bold, design: .rounded))
                         .foregroundColor(.white)
@@ -161,7 +171,7 @@ struct RewardView: View {
 
                     Spacer()
                     
-                    Text(rewardTier.title(correct: correct, total: total))
+//                    Text(rewardTier.title(correct: correct,/* total: total*/))
                         .font(.title2.weight(.semibold))
                         .foregroundStyle(rewardTier.color)
 
