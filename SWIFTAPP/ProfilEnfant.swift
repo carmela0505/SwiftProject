@@ -12,7 +12,7 @@ struct ProfileEnfant: View {
     private let choices = ["raccoon","donkey","cat","shiba"]
     
     @Environment(\.dismiss) private var dismiss   // ⬅️ pour gérer le retour
-
+    @Binding var selectedTab: TabTag
     
     var body: some View {
         ZStack {
@@ -62,7 +62,7 @@ struct ProfileEnfant: View {
                 
                 //Suivant
                 NavigationLink {
-                    BackgroundColorAttribute()
+                    BackgroundColorAttribute(selectedTab: $selectedTab)
                 } label: {
                     Text("SUIVANT")
                         .font(.system(size: 18, weight: .bold))
@@ -83,8 +83,8 @@ struct ProfileEnfant: View {
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 
-                NavigationLink(destination: ProfilParentFormView()) {
-                    Label("Profil parent", systemImage: ".chevron.left")
+                NavigationLink(destination: ProfilParentFormView(selectedTab: $selectedTab)) {
+                    Label("Profil parent", systemImage: "chevron.left")
                 }
             }
         }
@@ -92,5 +92,5 @@ struct ProfileEnfant: View {
 }
 
 #Preview {
-    NavigationStack { ProfileEnfant() }
+    NavigationStack { ProfileEnfant(selectedTab: .constant(.challenges)) }
 }

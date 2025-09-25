@@ -175,6 +175,8 @@ struct ProfilParentFormView: View {
             .inputField()
     }
 
+    @Binding var selectedTab: TabTag
+    
     private var datePickerField: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Date de naissance")
@@ -196,7 +198,7 @@ struct ProfilParentFormView: View {
     // Sections
     private var identiteSection: some View {
         Section {
-            VStack(spacing: 12) {
+            VStack(spacing: 4) {
                 nomField
                 ErrorText(show: showNomError, text: "Le nom doit contenir au moins 3 caractères.")
 
@@ -246,7 +248,7 @@ struct ProfilParentFormView: View {
 
     private var enfantsSection: some View {
         Section {
-            VStack(spacing: 12) {
+            VStack(spacing: 8) {
 
                 // --- Add child input ---
                 HStack(spacing: 8) {
@@ -330,7 +332,7 @@ struct ProfilParentFormView: View {
 
     private var emailSection: some View {
         Section {
-            VStack(spacing: 10) {
+            VStack(spacing: 6) {
                 emailField
                 ErrorText(show: showEmailError, text: "Email invalide.")
             }
@@ -342,16 +344,16 @@ struct ProfilParentFormView: View {
 
     private var navSection: some View {
         Section {
-            NavigationLink {
+            Button {
                 // ProfileEnfant should read @AppStorage("prenomEnfant")
-                ProfileEnfant()
+//                ProfileEnfant(selectedTab: $selectedTab)
             } label: {
-                Text("Continuer vers le profil enfant")
+                Text("Enregistrer vos informations")
                     .frame(maxWidth: .infinity)
                     .font(.system(size: 18, weight: .bold, design: .rounded))
             }
-            .buttonStyle(.borderedProminent)
-            .buttonBorderShape(.roundedRectangle(radius: 14))
+//            .buttonStyle(.borderedProminent)
+//            .buttonBorderShape(.roundedRectangle(radius: 14))
             .tint(.blue)
             .disabled(!formOK)
         }
@@ -380,9 +382,10 @@ struct ProfilParentFormView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                backgroundColor.ignoresSafeArea()
+                backgroundColor.ignoresSafeArea(edges: .top)
 
                 Form {
+                    //METTRE VALEUR DEFAUT POUR LE DATE PICKER
                     identiteSection
                     emailSection
 //                    activeChildSection
@@ -390,7 +393,10 @@ struct ProfilParentFormView: View {
                     navSection
                 }
                 .scrollContentBackground(.hidden)
+                .safeAreaPadding(.bottom, 16)
+                .padding(.bottom, 8)
             }
+            
             .navigationTitle("Profil parent")
             .font(.system(size: 18, weight: .medium, design: .rounded))
             .navigationBarTitleDisplayMode(.inline)
@@ -423,14 +429,14 @@ struct ProfilParentFormView: View {
                     prenomEnfant = first
                 }
             }
-            .onChange(of: enfants) { _ in
-                saveChildrenToStorage()
-            }
+//            .onChange(of: enfants) { _ in
+//                saveChildrenToStorage()
+//            }
         }
     }
 }
 
 #Preview {
-    NavigationStack { ProfilParentFormView() }
+    NavigationStack { ProfilParentFormView(selectedTab: .constant(.challenges)) }
 }
 

@@ -39,6 +39,8 @@ struct MyResultView: View {
         }
     }
 
+//    @Binding var seletedTab: TabTag
+    
     var body: some View {
         ZStack {
             Image("yellow")
@@ -115,7 +117,10 @@ struct MyResultView: View {
 //                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
 
                     Button("Terminer") {
-                        if let onFinish { onFinish() } else { dismiss() }
+//                        if let onFinish { onFinish() } else { dismiss() }
+                        
+                        
+                        
                     }
                     .font(.headline)
                     .padding(.horizontal, 24)
@@ -124,11 +129,12 @@ struct MyResultView: View {
                     .foregroundColor(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                 }
-                .padding(.bottom, 90)
+               
             }
-            
+            .padding(.horizontal)
+            .safeAreaPadding(.bottom, 16)
         }
-        Spacer()
+      
     }
    
 
@@ -181,10 +187,10 @@ struct MyResultTabView: View {
 }
 
 #Preview {
-    MyResultTabView(
+    MyResultView(
         bonbons: ["green","green","green","green","green"],
-        onReplay: {},
-        onFinish: {}
+//        onReplay: {},
+//        onFinish: {}
     )
 }
 

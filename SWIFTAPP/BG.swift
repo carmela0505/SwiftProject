@@ -10,27 +10,28 @@ import SwiftUI
 
 struct BackgroundColorAttribute: View {
     @Environment(\.dismiss) private var dismiss
-
+//    TabTag
+    @Binding var selectedTab: TabTag
     var body: some View {
         ZStack {
             Image("yellow")
                 .resizable()
                 .scaledToFill()
-                .ignoresSafeArea()
-
-            VStack(spacing: 20) {
+                .ignoresSafeArea(edges: .top)
+            
+            VStack(spacing: 10) {
                 Text("KIDS VOICE")
                     .font(.system(size: 46, weight: .bold, design: .rounded))
                     .foregroundColor(.blue)
                 Spacer()
-
+                
                 LottieView(name: "dancingbear", contentMode: .scaleAspectFit)
                     .frame(width: 400, height: 400)
-
+                
                 Spacer()
-
-                NavigationLink {
-                    ThemesTabContainer()
+                
+                Button {
+                    selectedTab = .quiz
                 } label: {
                     Text("JOUER")
                         .font(.system(size: 28, weight: .bold))
@@ -41,14 +42,17 @@ struct BackgroundColorAttribute: View {
                         .clipShape(RoundedRectangle(cornerRadius: 25))
                         .shadow(radius: 6)
                 }
+
+                
+               
             }
             .padding()
         }
         .navigationBarTitleDisplayMode(.inline)
-
+        
         // On cache le bouton système…
         .navigationBarBackButtonHidden(true)
-
+        
         // bouton "natif"
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
@@ -71,6 +75,6 @@ struct BackgroundColorAttribute: View {
 
 #Preview {
     NavigationStack {
-        BackgroundColorAttribute()
+        BackgroundColorAttribute(selectedTab: .constant(.profil))
     }
 }

@@ -122,12 +122,14 @@ struct RewardView: View {
         .init(id: "bike",   name: "Vélo",            imageName: "velo1"),
         .init(id: "puzzle", name: "Puzzle",          imageName: "puzzle")
     ]
+    
+    
 
     var body: some View {
         ZStack {
             LinearGradient(colors: [.orange.opacity(0.80)],
                            startPoint: .top, endPoint: .bottom)
-            .ignoresSafeArea(edges: .all)
+            .ignoresSafeArea(edges: .top)
             .padding(.bottom, 5)
 
             VStack(spacing: 20) {
@@ -227,9 +229,15 @@ struct RewardView: View {
                 }
                 .padding(12)
 
-                Spacer()
+                Spacer(minLength: 0)
             }
             .padding()
+            //CHANGER CETTE VALEUR POUR LA TABVIEW
+            .safeAreaPadding(.top, 70)
+        }
+        .onAppear {
+            lastScore = correct
+            lastTotal = total
         }
     }
 }

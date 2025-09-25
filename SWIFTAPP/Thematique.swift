@@ -113,13 +113,15 @@ struct ThemeDetailView: View {
 struct ThemesGridView: View {
     
     
-    @AppStorage("shouldReplayQuiz") private var shouldReplayQuiz = false
-        @AppStorage("lastQuizFile")     private var lastQuizFile = "violence_ecole_questions"
+//    @AppStorage("shouldReplayQuiz") private var shouldReplayQuiz = false
+//    @AppStorage("lastQuizFile")     private var lastQuizFile = "violence_ecole_questions"
 
       
     
     var onResults: (([String]) -> Void)? = nil
     private let columns = [GridItem(.adaptive(minimum: 160), spacing: 16)]
+    
+    @Binding var seletecTab: TabTag
 
     var body: some View {
         ZStack {
@@ -164,7 +166,7 @@ Divider()
             }
         }
 //        .navigationTitle("")
-        .navigationBarTitleDisplayMode(.inline)
+//        .navigationBarTitleDisplayMode(.inline)
         
         
     }
@@ -198,7 +200,7 @@ struct RecompensesView: View {
                 .foregroundStyle(.secondary)
         }
         .padding()
-        .navigationTitle("Récompenses")
+//        .navigationTitle("Récompenses")
     }
 }
 
@@ -209,7 +211,7 @@ struct RecompensesView: View {
 //}
 
 #Preview("Grid") {
-    NavigationStack { ThemesGridView() }
+    NavigationStack { ThemesGridView(seletecTab: .constant(.challenges)) }
 }
 
 #Preview("TabView") {
