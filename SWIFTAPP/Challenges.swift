@@ -80,11 +80,12 @@ struct Challenge2View: View {
                         Text(challenge.description)
                             .font(.title3)
                             .foregroundColor(.white)
-                            .frame(width: 250, height: 50)
+                            .frame(width: 280, height: 60)
                             .background(Color.blue)
                             .cornerRadius(10)
                             .multilineTextAlignment(.center)
-                            .padding()
+//                            .padding(15)
+                            .controlSize(.regular)
 
                         
                         HStack() {
@@ -96,6 +97,7 @@ struct Challenge2View: View {
                                     .padding()
                                     .background(Color.green)
                                     .cornerRadius(10)
+                                    .lineSpacing(10)
                                     
                             }
                             
@@ -119,6 +121,7 @@ struct Challenge2View: View {
                                 .background(currentChallenge == nil ? Color.blue : Color.gray)
                                 .cornerRadius(10)
                                 .shadow(radius: 5)
+                                .lineSpacing(10)
                         }
                         .disabled(currentChallenge != nil)
                         

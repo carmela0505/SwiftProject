@@ -227,13 +227,13 @@ struct RewardView: View {
                             .padding(.vertical, 8)
                     }
                 }
-                .padding(12)
+                .padding(5)
 
-                Spacer(minLength: 0)
+              
             }
             .padding()
             //CHANGER CETTE VALEUR POUR LA TABVIEW
-            .safeAreaPadding(.top, 70)
+            .safeAreaPadding(.bottom ,5 )
         }
         .onAppear {
             lastScore = correct
