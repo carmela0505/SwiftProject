@@ -74,6 +74,8 @@ struct ProfilParentFormView: View {
     @State private var prenom = "Lulu"
     @State private var email = "lg@gmail.com"
     @State private var dateNaissance = Date()
+    
+    
 
     // Active player (single child, read by ProfileEnfant)
     @AppStorage("prenomEnfant") private var prenomEnfant: String = ""
@@ -90,7 +92,19 @@ struct ProfilParentFormView: View {
     @State private var alertMessage = ""
     @FocusState private var focus: Champ?
     enum Champ: Hashable { case nom, prenom, email, newChild, activeChild }
-
+    
+    
+    init(selectedTab: Binding<TabTag>) {
+        self._selectedTab = selectedTab
+        // Default the date to the latest allowed so the form can pass validation immediately
+        let sixYearsAgo = Calendar.current.date(byAdding: .year, value: -6, to: Date()) ?? Date()
+        _dateNaissance = State(initialValue: sixYearsAgo)
+    }
+    
+    
+    
+    
+    
     private var backgroundColor: Color { Color.orange.opacity(0.80) }
 
     // Validation
@@ -177,24 +191,52 @@ struct ProfilParentFormView: View {
 
     @Binding var selectedTab: TabTag
     
-    private var datePickerField: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Date de naissance")
-                .font(.subheadline.weight(.semibold))
-                .foregroundColor(.black)
+    
+//        VStack(alignment: .leading, spacing: 8) {
+//            Text("Date de naissance")
+//                .font(.subheadline.weight(.semibold))
+//                .foregroundColor(.black)
+//
+//            DatePicker("",
+//                       selection: $dateNaissance,
+//                       in: ...latestAllowedDOB,
+//                       displayedComponents: .date)
+//                .labelsHidden()
+//                .tint(.black)
+//
+//            ErrorText(show: !isAgeOK, text: " l'enfant doit avoir au moins 6 ans.")
+//        }
+//        .inputField(bg: Color.yellow.opacity(0.18))
+//    }
 
-            DatePicker("",
-                       selection: $dateNaissance,
-                       in: ...latestAllowedDOB,
-                       displayedComponents: .date)
-                .labelsHidden()
-                .tint(.black)
+       
+    private var datePickerField: some View {
+        VStack(spacing: 4) {
+            DatePicker(
+                "Date de naissance",
+                selection: $dateNaissance,
+                in: ...latestAllowedDOB,
+                displayedComponents: .date
+            )
+            .labelsHidden()
+            .tint(.black)
+            .frame(maxWidth: .infinity, minHeight: 30, alignment: .leading) // 👈 stretch full width
+            .padding(.horizontal, 12)
+            .padding(.vertical, 10)
+            .background(Color.yellow.opacity(0.25))
+            .overlay(
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .stroke(Color.gray.opacity(0.35), lineWidth: 1)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            .foregroundColor(.black)
 
             ErrorText(show: !isAgeOK, text: " l'enfant doit avoir au moins 6 ans.")
         }
-        .inputField(bg: Color.yellow.opacity(0.18))
     }
 
+        
+        
     // Sections
     private var identiteSection: some View {
         Section {
@@ -216,15 +258,7 @@ struct ProfilParentFormView: View {
     private var activeChildSection: some View {
         Section {
             VStack() {
-                // Active player's name (single source of truth for ProfileEnfant)
-//                TextField("", text: $prenomEnfant.nameCased(),
-//                          prompt: Text("Prénom de l’enfant (joueur·euse)")
-//                            .foregroundColor(.black.opacity(0.6)))
-//                    .textInputAutocapitalization(.words)
-//                    .autocorrectionDisabled()
-//                    .focused($focus, equals: .activeChild)
-//                    .submitLabel(.next)
-//                    .inputField()
+ 
 //
 //                ErrorText(show: showActiveChildError, text: "Le prénom doit contenir au moins 3 caractères.")
 
@@ -344,23 +378,42 @@ struct ProfilParentFormView: View {
 
     private var navSection: some View {
         Section {
-            Button {
-                // ProfileEnfant should read @AppStorage("prenomEnfant")
-//                ProfileEnfant(selectedTab: $selectedTab)
-            } label: {
-                Text("Enregistrer vos informations")
-                    .frame(maxWidth: .infinity)
-                    .font(.system(size: 18, weight: .bold, design: .rounded))
-            }
-//            .buttonStyle(.borderedProminent)
-//            .buttonBorderShape(.roundedRectangle(radius: 14))
-            .tint(.blue)
-            .disabled(!formOK)
-        }
-        .listRowBackground(Color.clear)
-    }
+//            Button {
+//                // ProfileEnfant should read @AppStorage("prenomEnfant")
+////                ProfileEnfant(selectedTab: $selectedTab)
+//            } label: {
+//                Text("Enregistrer vos informations")
+//                    .frame(maxWidth: .infinity)
+//                    .font(.system(size: 18, weight: .bold, design: .rounded))
+//            }
+////            .buttonStyle(.borderedProminent)
+////            .buttonBorderShape(.roundedRectangle(radius: 14))
+//            .tint(.blue)
+//            .disabled(!formOK)
+//        }
+//        .listRowBackground(Color.clear)
+//    }
 
-    // Persistence
+            NavigationLink {
+                       ProfileEnfant(selectedTab: $selectedTab)
+                   } label: {
+                       Text("Enregistrer vos informations")
+                           .frame(maxWidth: .infinity)
+                           .font(.system(size: 18, weight: .bold, design: .rounded))
+                           .padding(.vertical, 10)
+                           .background(formOK ? Color.blue : Color.gray.opacity(0.4))
+                           .foregroundColor(.white)
+                           .clipShape(RoundedRectangle(cornerRadius: 14))
+                   }
+                   .disabled(!formOK)
+               }
+               .listRowBackground(Color.clear)
+           }
+            
+            
+            
+            
+            // Persistence
     private func saveChildrenToStorage() {
         do {
             let data = try JSONEncoder().encode(enfants)
@@ -429,9 +482,7 @@ struct ProfilParentFormView: View {
                     prenomEnfant = first
                 }
             }
-//            .onChange(of: enfants) { _ in
-//                saveChildrenToStorage()
-//            }
+
         }
     }
 }

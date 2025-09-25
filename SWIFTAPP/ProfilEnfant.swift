@@ -11,7 +11,7 @@ struct ProfileEnfant: View {
     @State private var mascotName: String = "shiba"
     private let choices = ["raccoon","donkey","cat","shiba"]
     
-    @Environment(\.dismiss) private var dismiss   // ⬅️ pour gérer le retour
+    @Environment(\.dismiss) private var dismiss   //  pour gérer le retour
     @Binding var selectedTab: TabTag
     
     var body: some View {
@@ -80,16 +80,23 @@ struct ProfileEnfant: View {
             .padding(.vertical, 16)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                
-                NavigationLink(destination: ProfilParentFormView(selectedTab: $selectedTab)) {
-                    Label("Profil parent", systemImage: "chevron.left")
-                }
+//        .toolbar {
+//            ToolbarItem(placement: .topBarLeading) {
+//                
+//                Button {
+//                                   dismiss()
+//                               } label: {
+//                                   Label("Profil parent", systemImage: "chevron.left")
+//                               }
+//                
+//                
+//                NavigationLink(destination: ProfilParentFormView(selectedTab: $selectedTab)) {
+//                    Label("Profil parent", systemImage: "chevron.left")
+//                }
             }
         }
-    }
-}
+//    }
+//}
 
 #Preview {
     NavigationStack { ProfileEnfant(selectedTab: .constant(.challenges)) }
