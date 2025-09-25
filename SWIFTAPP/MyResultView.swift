@@ -116,18 +116,18 @@ struct MyResultView: View {
 //                    .foregroundColor(.white)
 //                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
 
-                    Button("Terminer") {
-//                        if let onFinish { onFinish() } else { dismiss() }
-                        
-                        
-                        
-                    }
-                    .font(.headline)
-                    .padding(.horizontal, 24)
-                    .padding(.vertical, 12)
-                    .background(Color.green)
-                    .foregroundColor(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+//                    Button("Terminer") {
+////                        if let onFinish { onFinish() } else { dismiss() }
+//                        
+//                        
+//                        
+//                    }
+//                    .font(.headline)
+//                    .padding(.horizontal, 24)
+//                    .padding(.vertical, 12)
+//                    .background(Color.green)
+//                    .foregroundColor(.white)
+//                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                 }
                
             }

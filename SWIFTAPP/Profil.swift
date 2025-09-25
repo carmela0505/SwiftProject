@@ -102,9 +102,6 @@ struct ProfilParentFormView: View {
     }
     
     
-    
-    
-    
     private var backgroundColor: Color { Color.orange.opacity(0.80) }
 
     // Validation

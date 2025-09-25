@@ -80,23 +80,16 @@ struct ProfileEnfant: View {
             .padding(.vertical, 16)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-//        .toolbar {
-//            ToolbarItem(placement: .topBarLeading) {
-//                
-//                Button {
-//                                   dismiss()
-//                               } label: {
-//                                   Label("Profil parent", systemImage: "chevron.left")
-//                               }
-//                
-//                
-//                NavigationLink(destination: ProfilParentFormView(selectedTab: $selectedTab)) {
-//                    Label("Profil parent", systemImage: "chevron.left")
-//                }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                
+                NavigationLink(destination: ProfilParentFormView(selectedTab: $selectedTab)) {
+                    Label("", systemImage: "chevron.left")
+                }
             }
         }
-//    }
-//}
+    }
+}
 
 #Preview {
     NavigationStack { ProfileEnfant(selectedTab: .constant(.challenges)) }
